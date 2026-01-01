@@ -20,8 +20,8 @@ class OnBoardingPage extends StatelessWidget {
       child: Column(
         children: [
           Image(
-            width: YHelperFunctions.screenWidth(context) * 0.8,
-            height: YHelperFunctions.screenHeight(context) * 0.6,
+            width: YHelperFunctions.screenWidth() * 0.8,
+            height: YHelperFunctions.screenHeight() * 0.6,
             image: AssetImage(image),
           ),
           Text(

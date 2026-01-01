@@ -6,16 +6,13 @@ import 'package:ysl_store_app/features/authentication/screens/signup/widgets/sig
 import 'package:ysl_store_app/utils/constants/sizes.dart';
 import 'package:ysl_store_app/utils/constants/text_strings.dart';
 
-import '../../../../utils/helpers/helper_functions.dart';
-
 class SignupScreen extends StatelessWidget {
   const SignupScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final dark = YHelperFunctions.isDarkMode(context);
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(automaticallyImplyLeading: false),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(YSizes.defaultSpace),
@@ -45,4 +42,3 @@ class SignupScreen extends StatelessWidget {
     );
   }
 }
-

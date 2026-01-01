@@ -6,12 +6,14 @@ class Assets {
   static const String fontsPoppinsMedium = 'assets/fonts/Poppins-Medium.ttf';
   static const String fontsPoppinsRegular = 'assets/fonts/Poppins-Regular.ttf';
   static const String fontsPoppinsSemiBold = 'assets/fonts/Poppins-SemiBold.ttf';
+  static const String logosFacebook = 'assets/logos/facebook.png';
   static const String logosGoogle = 'assets/logos/google.png';
-  static const String logosImg = 'assets/logos/img.png';
   static const String logosLogoDark = 'assets/logos/logo_dark.png';
   static const String logosLogoLight = 'assets/logos/logo_light.png';
   static const String onBoardingImagesDelivery = 'assets/images/on_boarding_images/delivery.png';
   static const String onBoardingImagesSearching = 'assets/images/on_boarding_images/searching.png';
   static const String onBoardingImagesShopping = 'assets/images/on_boarding_images/shopping.png';
+  static const String verifyEmailDeliveredEmail = 'assets/images/verify_email/delivered_email.png';
+  static const String verifyEmailImg = 'assets/images/verify_email/img.png';
 
 }
