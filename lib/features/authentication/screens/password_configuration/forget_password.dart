@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:ysl_store_app/features/authentication/screens/password_configuration/reset_password.dart';
 import 'package:ysl_store_app/utils/constants/sizes.dart';
 
 import '../../../../utils/constants/text_strings.dart';
@@ -35,8 +37,16 @@ class ForgetPassword extends StatelessWidget {
                 prefixIcon: Icon(Iconsax.direct_right),
               ),
             ),
+            const SizedBox(height: YSizes.spaceBtwSections),
 
             // Submit Button
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () => Get.off(() => ResetPassword()),
+                child: Text(YText.ySubmit),
+              ),
+            ),
           ],
         ),
       ),

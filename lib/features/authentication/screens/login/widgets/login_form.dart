@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../../../../navigation_menu.dart';
 import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/constants/text_strings.dart';
+import '../../password_configuration/forget_password.dart';
 import '../../signup/signup.dart';
 
 class LoginForm extends StatelessWidget {
@@ -48,7 +50,10 @@ class LoginForm extends StatelessWidget {
                 ),
 
                 // forget password
-                TextButton(onPressed: () {}, child: Text(YText.forgotPassword)),
+                TextButton(
+                  onPressed: () => Get.to(() => ForgetPassword()),
+                  child: Text(YText.forgotPassword),
+                ),
               ],
             ),
             const SizedBox(height: YSizes.spaceBtwSections),
@@ -57,7 +62,7 @@ class LoginForm extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () => Get.to(() => NavigationMenu()),
                 child: Text(YText.signIn),
               ),
             ),

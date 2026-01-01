@@ -20,7 +20,7 @@ class YText {
       "Experience Swift and Reliable Delivery - Bringing Your Orders Right to Your Doorstep!";
 
   // Home
-  static const String homeAppBarTitle = "Explore Products";
+  static const String homeAppBarTitle = "Good day for shopping";
   static const String homeAppBarSubTitle = "Best Products for You";
 
   // -- Authentication Form Text

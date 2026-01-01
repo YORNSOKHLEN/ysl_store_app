@@ -5,7 +5,7 @@ class YAppBarTheme {
 
   static const lightAppBarTheme = AppBarTheme(
     elevation: 0,
-    centerTitle: true,
+    centerTitle: false,
     scrolledUnderElevation: 0,
     backgroundColor: Colors.transparent,
     surfaceTintColor: Colors.transparent,
@@ -19,7 +19,7 @@ class YAppBarTheme {
   );
   static const darkAppBarTheme = AppBarTheme(
     elevation: 0,
-    centerTitle: true,
+    centerTitle: false,
     scrolledUnderElevation: 0,
     backgroundColor: Colors.transparent,
     surfaceTintColor: Colors.transparent,
