@@ -2,6 +2,12 @@
 class Assets {
   Assets._();
 
+  static const String categoriesCoolingFan = 'assets/icons/categories/cooling-fan.png';
+  static const String categoriesEarphone = 'assets/icons/categories/earphone.png';
+  static const String categoriesHeadphone = 'assets/icons/categories/headphone.png';
+  static const String categoriesIphone = 'assets/icons/categories/iphone.png';
+  static const String categoriesPowerBank = 'assets/icons/categories/power-bank.png';
+  static const String categoriesSmartwatch = 'assets/icons/categories/smartwatch.png';
   static const String fontsPoppinsBold = 'assets/fonts/Poppins-Bold.ttf';
   static const String fontsPoppinsMedium = 'assets/fonts/Poppins-Medium.ttf';
   static const String fontsPoppinsRegular = 'assets/fonts/Poppins-Regular.ttf';
@@ -14,6 +20,6 @@ class Assets {
   static const String onBoardingImagesSearching = 'assets/images/on_boarding_images/searching.png';
   static const String onBoardingImagesShopping = 'assets/images/on_boarding_images/shopping.png';
   static const String verifyEmailDeliveredEmail = 'assets/images/verify_email/delivered_email.png';
-  static const String verifyEmailImg = 'assets/images/verify_email/img.png';
+  static const String verifyEmailSuccessEmail = 'assets/images/verify_email/success_email.png';
 
 }

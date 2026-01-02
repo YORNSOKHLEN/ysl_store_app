@@ -7,6 +7,8 @@ class YColors {
   static const Color primary = Color(0xff00be62);
   static const Color secondary = Color(0xFFFFE248);
   static const Color accent = Color(0xFFb8c7ff);
+  static const Color white = Colors.white;
+  static const Color black = Colors.black;
 
   // Gradient colors
   static const Gradient linerGradient = LinearGradient(
