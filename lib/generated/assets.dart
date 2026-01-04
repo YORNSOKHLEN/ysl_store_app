@@ -9,9 +9,10 @@ class Assets {
   static const String categoriesGameController = 'assets/icons/categories/game_controller.png';
   static const String categoriesHeadphones = 'assets/icons/categories/headphones.png';
   static const String categoriesIphone = 'assets/icons/categories/iphone.png';
+  static const String categoriesPin = 'assets/icons/categories/pin.png';
   static const String categoriesPowerBank = 'assets/icons/categories/power_bank.png';
   static const String categoriesSmartwatch = 'assets/icons/categories/smartwatch.png';
-  static const String coolingFanImg = 'assets/images/products/cooling_fan/img.png';
+  static const String coolingFanAeroActiveCooler6ForRogPhone = 'assets/images/products/cooling_fan/aero_active_cooler_6_for_rog_phone.png';
   static const String coolingFanZusixSl01GamingMobileCooler = 'assets/images/products/cooling_fan/zusix_sl_01_gaming_mobile_cooler.png';
   static const String earphonesFisherAirpods = 'assets/images/products/earphones/fisher_airpods.png';
   static const String earphonesRedmiBuds6Lite = 'assets/images/products/earphones/redmi_buds_6_lite.png';

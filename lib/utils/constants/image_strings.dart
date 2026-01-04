@@ -40,6 +40,7 @@ class YImage {
   static const smartWatchIcon = "assets/icons/categories/smartwatch.png";
   static const String coolingFanIcon =
       "assets/icons/categories/cooling_fan.png";
+  static const pinIcon = "assets/icons/categories/pin.png";
 
   /// Banner
   static const String promoIphone = "assets/images/banners/promo_iphone.png";

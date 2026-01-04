@@ -8,6 +8,7 @@ import 'package:ysl_store_app/utils/constants/sizes.dart';
 
 import '../../../../common/widgets/custom_shapes/containers/primary_header_container.dart';
 import '../../../../common/widgets/custom_shapes/containers/search_container.dart';
+import '../../../../common/widgets/layouts/grip_layout.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -55,7 +56,7 @@ class HomeScreen extends StatelessWidget {
 
             // Body
             Padding(
-              padding: const EdgeInsets.all(YSizes.spaceBtwItems),
+              padding: const EdgeInsets.all(YSizes.defaultSpace),
               child: Column(
                 children: [
                   // Promo Slider
@@ -69,7 +70,15 @@ class HomeScreen extends StatelessWidget {
                   SizedBox(height: YSizes.spaceBtwSections),
 
                   // Popular Product
-                  const ProductCardVertical(),
+                  YSectionHeading(
+                    title: 'Popular Categories',
+                    onPressed: () {},
+                  ),
+                  SizedBox(height: YSizes.spaceBtwItems),
+                  YGripLayout(
+                    itemCount: 2,
+                    itemBuilder: (_, index) => ProductCardVertical(),
+                  ),
                 ],
               ),
             ),

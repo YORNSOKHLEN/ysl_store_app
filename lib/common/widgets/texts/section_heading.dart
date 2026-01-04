@@ -18,6 +18,7 @@ class YSectionHeading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
           title,
@@ -28,7 +29,7 @@ class YSectionHeading extends StatelessWidget {
           overflow: TextOverflow.ellipsis,
         ),
         if (showActionButton)
-          TextButton(onPressed: onPressed, child: Text('Button Title')),
+          TextButton(onPressed: onPressed, child: Text(buttonTitle)),
       ],
     );
   }

@@ -4,13 +4,9 @@ import 'package:iconsax/iconsax.dart';
 import '../../../../utils/constants/colors.dart';
 
 class YCartCounterIcon extends StatelessWidget {
-  const YCartCounterIcon({
-    super.key,
-    required this.iconColor,
-    required this.onPressed,
-  });
+  const YCartCounterIcon({super.key, this.iconColor, required this.onPressed});
 
-  final Color iconColor;
+  final Color? iconColor;
   final VoidCallback onPressed;
 
   @override

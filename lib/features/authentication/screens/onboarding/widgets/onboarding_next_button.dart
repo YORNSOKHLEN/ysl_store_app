@@ -22,7 +22,7 @@ class OnBoardingNextButton extends StatelessWidget {
         },
         style: ElevatedButton.styleFrom(
           shape: const CircleBorder(),
-          backgroundColor: dark ? YColors.primary : Colors.black,
+          backgroundColor: dark ? YColors.buttonPrimary : Colors.black,
         ),
         child: Icon(Iconsax.arrow_right_3),
       ),

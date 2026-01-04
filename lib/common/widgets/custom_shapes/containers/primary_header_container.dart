@@ -23,14 +23,14 @@ class YPrimaryHeaderContainer extends StatelessWidget {
                 top: -150,
                 right: -250,
                 child: YCircularContainer(
-                  backgroundColor: YColors.light.withOpacity(0.2),
+                  backgroundColor: YColors.light.withAlpha(51),
                 ),
               ),
               Positioned(
                 top: 100,
                 right: -300,
                 child: YCircularContainer(
-                  backgroundColor: YColors.light.withOpacity(0.2),
+                  backgroundColor: YColors.light.withAlpha(51),
                 ),
               ),
               if (child != null) child!,

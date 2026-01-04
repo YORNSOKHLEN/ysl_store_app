@@ -7,8 +7,8 @@ class YColors {
   static const Color primary = Color(0xff00be62);
   static const Color secondary = Color(0xFFFFE248);
   static const Color accent = Color(0xFFb8c7ff);
-  static const Color white = Colors.white;
-  static const Color black = Colors.black;
+  static const Color white = Color(0xFFFFFFFF);
+  static const Color black = Color(0xFF232323);
 
   // Gradient colors
   static const Gradient linerGradient = LinearGradient(
@@ -29,7 +29,7 @@ class YColors {
 
   // Backdrop Container colors
   static const Color lightContainer = Color(0xFFF6F6F6);
-  static Color darkContainer = YColors.light.withOpacity(0.1);
+  static Color darkContainer = YColors.light.withAlpha(26);
 
   // Button colors
   static const Color buttonPrimary = Color(0xFF4b68ff);

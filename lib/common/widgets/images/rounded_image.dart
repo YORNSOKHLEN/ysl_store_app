@@ -24,7 +24,7 @@ class YRoundedImage extends StatelessWidget {
   final bool applyImageRadius;
   final BoxBorder? border;
   final Color backgroundColor;
-  final BoxFit? fit;
+  final BoxFit fit;
   final EdgeInsetsGeometry? padding;
   final bool isNetworkImage;
   final VoidCallback? onPressed;
@@ -35,24 +35,35 @@ class YRoundedImage extends StatelessWidget {
     return GestureDetector(
       onTap: onPressed,
       child: Container(
-        width: width,
-        height: height,
+        width: width ?? double.infinity,
+        height: height ?? double.infinity,
         padding: padding,
         decoration: BoxDecoration(
           border: border,
           color: backgroundColor,
-          borderRadius: BorderRadius.circular(YSizes.md),
+          borderRadius: BorderRadius.circular(borderRadius),
         ),
         child: ClipRRect(
           borderRadius: applyImageRadius
               ? BorderRadius.circular(borderRadius)
               : BorderRadius.zero,
-          child: Image(
-            image: isNetworkImage
-                ? NetworkImage(imageUrl)
-                : AssetImage(imageUrl),
-            fit: fit,
-          ),
+          child: isNetworkImage
+              ? Image.network(
+                  imageUrl,
+                  fit: fit,
+                  errorBuilder: (context, error, stackTrace) {
+                    debugPrint('Network image error: $error');
+                    return const Center(child: Icon(Icons.broken_image));
+                  },
+                )
+              : Image.asset(
+                  imageUrl,
+                  fit: fit,
+                  errorBuilder: (context, error, stackTrace) {
+                    debugPrint('Asset image error: $error');
+                    return const Center(child: Icon(Icons.broken_image));
+                  },
+                ),
         ),
       ),
     );
