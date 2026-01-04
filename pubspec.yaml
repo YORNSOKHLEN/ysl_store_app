@@ -19,6 +19,7 @@ dependencies:
   url_launcher: ^6.3.2
   flutter_native_splash: ^2.4.7
   smooth_page_indicator: ^2.0.1
+  carousel_slider: ^5.1.1
 
   #icon
   iconsax: ^0.0.8
@@ -42,8 +43,17 @@ flutter:
   assets:
     - assets/icons/
     - assets/logos/
-    - assets/images/on_boarding_images/
+    - assets/images/banners/
+    - assets/images/products/
+    - assets/icons/categories/
     - assets/images/verify_email/
+    - assets/images/products/phones/
+    - assets/images/on_boarding_images/
+    - assets/images/products/earphones/
+    - assets/images/products/headphones/
+    - assets/images/products/power_banks/
+    - assets/images/products/cooling_fan/
+    - assets/images/products/smartwatches/
 
   #-------------- Local Fonts  ----------------
   fonts:

@@ -2,16 +2,25 @@
 class Assets {
   Assets._();
 
-  static const String categoriesCoolingFan = 'assets/icons/categories/cooling-fan.png';
-  static const String categoriesEarphone = 'assets/icons/categories/earphone.png';
-  static const String categoriesHeadphone = 'assets/icons/categories/headphone.png';
+  static const String bannersPromoIphone = 'assets/images/banners/promo_iphone.png';
+  static const String bannersPromoRedmiTurbo = 'assets/images/banners/promo_redmi_turbo.png';
+  static const String bannersPromoSamsung = 'assets/images/banners/promo_samsung.png';
+  static const String categoriesCoolingFan = 'assets/icons/categories/cooling_fan.png';
+  static const String categoriesGameController = 'assets/icons/categories/game_controller.png';
+  static const String categoriesHeadphones = 'assets/icons/categories/headphones.png';
   static const String categoriesIphone = 'assets/icons/categories/iphone.png';
-  static const String categoriesPowerBank = 'assets/icons/categories/power-bank.png';
+  static const String categoriesPowerBank = 'assets/icons/categories/power_bank.png';
   static const String categoriesSmartwatch = 'assets/icons/categories/smartwatch.png';
+  static const String coolingFanImg = 'assets/images/products/cooling_fan/img.png';
+  static const String coolingFanZusixSl01GamingMobileCooler = 'assets/images/products/cooling_fan/zusix_sl_01_gaming_mobile_cooler.png';
+  static const String earphonesFisherAirpods = 'assets/images/products/earphones/fisher_airpods.png';
+  static const String earphonesRedmiBuds6Lite = 'assets/images/products/earphones/redmi_buds_6_lite.png';
   static const String fontsPoppinsBold = 'assets/fonts/Poppins-Bold.ttf';
   static const String fontsPoppinsMedium = 'assets/fonts/Poppins-Medium.ttf';
   static const String fontsPoppinsRegular = 'assets/fonts/Poppins-Regular.ttf';
   static const String fontsPoppinsSemiBold = 'assets/fonts/Poppins-SemiBold.ttf';
+  static const String headphonesAirpodsMax = 'assets/images/products/headphones/airpods_max.png';
+  static const String headphonesAsusRogHone7Ultimate = 'assets/images/products/headphones/asus_rog_hone7_ultimate.png';
   static const String logosFacebook = 'assets/logos/facebook.png';
   static const String logosGoogle = 'assets/logos/google.png';
   static const String logosLogoDark = 'assets/logos/logo_dark.png';
@@ -19,6 +28,20 @@ class Assets {
   static const String onBoardingImagesDelivery = 'assets/images/on_boarding_images/delivery.png';
   static const String onBoardingImagesSearching = 'assets/images/on_boarding_images/searching.png';
   static const String onBoardingImagesShopping = 'assets/images/on_boarding_images/shopping.png';
+  static const String phonesIphone17ProMaxOrange = 'assets/images/products/phones/iphone_17_pro_max_orange.png';
+  static const String phonesIphone17ProMaxWhite = 'assets/images/products/phones/iphone_17_pro_max_white.png';
+  static const String phonesRedmiTurbo4ProBlack = 'assets/images/products/phones/redmi_turbo_4_pro_black.png';
+  static const String phonesRedmiTurbo4ProGreen = 'assets/images/products/phones/redmi_turbo_4_pro_green.png';
+  static const String phonesRedmiTurbo4ProWhite = 'assets/images/products/phones/redmi_turbo_4_pro_white.png';
+  static const String phonesSamsungGalaxyS25UltraTitanium = 'assets/images/products/phones/samsung_galaxy_s25_ultra_titanium.png';
+  static const String phonesSamsungGalaxyS25UltraWhite = 'assets/images/products/phones/samsung_galaxy_s25_ultra_white.png';
+  static const String phonesXiaomi17ProMaxBlue = 'assets/images/products/phones/xiaomi_17_pro_max_blue.png';
+  static const String phonesXiaomi17ProMaxGreen = 'assets/images/products/phones/xiaomi_17_pro_max_green.png';
+  static const String phonesXiaomi17ProMaxPurple = 'assets/images/products/phones/xiaomi_17_pro_max_purple.png';
+  static const String powerBanksClickMagneticWirelessPowerBank = 'assets/images/products/power_banks/click_magnetic_wireless_power_bank.png';
+  static const String powerBanksSigmaPowerBank = 'assets/images/products/power_banks/sigma_power_bank.png';
+  static const String smartwatchesAppleWatchUltra2Black = 'assets/images/products/smartwatches/apple_watch_ultra2_black.png';
+  static const String smartwatchesXiaomiRedmiWatch5Black = 'assets/images/products/smartwatches/xiaomi_redmi_watch_5_black.png';
   static const String verifyEmailDeliveredEmail = 'assets/images/verify_email/delivered_email.png';
   static const String verifyEmailSuccessEmail = 'assets/images/verify_email/success_email.png';
 

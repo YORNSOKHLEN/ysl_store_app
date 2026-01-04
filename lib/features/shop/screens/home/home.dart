@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:ysl_store_app/common/widgets/product/product_cards/product_card_vertical.dart';
 import 'package:ysl_store_app/features/shop/screens/home/widgets/home_appbar.dart';
-import 'package:ysl_store_app/utils/constants/colors.dart';
+import 'package:ysl_store_app/features/shop/screens/home/widgets/home_categories.dart';
+import 'package:ysl_store_app/features/shop/screens/home/widgets/promo_slider.dart';
+import 'package:ysl_store_app/utils/constants/image_strings.dart';
 import 'package:ysl_store_app/utils/constants/sizes.dart';
 
 import '../../../../common/widgets/custom_shapes/containers/primary_header_container.dart';
@@ -37,43 +40,36 @@ class HomeScreen extends StatelessWidget {
                         YSectionHeading(
                           title: 'Popular Categories',
                           showActionButton: false,
+                          textColor: Colors.white,
                         ),
                         SizedBox(height: YSizes.spaceBtwItems),
 
                         // Categories
-                        SizedBox(
-                          height: 80,
-                          child: ListView.builder(
-                            shrinkWrap: true,
-                            itemCount: 6,
-                            scrollDirection: Axis.horizontal,
-                            itemBuilder: (_, index) {
-                              return Column(
-                                children: [
-                                  Container(
-                                    width: 56,
-                                    height: 56,
-                                    padding: const EdgeInsets.all(YSizes.sm),
-                                    decoration: BoxDecoration(
-                                      color: YColors.white,
-                                      borderRadius: BorderRadius.circular(100),
-                                    ),
-                                    child: Center(
-                                      child: Image(
-                                        image: AssetImage(''),
-                                        fit: BoxFit.cover,
-                                        color: YColors.dark,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              );
-                            },
-                          ),
-                        ),
+                        YHomeCategories(),
                       ],
                     ),
                   ),
+                ],
+              ),
+            ),
+
+            // Body
+            Padding(
+              padding: const EdgeInsets.all(YSizes.spaceBtwItems),
+              child: Column(
+                children: [
+                  // Promo Slider
+                  YPromoSlider(
+                    banners: [
+                      YImage.promoIphone,
+                      YImage.promoSamsung,
+                      YImage.promoRedmiTurbo,
+                    ],
+                  ),
+                  SizedBox(height: YSizes.spaceBtwSections),
+
+                  // Popular Product
+                  const ProductCardVertical(),
                 ],
               ),
             ),
