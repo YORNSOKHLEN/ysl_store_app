@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:ysl_store_app/utils/constants/colors.dart';
 import 'package:ysl_store_app/utils/theme/custom_themes/bottom_sheet_theme.dart';
 import 'package:ysl_store_app/utils/theme/custom_themes/checkbox_theme.dart';
 import 'package:ysl_store_app/utils/theme/custom_themes/chip_theme.dart';
 import 'package:ysl_store_app/utils/theme/custom_themes/elevated_button_theme.dart';
+
 import 'custom_themes/appbar_theme.dart';
 import 'custom_themes/outlined_button_theme.dart';
 import 'custom_themes/text_field_theme.dart';
@@ -31,7 +33,7 @@ class YAppTheme {
     fontFamily: 'Poppins',
     brightness: Brightness.dark,
     primaryColor: Colors.blue,
-    scaffoldBackgroundColor: Colors.black,
+    scaffoldBackgroundColor: YColors.dark,
     textTheme: YTextTheme.darkTextTheme,
     chipTheme: YChipTheme.darkChipTheme,
     appBarTheme: YAppBarTheme.darkAppBarTheme,

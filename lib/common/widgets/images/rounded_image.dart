@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/sizes.dart';
 
 class YRoundedImage extends StatelessWidget {
@@ -15,7 +14,7 @@ class YRoundedImage extends StatelessWidget {
     this.fit = BoxFit.contain,
     this.isNetworkImage = false,
     this.applyImageRadius = true,
-    this.backgroundColor = YColors.light,
+    required this.backgroundColor,
     this.borderRadius = YSizes.borderRadiusMd,
   });
 

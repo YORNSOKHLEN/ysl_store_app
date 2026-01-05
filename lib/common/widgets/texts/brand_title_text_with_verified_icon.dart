@@ -38,7 +38,7 @@ class YBrandTitleWithVerifiedIcon extends StatelessWidget {
           ), // TBrandTitleText
         ), // Flexible
         const SizedBox(width: YSizes.xs),
-        Icon(Iconsax.verify5, color: iconColor, size: YSizes.iconXs),
+        Icon(Iconsax.verify5, color: iconColor, size: YSizes.iconSm),
       ],
     ); // Row
   }

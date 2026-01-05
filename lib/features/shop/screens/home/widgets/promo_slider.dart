@@ -23,7 +23,14 @@ class YPromoSlider extends StatelessWidget {
             viewportFraction: 1,
             onPageChanged: (index, _) => controller.updatePageIndicator(index),
           ),
-          items: banners.map((url) => YRoundedImage(imageUrl: url)).toList(),
+          items: banners
+              .map(
+                (url) => YRoundedImage(
+                  imageUrl: url,
+                  backgroundColor: YColors.light,
+                ),
+              )
+              .toList(),
         ),
         SizedBox(height: YSizes.spaceBtwItems),
         Center(

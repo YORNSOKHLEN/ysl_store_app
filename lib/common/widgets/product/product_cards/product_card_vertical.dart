@@ -43,6 +43,7 @@ class ProductCardVertical extends StatelessWidget {
                     imageUrl: YImage.imageIphone17ProMaxOrange,
                     applyImageRadius: true,
                     fit: BoxFit.cover,
+                    backgroundColor: dark ? YColors.darkerGrey : YColors.light,
                   ),
 
                   // Size tag

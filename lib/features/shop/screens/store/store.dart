@@ -3,13 +3,12 @@ import 'package:ysl_store_app/common/widgets/appbar/appbar.dart';
 import 'package:ysl_store_app/common/widgets/appbar/tabbar.dart';
 import 'package:ysl_store_app/common/widgets/layouts/grip_layout.dart';
 import 'package:ysl_store_app/common/widgets/product/cart/cart_menu_icon.dart';
+import 'package:ysl_store_app/features/shop/screens/store/widgets/category_tab.dart';
 
-import '../../../../common/widgets/custom_shapes/containers/rounded_container.dart';
+import '../../../../common/widgets/brands/brand_card.dart';
 import '../../../../common/widgets/custom_shapes/containers/search_container.dart';
-import '../../../../common/widgets/texts/brand_card.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
 import '../../../../utils/constants/colors.dart';
-import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/helpers/helper_functions.dart';
 
@@ -88,62 +87,12 @@ class StoreScreen extends StatelessWidget {
           },
           body: TabBarView(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(YSizes.defaultSpace),
-                child: Column(
-                  children: [
-                    /// -- Brands
-                    YRoundedContainer(
-                      showBorder: true,
-                      borderColor: YColors.darkGrey,
-                      backgroundColor: Colors.transparent,
-                      margin: const EdgeInsets.only(
-                        bottom: YSizes.spaceBtwItems,
-                      ),
-                      child: Column(
-                        children: [
-                          /// Brand with Products Count
-                          const YBrandCard(showBorder: false),
-
-                          /// Brand Top 3 Product Images
-                          Row(
-                            children: [
-                              YRoundedContainer(
-                                height: 100,
-                                backgroundColor: dark
-                                    ? YColors.darkerGrey
-                                    : YColors.light,
-                                margin: const EdgeInsets.only(right: YSizes.sm),
-                                padding: const EdgeInsets.all(YSizes.md),
-                                child: const Image(
-                                  fit: BoxFit.contain,
-                                  image: AssetImage(
-                                    YImage.imageIphone17ProMaxOrange,
-                                  ),
-                                ),
-                              ),
-                              YRoundedContainer(
-                                height: 100,
-                                backgroundColor: dark
-                                    ? YColors.darkerGrey
-                                    : YColors.light,
-                                margin: const EdgeInsets.only(right: YSizes.sm),
-                                padding: const EdgeInsets.all(YSizes.md),
-                                child: const Image(
-                                  fit: BoxFit.contain,
-                                  image: AssetImage(
-                                    YImage.imageIphone17ProMaxOrange,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              YCategoryTab(),
+              YCategoryTab(),
+              YCategoryTab(),
+              YCategoryTab(),
+              YCategoryTab(),
+              YCategoryTab(),
             ],
           ),
         ),

@@ -7,18 +7,19 @@ import '../../../utils/constants/sizes.dart';
 import '../../../utils/helpers/helper_functions.dart';
 import '../custom_shapes/containers/rounded_container.dart';
 import '../images/circular_image.dart';
-import 'brand_title_text_with_verified_icon.dart';
+import '../texts/brand_title_text_with_verified_icon.dart';
 
 class YBrandCard extends StatelessWidget {
-  const YBrandCard({super.key, required this.showBorder});
+  const YBrandCard({super.key, required this.showBorder, this.onTab});
 
   final bool showBorder;
+  final void Function()? onTab;
 
   @override
   Widget build(BuildContext context) {
     final dark = YHelperFunctions.isDarkMode(context);
     return GestureDetector(
-      onTap: () {},
+      onTap: onTab,
       child: YRoundedContainer(
         padding: const EdgeInsets.all(YSizes.sm),
         showBorder: showBorder,
