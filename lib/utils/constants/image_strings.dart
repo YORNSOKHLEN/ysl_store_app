@@ -56,8 +56,9 @@ class YImage {
       "assets/images/products/phones/iphone_17_pro_max_white.png";
   static const String imageIphone17ProMaxOrange =
       "assets/images/products/phones/iphone_17_pro_max_orange.png";
-  static const String imageIphone17Air =
-      "assets/images/products/phones/iphone_17_air_black.png";
+  static const String imageIphone17ProMaxBlack =
+      "assets/images/products/phones/iphone_17_pro_max_black.png";
+
   static const String imageRedmiTurbo4ProBlack =
       "assets/images/products/phones/redmi_turbo_4_pro_black.png";
   static const String imageRedmiTurbo4ProWhite =

@@ -17,10 +17,11 @@ class YTabBar extends StatelessWidget implements PreferredSizeWidget {
       color: dark ? YColors.black : YColors.white,
       child: TabBar(
         tabs: tabs,
+        tabAlignment: TabAlignment.start,
         isScrollable: true,
         indicatorColor: YColors.buttonPrimary,
         labelColor: dark ? YColors.white : YColors.buttonPrimary,
-        unselectedLabelColor: YColors.darkGrey,
+        unselectedLabelColor: dark ? YColors.darkGrey : YColors.darkerGrey,
       ),
     );
   }

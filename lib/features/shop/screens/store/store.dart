@@ -81,7 +81,7 @@ class StoreScreen extends StatelessWidget {
                     Tab(child: Text('CoolingFans')),
                     Tab(child: Text('PowerBanks')),
                   ],
-                ), // TTabBar
+                ),
               ),
             ];
           },

@@ -39,12 +39,12 @@ class YBrandShowCase extends StatelessWidget {
 Widget brandTopProductImageWidgets(String image, context) {
   return Expanded(
     child: YRoundedContainer(
-      height: 180,
+      height: 100,
       backgroundColor: YHelperFunctions.isDarkMode(context)
           ? YColors.darkerGrey
           : YColors.light,
-      margin: const EdgeInsets.only(right: YSizes.sm),
-      padding: const EdgeInsets.all(YSizes.md),
+      margin: const EdgeInsets.only(right: YSizes.xs),
+      padding: const EdgeInsets.all(YSizes.xs),
       child: Image(fit: BoxFit.contain, image: AssetImage(image)),
     ),
   );

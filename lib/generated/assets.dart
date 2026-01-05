@@ -30,6 +30,7 @@ class Assets {
   static const String onBoardingImagesSearching = 'assets/images/on_boarding_images/searching.png';
   static const String onBoardingImagesShopping = 'assets/images/on_boarding_images/shopping.png';
   static const String phonesImg = 'assets/images/products/phones/img.png';
+  static const String phonesIphone17ProMaxBlack = 'assets/images/products/phones/iphone_17_pro_max_black.png';
   static const String phonesIphone17ProMaxOrange = 'assets/images/products/phones/iphone_17_pro_max_orange.png';
   static const String phonesIphone17ProMaxWhite = 'assets/images/products/phones/iphone_17_pro_max_white.png';
   static const String phonesRedmiTurbo4ProBlack = 'assets/images/products/phones/redmi_turbo_4_pro_black.png';

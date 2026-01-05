@@ -50,7 +50,9 @@ class YBrandCard extends StatelessWidget {
                   Text(
                     '100 products',
                     overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context).textTheme.labelMedium,
+                    style: Theme.of(
+                      context,
+                    ).textTheme.labelMedium!.copyWith(color: YColors.darkGrey),
                   ),
                 ],
               ),
