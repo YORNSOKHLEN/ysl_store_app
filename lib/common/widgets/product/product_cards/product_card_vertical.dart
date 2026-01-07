@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:ysl_store_app/common/widgets/texts/brand_title_text_with_verified_icon.dart';
 import 'package:ysl_store_app/common/widgets/texts/product_title_text.dart';
@@ -6,6 +7,7 @@ import 'package:ysl_store_app/utils/constants/colors.dart';
 import 'package:ysl_store_app/utils/constants/sizes.dart';
 import 'package:ysl_store_app/utils/helpers/helper_functions.dart';
 
+import '../../../../features/shop/screens/product_details/product_detail.dart';
 import '../../../../utils/constants/image_strings.dart';
 import '../../../styles/shadows.dart';
 import '../../custom_shapes/containers/rounded_container.dart';
@@ -20,7 +22,7 @@ class ProductCardVertical extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = YHelperFunctions.isDarkMode(context);
     return GestureDetector(
-      onTap: () {},
+      onTap: () => Get.to(() => ProductDetailScreen()),
       child: Container(
         width: 180,
         padding: EdgeInsets.all(1),
@@ -102,7 +104,7 @@ class ProductCardVertical extends StatelessWidget {
                 /// Price
                 Padding(
                   padding: const EdgeInsets.only(left: YSizes.sm),
-                  child: YProductPriceText(price: '900'),
+                  child: YProductPriceText(price: '1100'),
                 ),
 
                 // Add to cart button

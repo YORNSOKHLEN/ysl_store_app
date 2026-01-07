@@ -36,7 +36,7 @@ class YSearchContainer extends StatelessWidget {
           decoration: BoxDecoration(
             color: showBackground
                 ? dark
-                      ? YColors.light
+                      ? YColors.dark
                       : YColors.light
                 : Colors.transparent,
             borderRadius: BorderRadius.circular(YSizes.borderRadiusLg),
@@ -48,9 +48,9 @@ class YSearchContainer extends StatelessWidget {
               SizedBox(width: YSizes.spaceBtwItems),
               Text(
                 text,
-                style: Theme.of(
-                  context,
-                ).textTheme.bodyMedium!.apply(color: YColors.darkerGrey),
+                style: Theme.of(context).textTheme.bodyMedium!.apply(
+                  color: dark ? YColors.darkGrey : YColors.darkerGrey,
+                ),
               ),
             ],
           ),

@@ -18,17 +18,17 @@ class YHomeAppBar extends StatelessWidget {
             YText.homeAppBarTitle,
             style: Theme.of(
               context,
-            ).textTheme.bodySmall!.apply(color: YColors.softGrey),
+            ).textTheme.labelLarge!.apply(color: YColors.lightGrey),
           ),
           Text(
             YText.homeAppBarSubTitle,
             style: Theme.of(
               context,
-            ).textTheme.headlineSmall!.apply(color: YColors.light),
+            ).textTheme.headlineSmall!.apply(color: YColors.white),
           ),
         ],
       ),
-      action: [YCartCounterIcon(onPressed: () {}, iconColor: YColors.light)],
+      action: [YCartCounterIcon(onPressed: () {}, iconColor: YColors.white)],
     );
   }
 }

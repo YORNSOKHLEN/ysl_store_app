@@ -6,6 +6,7 @@ import 'package:ysl_store_app/utils/constants/sizes.dart';
 
 import '../../../../utils/constants/text_strings.dart';
 import '../../../../utils/helpers/helper_functions.dart';
+import '../login/login.dart';
 
 class ResetPassword extends StatelessWidget {
   const ResetPassword({super.key});
@@ -52,7 +53,7 @@ class ResetPassword extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () => Get.to(() => const LoginScreen()),
                   child: const Text(YText.yContinue),
                 ),
               ),

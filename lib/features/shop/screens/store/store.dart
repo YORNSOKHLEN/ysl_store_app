@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ysl_store_app/common/widgets/appbar/appbar.dart';
 import 'package:ysl_store_app/common/widgets/appbar/tabbar.dart';
-import 'package:ysl_store_app/common/widgets/layouts/grip_layout.dart';
+import 'package:ysl_store_app/common/widgets/layouts/grid_layout.dart';
 import 'package:ysl_store_app/common/widgets/product/cart/cart_menu_icon.dart';
 import 'package:ysl_store_app/features/shop/screens/store/widgets/category_tab.dart';
 
@@ -60,7 +60,7 @@ class StoreScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: YSizes.spaceBtwItems / 1.5),
 
-                      YGripLayout(
+                      YGridLayout(
                         itemCount: 4,
                         mainAxisExtent: 80,
                         itemBuilder: (_, index) {

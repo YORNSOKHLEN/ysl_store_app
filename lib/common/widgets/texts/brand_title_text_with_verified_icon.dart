@@ -13,7 +13,7 @@ class YBrandTitleWithVerifiedIcon extends StatelessWidget {
     this.maxLines = 1,
     required this.title,
     this.iconColor = YColors.buttonPrimary,
-    this.textAlign = TextAlign.center,
+    this.textAlign = TextAlign.left,
     this.brandTextSize = TextSize.small,
   });
 
@@ -35,11 +35,11 @@ class YBrandTitleWithVerifiedIcon extends StatelessWidget {
             maxLines: maxLines,
             textAlign: textAlign,
             brandTextSize: brandTextSize,
-          ), // TBrandTitleText
-        ), // Flexible
+          ),
+        ),
         const SizedBox(width: YSizes.xs),
         Icon(Iconsax.verify5, color: iconColor, size: YSizes.iconSm),
       ],
-    ); // Row
+    );
   }
 }

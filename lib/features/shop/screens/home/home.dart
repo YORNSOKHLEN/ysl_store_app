@@ -8,7 +8,7 @@ import 'package:ysl_store_app/utils/constants/sizes.dart';
 
 import '../../../../common/widgets/custom_shapes/containers/primary_header_container.dart';
 import '../../../../common/widgets/custom_shapes/containers/search_container.dart';
-import '../../../../common/widgets/layouts/grip_layout.dart';
+import '../../../../common/widgets/layouts/grid_layout.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -50,6 +50,7 @@ class HomeScreen extends StatelessWidget {
                       ],
                     ),
                   ),
+                  SizedBox(height: YSizes.spaceBtwSections),
                 ],
               ),
             ),
@@ -75,7 +76,7 @@ class HomeScreen extends StatelessWidget {
                     onPressed: () {},
                   ),
                   SizedBox(height: YSizes.spaceBtwItems),
-                  YGripLayout(
+                  YGridLayout(
                     itemCount: 2,
                     itemBuilder: (_, index) => ProductCardVertical(),
                   ),

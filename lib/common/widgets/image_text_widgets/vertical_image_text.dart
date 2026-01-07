@@ -10,7 +10,7 @@ class YVerticalImageText extends StatelessWidget {
     required this.image,
     required this.title,
     this.textColor = YColors.white,
-    this.backgroundColor = YColors.white,
+    this.backgroundColor,
     this.onTap,
   });
 
@@ -44,7 +44,7 @@ class YVerticalImageText extends StatelessWidget {
                   image: AssetImage(image),
                   fit: BoxFit.cover,
                   color: YHelperFunctions.isDarkMode(context)
-                      ? YColors.dark
+                      ? YColors.light
                       : YColors.dark,
                 ),
               ),

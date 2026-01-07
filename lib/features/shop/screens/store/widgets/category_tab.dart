@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ysl_store_app/common/widgets/layouts/grip_layout.dart';
+import 'package:ysl_store_app/common/widgets/layouts/grid_layout.dart';
 import 'package:ysl_store_app/common/widgets/texts/section_heading.dart';
 
 import '../../../../../common/widgets/brands/brand_show_case.dart';
@@ -45,7 +45,7 @@ class YCategoryTab extends StatelessWidget {
               ),
               const SizedBox(height: YSizes.spaceBtwItems),
 
-              YGripLayout(
+              YGridLayout(
                 itemCount: 4,
                 itemBuilder: (_, index) => ProductCardVertical(),
               ),

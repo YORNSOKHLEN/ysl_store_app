@@ -6,26 +6,34 @@ import 'package:intl/intl.dart';
 class YHelperFunctions {
   static Color? getColor(String value) {
     final v = value.toLowerCase().trim();
-    if (v == 'green') {
+    if (value == 'Green') {
       return Colors.green;
-    } else if (v == 'red') {
+    } else if (value == 'Green') {
+      return Colors.green;
+    } else if (value == 'Red') {
       return Colors.red;
-    } else if (v == 'blue') {
+    } else if (value == 'Blue') {
       return Colors.blue;
-    } else if (v == 'yellow') {
-      return Colors.yellow;
-    } else if (v == 'black') {
-      return Colors.black;
-    } else if (v == 'white') {
-      return Colors.white;
-    } else if (v == 'grey' || v == 'gray') {
-      return Colors.grey;
-    } else if (v == 'orange') {
-      return Colors.orange;
-    } else if (v == 'purple') {
-      return Colors.purple;
-    } else if (v == 'pink') {
+    } else if (value == 'Pink') {
       return Colors.pink;
+    } else if (value == 'Grey') {
+      return Colors.grey;
+    } else if (value == 'Purple') {
+      return Colors.purple;
+    } else if (value == 'Black') {
+      return Colors.black;
+    } else if (value == 'White') {
+      return Colors.white;
+    } else if (value == 'Yellow') {
+      return Colors.yellow;
+    } else if (value == 'Orange') {
+      return Colors.orange;
+    } else if (value == 'Brown') {
+      return Colors.brown;
+    } else if (value == 'Teal') {
+      return Colors.teal;
+    } else if (value == 'Indigo') {
+      return Colors.indigo;
     } else {
       return null;
     }

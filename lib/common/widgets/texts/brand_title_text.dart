@@ -8,7 +8,7 @@ class YBrandTitleText extends StatelessWidget {
     this.color,
     this.maxLines = 1,
     required this.title,
-    this.textAlign = TextAlign.center,
+    this.textAlign = TextAlign.left,
     this.brandTextSize = TextSize.small,
   });
 

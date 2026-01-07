@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../utils/constants/sizes.dart';
 
-class YGripLayout extends StatelessWidget {
-  const YGripLayout({
+class YGridLayout extends StatelessWidget {
+  const YGridLayout({
     super.key,
     required this.itemCount,
     this.mainAxisExtent = 288,

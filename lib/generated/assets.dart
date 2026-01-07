@@ -22,6 +22,7 @@ class Assets {
   static const String fontsPoppinsSemiBold = 'assets/fonts/Poppins-SemiBold.ttf';
   static const String headphonesAirpodsMax = 'assets/images/products/headphones/airpods_max.png';
   static const String headphonesAsusRogHone7Ultimate = 'assets/images/products/headphones/asus_rog_hone7_ultimate.png';
+  static const String logosApple = 'assets/logos/apple.png';
   static const String logosFacebook = 'assets/logos/facebook.png';
   static const String logosGoogle = 'assets/logos/google.png';
   static const String logosLogoDark = 'assets/logos/logo_dark.png';
@@ -29,8 +30,8 @@ class Assets {
   static const String onBoardingImagesDelivery = 'assets/images/on_boarding_images/delivery.png';
   static const String onBoardingImagesSearching = 'assets/images/on_boarding_images/searching.png';
   static const String onBoardingImagesShopping = 'assets/images/on_boarding_images/shopping.png';
-  static const String phonesImg = 'assets/images/products/phones/img.png';
   static const String phonesIphone17ProMaxBlack = 'assets/images/products/phones/iphone_17_pro_max_black.png';
+  static const String phonesIphone17ProMaxBlack1 = 'assets/images/products/phones/iphone_17_pro_max_black_1.png';
   static const String phonesIphone17ProMaxOrange = 'assets/images/products/phones/iphone_17_pro_max_orange.png';
   static const String phonesIphone17ProMaxWhite = 'assets/images/products/phones/iphone_17_pro_max_white.png';
   static const String phonesRedmiTurbo4ProBlack = 'assets/images/products/phones/redmi_turbo_4_pro_black.png';
@@ -45,6 +46,7 @@ class Assets {
   static const String powerBanksSigmaPowerBank = 'assets/images/products/power_banks/sigma_power_bank.png';
   static const String smartwatchesAppleWatchUltra2Black = 'assets/images/products/smartwatches/apple_watch_ultra2_black.png';
   static const String smartwatchesXiaomiRedmiWatch5Black = 'assets/images/products/smartwatches/xiaomi_redmi_watch_5_black.png';
+  static const String userUser = 'assets/images/user/user.png';
   static const String verifyEmailDeliveredEmail = 'assets/images/verify_email/delivered_email.png';
   static const String verifyEmailSuccessEmail = 'assets/images/verify_email/success_email.png';
 

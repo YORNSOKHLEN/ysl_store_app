@@ -42,6 +42,9 @@ class YImage {
       "assets/icons/categories/cooling_fan.png";
   static const pinIcon = "assets/icons/categories/pin.png";
 
+  /// Brand
+  static const String brandIphone = "assets/logos/apple.png";
+
   /// Banner
   static const String promoIphone = "assets/images/banners/promo_iphone.png";
   static const String promoSamsung = "assets/images/banners/promo_samsung.png";
@@ -49,6 +52,9 @@ class YImage {
       "assets/images/banners/promo_redmi_turbo.png";
   static const String promoGameController = "";
   static const String promoSmartWatch = "";
+
+  /// Profile
+  static const String user = "assets/images/user/user.png";
 
   /// --------- Product ---------
   // Phone
