@@ -50,6 +50,7 @@ class YColors {
   static const Color dark = Color(0xFF272727);
   static const Color darkerGrey = Color(0xFF4F4F4F);
   static const Color darkGrey = Color(0xFF939393);
+  static const Color reviewGrey = Color(0xFFDFDFDF);
   static const Color grey = Color(0xFF848484);
   static const Color softGrey = Color(0xFFF4F4F4);
   static const Color lightGrey = Color(0xFFF9F9F9);

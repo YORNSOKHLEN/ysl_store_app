@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:ysl_store_app/common/widgets/appbar/appbar.dart';
+import 'package:ysl_store_app/features/personalization/screens/address/address.dart';
 import 'package:ysl_store_app/features/personalization/screens/profile/profile.dart';
 import 'package:ysl_store_app/utils/constants/colors.dart';
 import 'package:ysl_store_app/utils/constants/sizes.dart';
@@ -55,10 +56,11 @@ class SettingsScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: YSizes.spaceBtwItems),
 
-                  const YSettingsMenuTile(
+                  YSettingsMenuTile(
                     icon: Iconsax.safe_home,
                     title: 'My Addresses',
                     subTitle: 'Set shopping delivery address',
+                    onTap: () => Get.to(() => UserAddressScreen()),
                   ),
                   const YSettingsMenuTile(
                     icon: Iconsax.shopping_cart,

@@ -3,7 +3,6 @@ import 'package:iconsax/iconsax.dart';
 import 'package:ysl_store_app/common/widgets/appbar/appbar.dart';
 import 'package:ysl_store_app/features/personalization/screens/profile/widgets/profile_menu.dart';
 
-import '../../../../common/widgets/images/circular_image.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
 import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/constants/sizes.dart';
@@ -25,10 +24,9 @@ class ProfileScreen extends StatelessWidget {
                 width: double.infinity,
                 child: Column(
                   children: [
-                    const YCircularImage(
-                      image: YImage.user,
-                      width: 80,
-                      height: 80,
+                    const CircleAvatar(
+                      backgroundImage: AssetImage(YImage.userReview2),
+                      radius: 40,
                     ),
                     TextButton(
                       onPressed: () {},

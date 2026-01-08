@@ -53,6 +53,10 @@ class YImage {
   static const String promoGameController = "";
   static const String promoSmartWatch = "";
 
+  /// Product Review
+  static const String userReview1 = "assets/images/reviews/user_review1.png";
+  static const String userReview2 = "assets/images/reviews/user_review2.jpg";
+
   /// Profile
   static const String user = "assets/images/user/user.png";
 

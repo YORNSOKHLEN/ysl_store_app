@@ -44,6 +44,8 @@ class Assets {
   static const String phonesXiaomi17ProMaxPurple = 'assets/images/products/phones/xiaomi_17_pro_max_purple.png';
   static const String powerBanksClickMagneticWirelessPowerBank = 'assets/images/products/power_banks/click_magnetic_wireless_power_bank.png';
   static const String powerBanksSigmaPowerBank = 'assets/images/products/power_banks/sigma_power_bank.png';
+  static const String reviewsUserReview1 = 'assets/images/reviews/user_review1.jpg';
+  static const String reviewsUserReview2 = 'assets/images/reviews/user_review2.jpg';
   static const String smartwatchesAppleWatchUltra2Black = 'assets/images/products/smartwatches/apple_watch_ultra2_black.png';
   static const String smartwatchesXiaomiRedmiWatch5Black = 'assets/images/products/smartwatches/xiaomi_redmi_watch_5_black.png';
   static const String userUser = 'assets/images/user/user.png';

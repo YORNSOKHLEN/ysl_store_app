@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../utils/constants/colors.dart';
-import '../images/circular_image.dart';
+import '../../../utils/constants/image_strings.dart';
 
 class YUserProfileTile extends StatelessWidget {
   const YUserProfileTile({super.key, required this.onPressed});
@@ -12,11 +12,9 @@ class YUserProfileTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: const YCircularImage(
-        image: 'assets/images/user/user.png',
-        width: 50,
-        height: 50,
-        padding: 0,
+      leading: const CircleAvatar(
+        backgroundImage: AssetImage(YImage.userReview2),
+        radius: 25,
       ),
       title: Text(
         'Yorn Sokhlen',

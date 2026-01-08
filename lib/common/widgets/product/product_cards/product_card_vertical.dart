@@ -32,6 +32,7 @@ class ProductCardVertical extends StatelessWidget {
           color: dark ? YColors.darkerGrey : YColors.white,
         ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             //  Thumbnail, Wishlist Button, Discount
             YRoundedContainer(
@@ -83,7 +84,7 @@ class ProductCardVertical extends StatelessWidget {
 
             // Detail
             Padding(
-              padding: EdgeInsets.only(left: YSizes.sm),
+              padding: EdgeInsets.only(left: YSizes.sm, right: YSizes.sm),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
