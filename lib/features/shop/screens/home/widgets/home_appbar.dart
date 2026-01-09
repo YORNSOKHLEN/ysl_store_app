@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../../common/widgets/appbar/appbar.dart';
 import '../../../../../common/widgets/product/cart/cart_menu_icon.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/text_strings.dart';
+import '../../cart/cart.dart';
 
 class YHomeAppBar extends StatelessWidget {
   const YHomeAppBar({super.key});
@@ -28,7 +30,12 @@ class YHomeAppBar extends StatelessWidget {
           ),
         ],
       ),
-      action: [YCartCounterIcon(onPressed: () {}, iconColor: YColors.white)],
+      action: [
+        YCartCounterIcon(
+          onPressed: () => Get.to(() => CartScreen()),
+          iconColor: YColors.white,
+        ),
+      ],
     );
   }
 }

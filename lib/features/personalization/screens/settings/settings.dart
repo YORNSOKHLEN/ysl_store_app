@@ -11,6 +11,7 @@ import '../../../../common/widgets/custom_shapes/containers/primary_header_conta
 import '../../../../common/widgets/list_tile/settings_menu_tile.dart';
 import '../../../../common/widgets/list_tile/user_profile_tile.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
+import '../../../shop/screens/cart/cart.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -60,12 +61,13 @@ class SettingsScreen extends StatelessWidget {
                     icon: Iconsax.safe_home,
                     title: 'My Addresses',
                     subTitle: 'Set shopping delivery address',
-                    onTap: () => Get.to(() => UserAddressScreen()),
+                    onTap: () => Get.to(() => const UserAddressScreen()),
                   ),
-                  const YSettingsMenuTile(
+                  YSettingsMenuTile(
                     icon: Iconsax.shopping_cart,
                     title: 'My Cart',
                     subTitle: 'Add, remove products and move to checkout',
+                    onTap: () => Get.to(() => const CartScreen()),
                   ),
                   const YSettingsMenuTile(
                     icon: Iconsax.bag_tick,

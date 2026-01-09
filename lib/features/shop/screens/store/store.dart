@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:ysl_store_app/common/widgets/appbar/appbar.dart';
 import 'package:ysl_store_app/common/widgets/appbar/tabbar.dart';
 import 'package:ysl_store_app/common/widgets/layouts/grid_layout.dart';
@@ -11,6 +12,7 @@ import '../../../../common/widgets/texts/section_heading.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/helpers/helper_functions.dart';
+import '../cart/cart.dart';
 
 class StoreScreen extends StatelessWidget {
   const StoreScreen({super.key});
@@ -26,7 +28,9 @@ class StoreScreen extends StatelessWidget {
             'Store',
             style: Theme.of(context).textTheme.headlineMedium,
           ),
-          action: [YCartCounterIcon(onPressed: () {})],
+          action: [
+            YCartCounterIcon(onPressed: () => Get.to(() => CartScreen())),
+          ],
         ),
         body: NestedScrollView(
           headerSliverBuilder: (_, innerBoxIsScrolled) {

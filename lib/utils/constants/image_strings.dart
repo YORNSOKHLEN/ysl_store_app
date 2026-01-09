@@ -57,6 +57,13 @@ class YImage {
   static const String userReview1 = "assets/images/reviews/user_review1.png";
   static const String userReview2 = "assets/images/reviews/user_review2.jpg";
 
+  /// Payment Methods
+  static const String paymentSuccess =
+      "assets/icons/payment_methods/payment_success.png";
+  static const String aba = "assets/icons/payment_methods/aba.png";
+  static const String acleda = "assets/icons/payment_methods/acleda.png";
+  static const String acleda2 = "assets/icons/payment_methods/acleda2.png";
+
   /// Profile
   static const String user = "assets/images/user/user.png";
 

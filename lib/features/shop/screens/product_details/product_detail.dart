@@ -10,6 +10,7 @@ import 'package:ysl_store_app/features/shop/screens/product_details/widgets/prod
 import 'package:ysl_store_app/features/shop/screens/product_details/widgets/ratting_share_widgets.dart';
 import 'package:ysl_store_app/utils/constants/sizes.dart';
 
+import '../checkout/checkout.dart';
 import '../product_reviews/product_reviews.dart';
 
 class ProductDetailScreen extends StatelessWidget {
@@ -48,7 +49,7 @@ class ProductDetailScreen extends StatelessWidget {
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () => Get.to(() => CheckoutScreen()),
                       child: Text('Check out'),
                     ),
                   ),

@@ -3,7 +3,7 @@ import 'package:ysl_store_app/common/widgets/appbar/appbar.dart';
 import 'package:ysl_store_app/features/shop/screens/product_reviews/widgets/rating_progress_indicator.dart';
 import 'package:ysl_store_app/features/shop/screens/product_reviews/widgets/user_review_card.dart';
 
-import '../../../../common/widgets/ratings/rating_indicator.dart';
+import '../../../../common/widgets/product/ratings/rating_indicator.dart';
 import '../../../../utils/constants/sizes.dart';
 
 class ProductReviewsScreen extends StatelessWidget {

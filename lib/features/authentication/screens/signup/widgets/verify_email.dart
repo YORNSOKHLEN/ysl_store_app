@@ -64,7 +64,7 @@ class VerifyEmailScreen extends StatelessWidget {
                     () => SuccessScreen(
                       image: YImage.staticSuccessIllustration,
                       title: YText.yourAccountCreatedTitle,
-                      subtitle: YText.yourAccountCreatedSubTitle,
+                      subTitle: YText.yourAccountCreatedSubTitle,
                       onPressed: () => Get.to(() => const LoginScreen()),
                     ),
                   ),
