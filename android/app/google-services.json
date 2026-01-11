@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "328649122836",
+    "project_id": "ysl-store-app",
+    "storage_bucket": "ysl-store-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:328649122836:android:7a2f2f99f190b38b3eb301",
+        "android_client_info": {
+          "package_name": "com.example.ysl_store_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "328649122836-2iuduln24qs5vdn0esqsas053hojmkiu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ysl_store_app",
+            "certificate_hash": "6805ed341da1b4688ba0197b40591c52dff9deb9"
+          }
+        },
+        {
+          "client_id": "328649122836-o0rv05icu9hmf00mdl6rm4lo25imm8f8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZXSuDQ1ZgdFVt3yxUaR4dclhl4PkjPHE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "328649122836-o0rv05icu9hmf00mdl6rm4lo25imm8f8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "328649122836-3gfn6c111lp3tfst36gf5unnpmt9q36g.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.yslStoreApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

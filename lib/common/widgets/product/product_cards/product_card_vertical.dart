@@ -60,7 +60,7 @@ class ProductCardVertical extends StatelessWidget {
                         vertical: YSizes.xs,
                       ),
                       child: Text(
-                        '25%',
+                        '10%',
                         style: Theme.of(
                           context,
                         ).textTheme.labelLarge!.apply(color: YColors.black),

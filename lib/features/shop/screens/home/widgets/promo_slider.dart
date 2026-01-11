@@ -6,7 +6,7 @@ import '../../../../../common/widgets/custom_shapes/containers/circular_containe
 import '../../../../../common/widgets/images/rounded_image.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/sizes.dart';
-import '../../../controllers/homecontroller/home_controller.dart';
+import '../../../controllers/home_controller/home_controller.dart';
 
 class YPromoSlider extends StatelessWidget {
   const YPromoSlider({super.key, required this.banners});

@@ -4,6 +4,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:ysl_store_app/common/widgets/appbar/appbar.dart';
 import 'package:ysl_store_app/features/personalization/screens/address/address.dart';
 import 'package:ysl_store_app/features/personalization/screens/profile/profile.dart';
+import 'package:ysl_store_app/features/shop/screens/order/order.dart';
 import 'package:ysl_store_app/utils/constants/colors.dart';
 import 'package:ysl_store_app/utils/constants/sizes.dart';
 
@@ -69,10 +70,11 @@ class SettingsScreen extends StatelessWidget {
                     subTitle: 'Add, remove products and move to checkout',
                     onTap: () => Get.to(() => const CartScreen()),
                   ),
-                  const YSettingsMenuTile(
+                  YSettingsMenuTile(
                     icon: Iconsax.bag_tick,
                     title: 'My Orders',
                     subTitle: 'In-progress and Completed Orders',
+                    onTap: () => Get.to(() => const OrderScreen()),
                   ),
                   const YSettingsMenuTile(
                     icon: Iconsax.bank,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:ysl_store_app/common/widgets/product/product_cards/product_card_vertical.dart';
 import 'package:ysl_store_app/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:ysl_store_app/features/shop/screens/home/widgets/home_categories.dart';
@@ -10,6 +11,7 @@ import '../../../../common/widgets/custom_shapes/containers/primary_header_conta
 import '../../../../common/widgets/custom_shapes/containers/search_container.dart';
 import '../../../../common/widgets/layouts/grid_layout.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
+import '../all_products/all_products.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -72,8 +74,8 @@ class HomeScreen extends StatelessWidget {
 
                   // Popular Product
                   YSectionHeading(
-                    title: 'Popular Categories',
-                    onPressed: () {},
+                    title: 'Popular Products',
+                    onPressed: () => Get.to(() => AllProductsScreen()),
                   ),
                   SizedBox(height: YSizes.spaceBtwItems),
                   YGridLayout(
