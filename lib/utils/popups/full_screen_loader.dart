@@ -27,11 +27,16 @@ class YFullScreenLoader {
               : YColors.white,
           width: double.infinity,
           height: double.infinity,
-          child: Column(
-            children: [
-              const SizedBox(height: 250), // Adjust the spacing as needed
-              YAnimationLoaderWidget(text: text, animation: animation),
-            ],
+          child: SafeArea(
+            child: Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const SizedBox(height: 40), // Adjusted spacing to center the loader
+                  YAnimationLoaderWidget(text: text, animation: animation),
+                ],
+              ),
+            ),
           ),
         ),
       ),

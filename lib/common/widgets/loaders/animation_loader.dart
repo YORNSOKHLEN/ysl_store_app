@@ -1,3 +1,4 @@
+import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -30,39 +31,59 @@ class YAnimationLoaderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Lottie.asset(
-            animation,
-            width: MediaQuery.of(context).size.width * 0.8,
-          ), // Display Lottie animation
-          const SizedBox(height: YSizes.defaultSpace),
-          Text(
-            text,
-            style: Theme.of(context).textTheme.bodyMedium,
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: YSizes.defaultSpace),
-          showAction
-              ? SizedBox(
-                  width: 250,
-                  child: OutlinedButton(
-                    onPressed: onActionPressed,
-                    style: OutlinedButton.styleFrom(
-                      backgroundColor: YColors.dark,
+    final screenHeight = MediaQuery.of(context).size.height;
+    final animationHeight = math.min(screenHeight * 0.4, 300.0);
+
+    final isLottie = animation.toLowerCase().endsWith('.json');
+    Widget animationWidget;
+
+    if (isLottie) {
+      try {
+        animationWidget = Lottie.asset(animation, fit: BoxFit.contain);
+      } catch (e) {
+        // If Lottie fails to parse, fall back to a static image
+        animationWidget = Image.asset(animation, fit: BoxFit.contain);
+      }
+    } else {
+      animationWidget = Image.asset(animation, fit: BoxFit.contain);
+    }
+
+    return SafeArea(
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.8,
+              height: animationHeight,
+              child: animationWidget,
+            ), // Constrained animation with responsive cap and fallback
+            const SizedBox(height: YSizes.defaultSpace),
+            Text(
+              text,
+              style: Theme.of(context).textTheme.bodyMedium,
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: YSizes.defaultSpace),
+            showAction
+                ? SizedBox(
+                    width: 250,
+                    child: OutlinedButton(
+                      onPressed: onActionPressed,
+                      style: OutlinedButton.styleFrom(
+                        backgroundColor: YColors.dark,
+                      ),
+                      child: Text(
+                        actionText!,
+                        style: Theme.of(
+                          context,
+                        ).textTheme.bodyMedium!.apply(color: YColors.light),
+                      ),
                     ),
-                    child: Text(
-                      actionText!,
-                      style: Theme.of(
-                        context,
-                      ).textTheme.bodyMedium!.apply(color: YColors.light),
-                    ),
-                  ),
-                )
-              : const SizedBox(),
-        ],
+                  )
+                : const SizedBox(),
+          ],
+        ),
       ),
     );
   }

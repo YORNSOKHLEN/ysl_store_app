@@ -3,8 +3,12 @@ import 'package:get/get.dart';
 import 'package:ysl_store_app/utils/constants/image_strings.dart';
 import 'package:ysl_store_app/utils/popups/loaders.dart';
 
+import '../../../../data/repositories/authentication/authentication_repository.dart';
+import '../../../../data/repositories/user/user_repository.dart';
 import '../../../../utils/helpers/network_manager.dart';
 import '../../../../utils/popups/full_screen_loader.dart';
+import '../../../personalization/models/user_model.dart';
+import '../../screens/signup/widgets/verify_email.dart';
 
 class SignupController extends GetxController {
   static SignupController get instance => Get.find();
@@ -22,45 +26,71 @@ class SignupController extends GetxController {
   GlobalKey<FormState> signupFormKey =
       GlobalKey<FormState>(); // Form key for form validation
 
-  // SignUp
-  Future<void> signup() async {
+  // // SignUp
+  void signup() async {
     try {
-      // Start Loading
       YFullScreenLoader.openLoadingDialog(
         'We are processing your information...',
         YImage.staticSuccessIllustration,
       );
 
-      // Check Internet Connectivity
+      // Check Internet
       final isConnected = await NetworkManager.instance.isConnected();
-      if (!isConnected) return;
+      if (!isConnected) {
+        YFullScreenLoader.stopLoading();
+        return;
+      }
 
       // Form Validation
-      if (!signupFormKey.currentState!.validate()) return;
+      if (!signupFormKey.currentState!.validate()) {
+        YFullScreenLoader.stopLoading();
+        return;
+      }
 
-      // Privacy Policy Check
+      // Privacy Policy
       if (!privacyPolicy.value) {
+        YFullScreenLoader.stopLoading();
         YLoaders.warningSnackBar(
           title: 'Accept Privacy Policy',
-          message:
-              'In order to create account, you must have to read and accept the Privacy Policy & Terms of Use.',
+          message: 'You must accept the Privacy Policy & Terms of Use.',
         );
         return;
       }
 
-      // Register user in the Firebase Authentication & Save user data in the Firebase
+      // Register user
+      final userCredential = await AuthenticationRepository.instance
+          .registerWithEmailAndPassword(
+            email.text.trim(),
+            password.text.trim(),
+          );
+      // SEND VERIFICATION EMAIL
+      await AuthenticationRepository.instance.sendEmailVerification();
 
-      // Save Authenticated user data in the Firebase FireStore
+      final newUser = UserModel(
+        id: userCredential.user!.uid,
+        firstName: firstName.text.trim(),
+        lastName: lastName.text.trim(),
+        username: username.text.trim(),
+        email: email.text.trim(),
+        phoneNumber: phoneNumber.text.trim(),
+        profilePicture: '',
+      );
 
-      // Show Success Message
+      final userRepository = Get.put(UserRepository());
+      await userRepository.saveUserRecord(newUser);
 
-      // Move to Verify Email Screen
-    } catch (e) {
-      // Show some Generic Error to the user
-      YLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
-    } finally {
-      // Remove Loader
+      // STOP loader BEFORE navigation
       YFullScreenLoader.stopLoading();
+
+      YLoaders.successSnackBar(
+        title: 'Congratulations',
+        message: 'Your account has been created! Verify email to continue.',
+      );
+
+      Get.to(() => VerifyEmailScreen(email: email.text.trim()));
+    } catch (e) {
+      YFullScreenLoader.stopLoading();
+      YLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     }
   }
 }

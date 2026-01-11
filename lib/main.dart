@@ -24,10 +24,10 @@ Future<void> main() async {
   // Native Splash
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
-  // Todo: Initialize Firebase
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  // Todo: Initialize Authentication
-  Get.put(AuthenticationRepository());
+  // Todo: Initialize Firebase & Initialize Authentication
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  ).then((FirebaseApp value) => Get.put(AuthenticationRepository()));
 }
 
 class MyApp extends StatelessWidget {

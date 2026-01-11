@@ -1,8 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:ysl_store_app/features/authentication/screens/signup/widgets/verify_email.dart';
+import 'package:ysl_store_app/navigation_menu.dart';
 
 import '../../../features/authentication/screens/login/login.dart';
 import '../../../features/authentication/screens/onboarding/onboarding.dart';
@@ -20,8 +23,21 @@ class AuthenticationRepository extends GetxController {
     screenRedirect();
   }
 
-  Future<void> screenRedirect() async {
+  screenRedirect() async {
+    final user = _auth.currentUser;
     // Ensure value exists FIRST
+    if (user != null) {
+      if (user.emailVerified) {
+        Get.offAll(() => NavigationMenu());
+      } else {
+        Get.offAll(() => VerifyEmailScreen(email: _auth.currentUser?.email));
+      }
+    } else {
+      deviceStorage.writeIfNull('IsFirstTime', true);
+      deviceStorage.read('IsFirstTime') != true
+          ? Get.offAll(() => const LoginScreen())
+          : Get.offAll(() => const OnBoardingScreen());
+    }
 
     if (kDebugMode) {
       print(
@@ -29,10 +45,6 @@ class AuthenticationRepository extends GetxController {
       );
       print(deviceStorage.read('IsFirstTime'));
     }
-    deviceStorage.writeIfNull('IsFirstTime', true);
-    deviceStorage.read('IsFirstTime') != true
-        ? Get.offAll(() => const LoginScreen())
-        : Get.offAll(() => const OnBoardingScreen());
   }
 
   /* -------------------------- Email & Password sign-in --------------------------*/
@@ -40,18 +52,46 @@ class AuthenticationRepository extends GetxController {
   /// [EmailAuthentication] - SignIn
 
   /// [EmailAuthentication] - REGISTER
-  Future<void> registerWithEmail(String email, String password) async {
-    // TODO: Implement Registration
+  Future<UserCredential> registerWithEmailAndPassword(
+    String email,
+    String password,
+  ) async {
+    try {
+      return await _auth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+    } on FirebaseAuthException catch (e) {
+      throw Exception(e.message ?? 'Authentication failed');
+    } on FirebaseException catch (e) {
+      throw Exception(e.message ?? 'Firebase error occurred');
+    } on FormatException catch (e) {
+      throw FormatException(e.message);
+    } on PlatformException catch (e) {
+      throw Exception(e.message ?? 'Platform error occurred');
+    } catch (e) {
+      throw Exception('Something went wrong. Please try again');
+    }
+  }
+
+  /// [EmailVerification] - MAIL VERIFICATION
+  Future<void> sendEmailVerification() async {
+    try {
+      await _auth.currentUser?.sendEmailVerification();
+    } on FirebaseAuthException catch (e) {
+      throw Exception(e.message ?? 'Failed to send email verification');
+    } on FirebaseException catch (e) {
+      throw Exception(e.message ?? 'Firebase error occurred');
+    } on PlatformException catch (e) {
+      throw Exception(e.message ?? 'Platform error occurred');
+    } catch (e) {
+      throw Exception('Something went wrong. Please try again');
+    }
   }
 
   /// [ReAuthenticate] - ReAuthenticate User
   Future<void> reAuthenticateUser() async {
     // TODO: Implement Re-authentication
-  }
-
-  /// [EmailVerification] - MAIL VERIFICATION
-  Future<void> sendEmailVerification() async {
-    // TODO: Implement Email Verification
   }
 
   /// [EmailAuthentication] - FORGET PASSWORD
@@ -75,7 +115,18 @@ class AuthenticationRepository extends GetxController {
 
   /// [LogoutUser] - Valid for any authentication.
   Future<void> logout() async {
-    // TODO: Implement Logout
+    try {
+      await FirebaseAuth.instance.signOut();
+      Get.offAll(() => LoginScreen());
+    } on FirebaseAuthException catch (e) {
+      throw Exception(e.message ?? 'Failed to logout');
+    } on FirebaseException catch (e) {
+      throw Exception(e.message ?? 'Firebase error occurred');
+    } on PlatformException catch (e) {
+      throw Exception(e.message ?? 'Platform error occurred');
+    } catch (e) {
+      throw Exception('Something went wrong while logging out');
+    }
   }
 
   /// DELETE USER - Remove user Auth and Firestore Account.
