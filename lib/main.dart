@@ -1,10 +1,33 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
-import 'package:ysl_store_app/features/authentication/screens/onboarding/onboarding.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:ysl_store_app/utils/constants/colors.dart';
 import 'package:ysl_store_app/utils/theme/theme.dart';
 
-void main() {
+import 'bindings/general_bindings.dart';
+import 'data/repositories/authentication/authentication_repository.dart';
+import 'firebase_options.dart';
+
+Future<void> main() async {
   runApp(const MyApp());
+
+  // Widgets Binding
+  final WidgetsBinding widgetsBinding =
+      WidgetsFlutterBinding.ensureInitialized();
+
+  // GetX Local Storage
+  await GetStorage.init();
+
+  // Todo: Init Payment Methods
+  // Native Splash
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+
+  // Todo: Initialize Firebase
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  // Todo: Initialize Authentication
+  Get.put(AuthenticationRepository());
 }
 
 class MyApp extends StatelessWidget {
@@ -19,7 +42,11 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: YAppTheme.lightTheme,
       darkTheme: YAppTheme.darkTheme,
-      home: const OnBoardingScreen(),
+      initialBinding: GeneralBindings(),
+      home: const Scaffold(
+        backgroundColor: YColors.primary,
+        body: Center(child: CircularProgressIndicator(color: Colors.white)),
+      ),
     );
   }
 }

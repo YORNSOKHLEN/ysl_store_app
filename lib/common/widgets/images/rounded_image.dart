@@ -11,18 +11,18 @@ class YRoundedImage extends StatelessWidget {
     this.width,
     this.height,
     required this.imageUrl,
-    this.fit = BoxFit.contain,
+    this.fit = BoxFit.cover,
     this.isNetworkImage = false,
     this.applyImageRadius = true,
-    required this.backgroundColor,
-    this.borderRadius = YSizes.borderRadiusMd,
+    this.backgroundColor,
+    this.borderRadius = YSizes.md,
   });
 
   final double? width, height;
   final String imageUrl;
   final bool applyImageRadius;
   final BoxBorder? border;
-  final Color backgroundColor;
+  final Color? backgroundColor;
   final BoxFit fit;
   final EdgeInsetsGeometry? padding;
   final bool isNetworkImage;
@@ -34,35 +34,24 @@ class YRoundedImage extends StatelessWidget {
     return GestureDetector(
       onTap: onPressed,
       child: Container(
-        width: width ?? double.infinity,
-        height: height ?? double.infinity,
+        width: width,
+        height: height,
         padding: padding,
         decoration: BoxDecoration(
-          border: border,
           color: backgroundColor,
+          border: border,
           borderRadius: BorderRadius.circular(borderRadius),
         ),
         child: ClipRRect(
           borderRadius: applyImageRadius
               ? BorderRadius.circular(borderRadius)
               : BorderRadius.zero,
-          child: isNetworkImage
-              ? Image.network(
-                  imageUrl,
-                  fit: fit,
-                  errorBuilder: (context, error, stackTrace) {
-                    debugPrint('Network image error: $error');
-                    return const Center(child: Icon(Icons.broken_image));
-                  },
-                )
-              : Image.asset(
-                  imageUrl,
-                  fit: fit,
-                  errorBuilder: (context, error, stackTrace) {
-                    debugPrint('Asset image error: $error');
-                    return const Center(child: Icon(Icons.broken_image));
-                  },
-                ),
+          child: Image(
+            image: isNetworkImage
+                ? NetworkImage(imageUrl)
+                : AssetImage(imageUrl),
+            fit: fit,
+          ),
         ),
       ),
     );

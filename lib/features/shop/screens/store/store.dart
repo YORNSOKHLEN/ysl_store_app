@@ -4,6 +4,7 @@ import 'package:ysl_store_app/common/widgets/appbar/appbar.dart';
 import 'package:ysl_store_app/common/widgets/appbar/tabbar.dart';
 import 'package:ysl_store_app/common/widgets/layouts/grid_layout.dart';
 import 'package:ysl_store_app/common/widgets/product/cart/cart_menu_icon.dart';
+import 'package:ysl_store_app/features/shop/screens/brands/all_brands.dart';
 import 'package:ysl_store_app/features/shop/screens/store/widgets/category_tab.dart';
 
 import '../../../../common/widgets/brands/brand_card.dart';
@@ -12,6 +13,7 @@ import '../../../../common/widgets/texts/section_heading.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/helpers/helper_functions.dart';
+import '../brands/brand_products.dart';
 import '../cart/cart.dart';
 
 class StoreScreen extends StatelessWidget {
@@ -60,7 +62,7 @@ class StoreScreen extends StatelessWidget {
                       /// -- Featured Brands
                       YSectionHeading(
                         title: 'Featured Brands',
-                        onPressed: () {},
+                        onPressed: () => Get.to(() => AllBrandScreen()),
                       ),
                       const SizedBox(height: YSizes.spaceBtwItems / 1.5),
 
@@ -68,7 +70,10 @@ class StoreScreen extends StatelessWidget {
                         itemCount: 4,
                         mainAxisExtent: 80,
                         itemBuilder: (_, index) {
-                          return YBrandCard(showBorder: false);
+                          return YBrandCard(
+                            showBorder: false,
+                            onTab: () => Get.to(() => BrandProducts()),
+                          );
                         },
                       ),
                     ],
