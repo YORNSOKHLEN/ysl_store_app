@@ -22,6 +22,8 @@ class YImage {
   //     "assets/images/animations/sammy-line-sale.png";
   static const String staticSuccessIllustration =
       "assets/images/verify_email/success_email.png";
+  static const String docerAnimation =
+      "assets/images/verify_email/docer_animation.png";
 
   // static const String deliveredInPlaneIllustration =
   //     "assets/images/animations/sammy-line-come-back-later.png";

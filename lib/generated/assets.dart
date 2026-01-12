@@ -25,8 +25,8 @@ class Assets {
   static const String logosApple = 'assets/logos/apple.png';
   static const String logosFacebook = 'assets/logos/facebook.png';
   static const String logosGoogle = 'assets/logos/google.png';
-  static const String logosLogoD = 'assets/logos/logo_d.png';
-  static const String logosLogoL = 'assets/logos/logo_l.png';
+  static const String logosLogoDark = 'assets/logos/logo_dark.png';
+  static const String logosLogoLight = 'assets/logos/logo_light.png';
   static const String onBoardingImagesDelivery = 'assets/images/on_boarding_images/delivery.png';
   static const String onBoardingImagesSearching = 'assets/images/on_boarding_images/searching.png';
   static const String onBoardingImagesShopping = 'assets/images/on_boarding_images/shopping.png';
@@ -54,6 +54,7 @@ class Assets {
   static const String smartwatchesXiaomiRedmiWatch5Black = 'assets/images/products/smartwatches/xiaomi_redmi_watch_5_black.png';
   static const String userUser = 'assets/images/user/user.png';
   static const String verifyEmailDeliveredEmail = 'assets/images/verify_email/delivered_email.png';
+  static const String verifyEmailDocerAnimation = 'assets/images/verify_email/docer_animation.png';
   static const String verifyEmailSuccessEmail = 'assets/images/verify_email/success_email.png';
 
 }

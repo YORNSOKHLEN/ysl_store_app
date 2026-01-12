@@ -3,6 +3,7 @@ class YText {
   static const String termsAndConditions =
       "By signing up, you agree to our Terms and Conditions.";
   static const String yContinue = "Continue";
+  static const String yDone = "Done";
   static const String yLogin = "Login";
   static const String ySignUp = "Sign Up";
   static const String ySubmit = "Submit";

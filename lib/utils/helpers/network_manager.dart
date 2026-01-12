@@ -33,7 +33,7 @@ class NetworkManager extends GetxController {
 
     // Check if the list contains 'none' or is empty
     if (_connectionStatus.contains(ConnectivityResult.none)) {
-      YLoaders.warningSnackBar(title: 'No Internet Connection');
+      YLoaders.customToast(message: 'No Internet Connection');
     }
   }
 

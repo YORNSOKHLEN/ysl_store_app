@@ -12,6 +12,7 @@ import '../../../../common/widgets/custom_shapes/containers/primary_header_conta
 import '../../../../common/widgets/list_tile/settings_menu_tile.dart';
 import '../../../../common/widgets/list_tile/user_profile_tile.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
+import '../../../../data/repositories/authentication/authentication_repository.dart';
 import '../../../shop/screens/cart/cart.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -133,7 +134,8 @@ class SettingsScreen extends StatelessWidget {
                   SizedBox(
                     width: double.infinity,
                     child: OutlinedButton(
-                      onPressed: () {},
+                      onPressed: () =>
+                          AuthenticationRepository.instance.logout(),
                       child: Text('Log out'),
                     ),
                   ),

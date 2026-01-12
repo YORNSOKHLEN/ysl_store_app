@@ -4,6 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:ysl_store_app/data/repositories/user/user_repository.dart';
 import 'package:ysl_store_app/features/authentication/screens/signup/widgets/verify_email.dart';
 import 'package:ysl_store_app/navigation_menu.dart';
 
@@ -16,6 +18,10 @@ class AuthenticationRepository extends GetxController {
   final deviceStorage = GetStorage();
   final _auth = FirebaseAuth.instance;
 
+  /// Get Authenticated user data
+  User? get authUser => _auth.currentUser;
+
+  // Call from main.dart on app
   @override
   void onReady() {
     super.onReady();
@@ -23,33 +29,54 @@ class AuthenticationRepository extends GetxController {
     screenRedirect();
   }
 
-  screenRedirect() async {
+  Future<void> screenRedirect() async {
     final user = _auth.currentUser;
-    // Ensure value exists FIRST
+
     if (user != null) {
       if (user.emailVerified) {
         Get.offAll(() => NavigationMenu());
       } else {
-        Get.offAll(() => VerifyEmailScreen(email: _auth.currentUser?.email));
+        Get.offAll(() => VerifyEmailScreen(email: user.email ?? ''));
       }
     } else {
       deviceStorage.writeIfNull('IsFirstTime', true);
-      deviceStorage.read('IsFirstTime') != true
-          ? Get.offAll(() => const LoginScreen())
-          : Get.offAll(() => const OnBoardingScreen());
+
+      final isFirstTime = deviceStorage.read('IsFirstTime') as bool;
+
+      isFirstTime
+          ? Get.offAll(() => const OnBoardingScreen())
+          : Get.offAll(() => const LoginScreen());
     }
 
     if (kDebugMode) {
-      print(
-        '=========================== GET STORAGE AUTH REPO ===========================',
-      );
+      print('================ AUTH REDIRECT ================');
       print(deviceStorage.read('IsFirstTime'));
     }
   }
 
   /* -------------------------- Email & Password sign-in --------------------------*/
 
-  /// [EmailAuthentication] - SignIn
+  /// [EmailAuthentication] - LOGIN
+  Future<UserCredential> loginWithEmailAndPassword(
+    String email,
+    String password,
+  ) async {
+    try {
+      // Sign in user
+      return await _auth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+    } on FirebaseAuthException catch (e) {
+      throw Exception(e.message ?? 'Login failed');
+    } on FirebaseException catch (e) {
+      throw Exception(e.message ?? 'Firebase error occurred');
+    } on PlatformException catch (e) {
+      throw Exception(e.message ?? 'Platform error occurred');
+    } catch (e) {
+      throw Exception('Something went wrong. Please try again');
+    }
+  }
 
   /// [EmailAuthentication] - REGISTER
   Future<UserCredential> registerWithEmailAndPassword(
@@ -77,33 +104,79 @@ class AuthenticationRepository extends GetxController {
   /// [EmailVerification] - MAIL VERIFICATION
   Future<void> sendEmailVerification() async {
     try {
-      await _auth.currentUser?.sendEmailVerification();
+      final user = _auth.currentUser;
+
+      if (user == null) {
+        throw Exception('No authenticated user found');
+      }
+
+      if (!user.emailVerified) {
+        await user.sendEmailVerification();
+      }
+    } catch (e) {
+      throw Exception(e.toString());
+    }
+  }
+
+  /// [EmailAuthentication] - FORGET PASSWORD
+  Future<void> sendPasswordResetEmail(String email) async {
+    try {
+      await _auth.sendPasswordResetEmail(email: email);
     } on FirebaseAuthException catch (e) {
-      throw Exception(e.message ?? 'Failed to send email verification');
-    } on FirebaseException catch (e) {
-      throw Exception(e.message ?? 'Firebase error occurred');
-    } on PlatformException catch (e) {
-      throw Exception(e.message ?? 'Platform error occurred');
+      throw Exception(e.message ?? 'Failed to send reset email');
     } catch (e) {
       throw Exception('Something went wrong. Please try again');
     }
   }
 
-  /// [ReAuthenticate] - ReAuthenticate User
-  Future<void> reAuthenticateUser() async {
-    // TODO: Implement Re-authentication
-  }
+  /// [EmailAuthentication] - RE-AUTHENTICATE USER
+  Future<void> reAuthenticateWithEmailAndPassword(
+    String email,
+    String password,
+  ) async {
+    try {
+      // Create credential
+      AuthCredential credential = EmailAuthProvider.credential(
+        email: email,
+        password: password,
+      );
 
-  /// [EmailAuthentication] - FORGET PASSWORD
-  Future<void> sendPasswordResetEmail(String email) async {
-    // TODO: Implement Password Reset
+      // Re-authenticate
+      await _auth.currentUser!.reauthenticateWithCredential(credential);
+    } on FirebaseAuthException catch (e) {
+      throw Exception(e.message ?? 'Re-authentication failed');
+    } catch (e) {
+      throw Exception('Something went wrong. Please try again');
+    }
   }
 
   /* -------------------- Federated identity & social sign-in --------------------*/
 
   /// [GoogleAuthentication] - GOOGLE
-  Future<void> signInWithGoogle() async {
-    // TODO: Implement Google Sign In
+  Future<UserCredential> signInWithGoogle() async {
+    try {
+      // Trigger the authentication flow
+      final GoogleSignInAccount? userAccount = await GoogleSignIn().signIn();
+
+      // Obtain the auth details from the request
+      final GoogleSignInAuthentication? googleAuth =
+          await userAccount?.authentication;
+
+      // Create a new credential
+      final credentials = GoogleAuthProvider.credential(
+        accessToken: googleAuth?.accessToken,
+        idToken: googleAuth?.idToken,
+      );
+
+      // Once signed in, return the UserCredential
+      return await _auth.signInWithCredential(credentials);
+    } on FirebaseAuthException catch (e) {
+      throw Exception(e.message ?? 'Google authentication failed');
+    } on PlatformException catch (e) {
+      throw Exception(e.message ?? 'Platform error occurred');
+    } catch (e) {
+      throw Exception(e.toString());
+    }
   }
 
   /// [FacebookAuthentication] - FACEBOOK
@@ -116,6 +189,7 @@ class AuthenticationRepository extends GetxController {
   /// [LogoutUser] - Valid for any authentication.
   Future<void> logout() async {
     try {
+      await GoogleSignIn().signOut();
       await FirebaseAuth.instance.signOut();
       Get.offAll(() => LoginScreen());
     } on FirebaseAuthException catch (e) {
@@ -129,8 +203,23 @@ class AuthenticationRepository extends GetxController {
     }
   }
 
-  /// DELETE USER - Remove user Auth and Firestore Account.
+  /// [DELETE USER] - Remove user Auth and Firestore Account.
   Future<void> deleteAccount() async {
-    // TODO: Implement Account Deletion and Firestore cleanup
+    try {
+      await UserRepository.instance.removeUserRecord(_auth.currentUser!.uid);
+      await _auth.currentUser?.delete();
+    } on FirebaseAuthException catch (e) {
+      /// Happens if recent login is required
+      if (e.code == 'requires-recent-login') {
+        throw Exception('Please re-authenticate before deleting your account.');
+      }
+      throw Exception(e.message ?? 'Failed to delete account');
+    } on FirebaseException catch (e) {
+      throw Exception(e.message ?? 'Firebase error occurred');
+    } on PlatformException catch (e) {
+      throw Exception(e.message ?? 'Platform error occurred');
+    } catch (e) {
+      throw Exception('Something went wrong while deleting account');
+    }
   }
 }

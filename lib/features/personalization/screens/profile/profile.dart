@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:ysl_store_app/common/widgets/appbar/appbar.dart';
+import 'package:ysl_store_app/features/personalization/screens/profile/widgets/change_name.dart';
 import 'package:ysl_store_app/features/personalization/screens/profile/widgets/profile_menu.dart';
+import 'package:ysl_store_app/utils/popups/shimmer.dart';
 
+import '../../../../common/widgets/images/circular_image.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
 import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/constants/sizes.dart';
+import '../../controllers/user_controller.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = UserController.instance;
     return Scaffold(
       appBar: YAppBar(showBackArrow: true, title: Text('Profile')),
       body: SingleChildScrollView(
@@ -24,12 +30,22 @@ class ProfileScreen extends StatelessWidget {
                 width: double.infinity,
                 child: Column(
                   children: [
-                    const CircleAvatar(
-                      backgroundImage: AssetImage(YImage.userReview2),
-                      radius: 40,
-                    ),
+                    Obx(() {
+                      final networkImage = controller.user.value.profilePicture;
+                      final image = networkImage!.isNotEmpty
+                          ? networkImage
+                          : YImage.user;
+                      return controller.imageUpLoading.value
+                          ? YShimmerEffect(width: 80, height: 80, radius: 80)
+                          : YCircularImage(
+                              image: image,
+                              width: 80,
+                              height: 80,
+                              isNetworkImage: networkImage.isNotEmpty,
+                            );
+                    }),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () => controller.uploadUserProfilePicture(),
                       child: const Text('Change Profile Picture'),
                     ),
                   ],
@@ -50,14 +66,14 @@ class ProfileScreen extends StatelessWidget {
 
               // Profile Info
               YProfileMenu(
-                onPressed: () {},
+                onPressed: () => Get.off(() => const ChangeName()),
                 title: 'Name',
-                value: 'Yorn Sokhlen',
+                value: controller.user.value.fullName,
               ),
               YProfileMenu(
                 onPressed: () {},
                 title: 'username',
-                value: 'yorn_sokhlen',
+                value: controller.user.value.username ?? '',
               ),
 
               const SizedBox(height: YSizes.spaceBtwItems / 2),
@@ -73,18 +89,18 @@ class ProfileScreen extends StatelessWidget {
 
               YProfileMenu(
                 title: 'User ID',
-                value: '3333',
+                value: controller.user.value.id,
                 icon: Iconsax.copy,
                 onPressed: () {},
               ),
               YProfileMenu(
                 title: 'E-mail',
-                value: 'yornsokhlen33@email.com',
+                value: controller.user.value.email ?? '',
                 onPressed: () {},
               ),
               YProfileMenu(
                 title: 'Phone Number',
-                value: '+855 96 280 7801',
+                value: controller.user.value.phoneNumber ?? '',
                 onPressed: () {},
               ),
               YProfileMenu(title: 'Gender', value: 'Male', onPressed: () {}),
@@ -99,7 +115,7 @@ class ProfileScreen extends StatelessWidget {
               // Clos account
               Center(
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () => controller.deleteAccountWarningPopup(),
                   child: Text(
                     'Close Account',
                     style: TextStyle(color: Colors.red),

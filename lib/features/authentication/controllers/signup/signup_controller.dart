@@ -31,7 +31,7 @@ class SignupController extends GetxController {
     try {
       YFullScreenLoader.openLoadingDialog(
         'We are processing your information...',
-        YImage.staticSuccessIllustration,
+        YImage.docerAnimation,
       );
 
       // Check Internet
