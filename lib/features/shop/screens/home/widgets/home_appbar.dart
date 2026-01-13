@@ -6,7 +6,7 @@ import '../../../../../common/widgets/appbar/appbar.dart';
 import '../../../../../common/widgets/product/cart/cart_menu_icon.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/text_strings.dart';
-import '../../../../../utils/popups/shimmer.dart';
+import '../../../../../common/widgets/shimmers/shimmer.dart';
 import '../../cart/cart.dart';
 
 class YHomeAppBar extends StatelessWidget {

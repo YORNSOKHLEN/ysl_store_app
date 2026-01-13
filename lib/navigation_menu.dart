@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-import 'features/shop/controllers/navigation/navigation_controller.dart';
+import 'features/shop/controllers/navigation_controller.dart';
 
 class NavigationMenu extends StatelessWidget {
   const NavigationMenu({super.key});

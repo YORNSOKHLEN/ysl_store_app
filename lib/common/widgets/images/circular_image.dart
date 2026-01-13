@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/sizes.dart';
 import '../../../utils/helpers/helper_functions.dart';
-import '../../../utils/popups/shimmer.dart';
+import '../shimmers/shimmer.dart';
 
 class YCircularImage extends StatelessWidget {
   const YCircularImage({

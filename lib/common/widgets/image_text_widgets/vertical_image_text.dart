@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ysl_store_app/common/widgets/images/circular_image.dart';
 
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/sizes.dart';
@@ -7,16 +8,18 @@ import '../../../../../utils/helpers/helper_functions.dart';
 class YVerticalImageText extends StatelessWidget {
   const YVerticalImageText({
     super.key,
+    this.onTap,
     required this.image,
     required this.title,
-    this.textColor = YColors.white,
     this.backgroundColor,
-    this.onTap,
+    this.isNetworkImage = true,
+    this.textColor = YColors.white,
   });
 
   final String image, title;
   final Color textColor;
   final Color? backgroundColor;
+  final bool isNetworkImage;
   final void Function()? onTap;
 
   @override
@@ -27,29 +30,17 @@ class YVerticalImageText extends StatelessWidget {
         padding: const EdgeInsets.only(right: YSizes.spaceBtwItems),
         child: Column(
           children: [
-            Container(
-              width: 56,
-              height: 56,
-              padding: const EdgeInsets.all(YSizes.sm),
-              decoration: BoxDecoration(
-                color:
-                    backgroundColor ??
-                    (YHelperFunctions.isDarkMode(context)
-                        ? YColors.black
-                        : YColors.white),
-                borderRadius: BorderRadius.circular(100),
-              ),
-              child: Center(
-                child: Image(
-                  image: AssetImage(image),
-                  fit: BoxFit.cover,
-                  color: YHelperFunctions.isDarkMode(context)
-                      ? YColors.light
-                      : YColors.dark,
-                ),
-              ),
+            /// Circular Icon
+            YCircularImage(
+              image: image,
+              fit: BoxFit.fitWidth,
+              padding: YSizes.sm * 1.4,
+              isNetworkImage: isNetworkImage,
+              backgroundColor: backgroundColor,
+              overlayColor: YHelperFunctions.isDarkMode(context)
+                  ? YColors.light
+                  : YColors.dark,
             ),
-
             // Text
             const SizedBox(height: YSizes.spaceBtwItems / 2),
             SizedBox(

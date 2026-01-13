@@ -191,6 +191,7 @@ class UserController extends GetxController {
         await userRepository.updateSingleField(json);
 
         user.value.profilePicture = imageUrl;
+        user.refresh();
         YLoaders.successSnackBar(
           title: 'Congratulations',
           message: 'Your Profile Image has been updated!',
