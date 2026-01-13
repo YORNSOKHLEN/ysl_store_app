@@ -85,7 +85,7 @@ class StoreScreen extends StatelessWidget {
                 // Tabs
                 bottom: YTabBar(
                   tabs: categories
-                      .map((category) => Tab(child: Text(categories.string)))
+                      .map((category) => Tab(child: Text(category.name)))
                       .toList(),
                 ),
               ),
