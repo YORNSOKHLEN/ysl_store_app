@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ysl_store_app/common/widgets/layouts/grid_layout.dart';
 import 'package:ysl_store_app/common/widgets/texts/section_heading.dart';
+import 'package:ysl_store_app/features/shop/models/category_model.dart';
 
 import '../../../../../common/widgets/brands/brand_show_case.dart';
 import '../../../../../common/widgets/product/product_cards/product_card_vertical.dart';
@@ -8,7 +9,9 @@ import '../../../../../utils/constants/image_strings.dart';
 import '../../../../../utils/constants/sizes.dart';
 
 class YCategoryTab extends StatelessWidget {
-  const YCategoryTab({super.key});
+  const YCategoryTab({super.key, required this.category});
+
+  final CategoryModel category;
 
   @override
   Widget build(BuildContext context) {

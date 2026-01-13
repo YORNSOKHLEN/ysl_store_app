@@ -13,7 +13,7 @@ class SubCategoriesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: YAppBar(title: Text('Sports'), showBackArrow: true),
+      appBar: YAppBar(title: Text('Smartphone'), showBackArrow: true),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.all(YSizes.defaultSpace),

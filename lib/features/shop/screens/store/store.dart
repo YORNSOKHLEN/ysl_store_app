@@ -4,6 +4,7 @@ import 'package:ysl_store_app/common/widgets/appbar/appbar.dart';
 import 'package:ysl_store_app/common/widgets/appbar/tabbar.dart';
 import 'package:ysl_store_app/common/widgets/layouts/grid_layout.dart';
 import 'package:ysl_store_app/common/widgets/product/cart/cart_menu_icon.dart';
+import 'package:ysl_store_app/features/shop/controllers/category_controller.dart';
 import 'package:ysl_store_app/features/shop/screens/brands/all_brands.dart';
 import 'package:ysl_store_app/features/shop/screens/store/widgets/category_tab.dart';
 
@@ -22,8 +23,9 @@ class StoreScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dark = YHelperFunctions.isDarkMode(context);
+    final categories = CategoryController.instance.featuredCategories;
     return DefaultTabController(
-      length: 6,
+      length: categories.length,
       child: Scaffold(
         appBar: YAppBar(
           title: Text(
@@ -82,27 +84,17 @@ class StoreScreen extends StatelessWidget {
 
                 // Tabs
                 bottom: YTabBar(
-                  tabs: [
-                    Tab(child: Text('SmartPhones')),
-                    Tab(child: Text('SmartWatches')),
-                    Tab(child: Text('HeadPhones')),
-                    Tab(child: Text('EarPhones')),
-                    Tab(child: Text('CoolingFans')),
-                    Tab(child: Text('PowerBanks')),
-                  ],
+                  tabs: categories
+                      .map((category) => Tab(child: Text(categories.string)))
+                      .toList(),
                 ),
               ),
             ];
           },
           body: TabBarView(
-            children: [
-              YCategoryTab(),
-              YCategoryTab(),
-              YCategoryTab(),
-              YCategoryTab(),
-              YCategoryTab(),
-              YCategoryTab(),
-            ],
+            children: categories
+                .map((category) => YCategoryTab(category: category))
+                .toList(),
           ),
         ),
       ),
