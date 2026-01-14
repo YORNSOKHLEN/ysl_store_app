@@ -23,7 +23,7 @@ class SubCategoriesScreen extends StatelessWidget {
               YRoundedImage(
                 width: double.infinity,
                 height: MediaQuery.of(context).size.height * 0.25,
-                imageUrl: YImage.promoIphone,
+                imageUrl: YImage.banner1,
                 applyImageRadius: true,
                 fit: BoxFit.cover,
               ),

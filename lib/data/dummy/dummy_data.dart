@@ -1,45 +1,48 @@
+import '../../features/shop/models/banner_model.dart';
 import '../../features/shop/models/category_model.dart';
+import '../../routes/routes.dart';
 import '../../utils/constants/image_strings.dart';
 
 class YDummyData {
   /// -- Banners
-  // static final List<BannerModel> banners = [
-  //   BannerModel(
-  //     imageUrl: Images.banner1,
-  //     targetScreen: TRoutes.order,
-  //     active: false,
-  //   ),
-  //   BannerModel(
-  //     imageUrl: Images.banner2,
-  //     targetScreen: TRoutes.cart,
-  //     active: true,
-  //   ),
-  //   BannerModel(
-  //     imageUrl: Images.banner3,
-  //     targetScreen: TRoutes.favourites,
-  //     active: true,
-  //   ),
-  //   BannerModel(
-  //     imageUrl: Images.banner4,
-  //     targetScreen: TRoutes.search,
-  //     active: true,
-  //   ),
-  //   BannerModel(
-  //     imageUrl: Images.banner5,
-  //     targetScreen: TRoutes.settings,
-  //     active: true,
-  //   ),
-  //   BannerModel(
-  //     imageUrl: Images.banner6,
-  //     targetScreen: TRoutes.userAddress,
-  //     active: true,
-  //   ),
-  //   BannerModel(
-  //     imageUrl: Images.banner8,
-  //     targetScreen: TRoutes.checkout,
-  //     active: false,
-  //   ),
-  // ];
+  static final List<BannerModel> banners = [
+    BannerModel(
+      imageUrl: YImage.banner1,
+      targetScreen: YRoutes.order,
+      active: true,
+    ),
+    BannerModel(
+      imageUrl: YImage.banner2,
+      targetScreen: YRoutes.cart,
+      active: true,
+    ),
+    BannerModel(
+      imageUrl: YImage.banner3,
+      targetScreen: YRoutes.favourites,
+      active: true,
+    ),
+    BannerModel(
+      imageUrl: YImage.banner4,
+      targetScreen: YRoutes.search,
+      active: true,
+    ),
+    BannerModel(
+      imageUrl: YImage.banner5,
+      targetScreen: YRoutes.settings,
+      active: true,
+    ),
+    BannerModel(
+      imageUrl: YImage.banner6,
+      targetScreen: YRoutes.userAddress,
+      active: true,
+    ),
+    BannerModel(
+      imageUrl: YImage.banner8,
+      targetScreen: YRoutes.checkout,
+      active: false,
+    ),
+  ];
+
   //
   // /// -- User
   // static final UserModel user = UserModel(
@@ -47,7 +50,7 @@ class YDummyData {
   //   lastName: 'with T',
   //   email: 'support@codingwithT.com',
   //   phoneNumber: '+14155552671',
-  //   profilePicture: TImages.user,
+  //   profilePicture: TYImage.user,
   //   addresses: [
   //     AddressModel(
   //       id: '1',

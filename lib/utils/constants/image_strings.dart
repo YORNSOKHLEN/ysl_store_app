@@ -48,12 +48,14 @@ class YImage {
   static const String brandIphone = "assets/logos/apple.png";
 
   /// Banner
-  static const String promoIphone = "assets/images/banners/promo_iphone.png";
-  static const String promoSamsung = "assets/images/banners/promo_samsung.png";
-  static const String promoRedmiTurbo =
-      "assets/images/banners/promo_redmi_turbo.png";
-  static const String promoGameController = "";
-  static const String promoSmartWatch = "";
+  static const String banner1 = "assets/images/banners/promo_iphone.png";
+  static const String banner2 = "assets/images/banners/promo_samsung.png";
+  static const String banner3 = "assets/images/banners/promo_redmi_turbo.png";
+  static const String banner4 = "";
+  static const String banner5 = "";
+  static const String banner6 = "";
+  static const String banner7 = "";
+  static const String banner8 = "";
 
   /// Product Review
   static const String userReview1 = "assets/images/reviews/user_review1.png";

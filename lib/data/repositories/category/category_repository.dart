@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import '../../../features/shop/models/category_model.dart';
-import '../../services/firebase_storage_service.dart';
+import '../../services/cloud_storage/firebase_storage_service.dart';
 
 class CategoryRepository extends GetxController {
   static CategoryRepository get instance => Get.find();

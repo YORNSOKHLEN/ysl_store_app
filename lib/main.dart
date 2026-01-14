@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:ysl_store_app/routes/app_routes.dart';
 import 'package:ysl_store_app/utils/constants/colors.dart';
 import 'package:ysl_store_app/utils/theme/theme.dart';
 
@@ -38,11 +39,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'YSL Store',
-      debugShowCheckedModeBanner: false,
+      getPages: AppRoutes.pages,
       themeMode: ThemeMode.system,
       theme: YAppTheme.lightTheme,
       darkTheme: YAppTheme.darkTheme,
       initialBinding: GeneralBindings(),
+      debugShowCheckedModeBanner: false,
       home: const Scaffold(
         backgroundColor: YColors.primary,
         body: Center(child: CircularProgressIndicator(color: Colors.white)),
