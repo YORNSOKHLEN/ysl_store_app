@@ -1,9 +1,45 @@
 import 'package:get/get.dart';
-import 'package:ysl_store_app/utils/helpers/network_manager.dart';
+import 'package:ysl_store_app/features/shop/controllers/product/checkout_controller.dart';
+
+import '../data/repositories/authentication/authentication_repository.dart';
+import '../data/repositories/banners/banner_repository.dart';
+import '../data/repositories/brand/brand_repository.dart';
+import '../data/repositories/category/category_repository.dart';
+import '../data/repositories/product/product_repository.dart';
+import '../data/services/cloud_storage/firebase_storage_service.dart';
+import '../data/services/data_upload_service.dart';
+import '../features/shop/controllers/product/cart_controller.dart';
+import '../features/shop/controllers/product/favourite_controller.dart';
+import '../features/shop/controllers/product/variation_controller.dart';
+import '../utils/helpers/network_manager.dart';
 
 class GeneralBindings extends Bindings {
   @override
   void dependencies() {
-    Get.put(NetworkManager());
+    /// Network (global)
+    Get.put(NetworkManager(), permanent: true);
+    // Get.put(FavouriteController(), permanent: true);
+
+    /// Authentication (global)
+    Get.put(AuthenticationRepository(), permanent: true);
+
+    /// Repositories (lazy + auto recreate)
+    Get.lazyPut<CategoryRepository>(() => CategoryRepository(), fenix: true);
+    Get.lazyPut<BrandRepository>(() => BrandRepository(), fenix: true);
+    Get.lazyPut<ProductRepository>(() => ProductRepository(), fenix: true);
+    Get.lazyPut<BannerRepository>(() => BannerRepository(), fenix: true);
+
+    /// Services ADD THIS
+    Get.lazyPut<DataUploadService>(() => DataUploadService(), fenix: true);
+    Get.lazyPut<YFirebaseStorageService>(
+      () => YFirebaseStorageService(),
+      fenix: true,
+    );
+
+    /// Controllers (lazy + auto recreate)
+    Get.lazyPut<CartController>(() => CartController(), fenix: true);
+    Get.lazyPut<FavouriteController>(() => FavouriteController(), fenix: true);
+    Get.lazyPut<VariationController>(() => VariationController(), fenix: true);
+    Get.lazyPut<CheckoutController>(() => CheckoutController(), fenix: true);
   }
 }

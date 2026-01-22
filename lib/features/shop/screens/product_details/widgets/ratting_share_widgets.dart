@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../../utils/constants/sizes.dart';
+import '../../../../../features/shop/models/product_model.dart';
 
 class YRattingAndShare extends StatelessWidget {
-  const YRattingAndShare({super.key});
+  const YRattingAndShare({super.key, required this.product});
+
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +35,13 @@ class YRattingAndShare extends StatelessWidget {
 
         // Share  Button
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            // Share functionality - can be implemented with share_plus package if needed
+            // For now, just show a snackbar
+            ScaffoldMessenger.of(
+              context,
+            ).showSnackBar(SnackBar(content: Text('Sharing ${product.title}')));
+          },
           icon: Icon(Icons.share, size: YSizes.iconMd),
         ),
       ],

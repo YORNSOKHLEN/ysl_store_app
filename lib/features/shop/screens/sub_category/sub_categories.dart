@@ -1,22 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:ysl_store_app/common/widgets/images/rounded_image.dart';
-import 'package:ysl_store_app/common/widgets/product/product_cards/product_card_horizontal.dart';
-import 'package:ysl_store_app/common/widgets/texts/section_heading.dart';
-import 'package:ysl_store_app/utils/constants/image_strings.dart';
-import 'package:ysl_store_app/utils/constants/sizes.dart';
+import 'package:get/get.dart';
 
 import '../../../../common/widgets/appbar/appbar.dart';
+import '../../../../common/widgets/images/rounded_image.dart';
+import '../../../../common/widgets/layouts/grid_layout.dart';
+import '../../../../common/widgets/product/product_cards/product_card_vertical.dart';
+import '../../../../utils/constants/image_strings.dart';
+import '../../../../utils/constants/sizes.dart';
+import '../../controllers/product/product_controller.dart';
+import '../../models/category_model.dart';
 
-class SubCategoriesScreen extends StatelessWidget {
-  const SubCategoriesScreen({super.key});
+class CategoriesScreen extends StatelessWidget {
+  const CategoriesScreen({super.key, required this.category});
+
+  final CategoryModel category;
 
   @override
   Widget build(BuildContext context) {
+    final controller = ProductController.instance;
+
     return Scaffold(
-      appBar: YAppBar(title: Text('Smartphone'), showBackArrow: true),
+      appBar: YAppBar(title: Text(category.name), showBackArrow: true),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(YSizes.defaultSpace),
+          padding: const EdgeInsets.all(YSizes.defaultSpace),
           child: Column(
             children: [
               // Banner
@@ -29,25 +36,14 @@ class SubCategoriesScreen extends StatelessWidget {
               ),
               const SizedBox(height: YSizes.spaceBtwSections),
 
-              // Sub-Categories
-              Column(
-                children: [
-                  // Heading
-                  YSectionHeading(title: 'Flagship Phones', onPressed: () {}),
-                  const SizedBox(height: YSizes.spaceBtwItems / 2),
-
-                  SizedBox(
-                    height: 120,
-                    child: ListView.separated(
-                      itemCount: 3,
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) => YProductCardHorizontal(),
-                      separatorBuilder: (context, index) =>
-                          SizedBox(width: YSizes.spaceBtwItems),
-                    ),
+              Obx(() {
+                return YGridLayout(
+                  itemCount: controller.featuredProducts.length,
+                  itemBuilder: (_, index) => ProductCardVertical(
+                    product: controller.featuredProducts[index],
                   ),
-                ],
-              ),
+                );
+              }),
             ],
           ),
         ),

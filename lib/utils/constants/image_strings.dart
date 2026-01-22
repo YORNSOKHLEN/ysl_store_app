@@ -29,6 +29,8 @@ class YImage {
   //     "assets/images/animations/sammy-line-come-back-later.png";
   static const String deliveredEmailIllustration =
       "assets/images/verify_email/delivered_email.png";
+  static const String favouriteEmailIllustration =
+      "assets/icons/payment_methods/favourite.png";
 
   // static const String verifyIllustration =
   //     "assets/images/animations/sammy-line-travel-backpack-with-passport-and-air-ticket.gif";
@@ -38,7 +40,7 @@ class YImage {
   static const String headphonesIcon = "assets/icons/categories/headphones.png";
   static const String powerBankIcon = "assets/icons/categories/power_bank.png";
   static const String gameControllerIcon =
-      "assets/icons/categories/game-controller.png";
+      "assets/icons/categories/game_controller.png";
   static const smartWatchIcon = "assets/icons/categories/smartwatch.png";
   static const String coolingFanIcon =
       "assets/icons/categories/cooling_fan.png";
@@ -46,6 +48,9 @@ class YImage {
 
   /// Brand
   static const String brandIphone = "assets/logos/apple.png";
+  static const String brandSamsung = "assets/logos/samsung.png";
+  static const String brandXiaomi = "assets/logos/xiaomi.png";
+  static const String brandAsus = "assets/logos/asus.png";
 
   /// Banner
   static const String banner1 = "assets/images/banners/promo_iphone.png";
@@ -67,6 +72,7 @@ class YImage {
   static const String aba = "assets/icons/payment_methods/aba.png";
   static const String acleda = "assets/icons/payment_methods/acleda.png";
   static const String acleda2 = "assets/icons/payment_methods/acleda2.png";
+  static const String khqr = "assets/icons/payment_methods/khqr.png";
 
   /// Profile
   static const String user = "assets/images/user/user.png";
@@ -80,16 +86,24 @@ class YImage {
   static const String imageIphone17ProMaxBlack =
       "assets/images/products/phones/iphone_17_pro_max_black.png";
 
-  static const String imageRedmiTurbo4ProBlack =
-      "assets/images/products/phones/redmi_turbo_4_pro_black.png";
+  static const String imageRedmiTurbo4ProHarryPotterEdition =
+      "assets/images/products/phones/redmi_turbo_4_pro_harry_potter_edition.png";
   static const String imageRedmiTurbo4ProWhite =
       "assets/images/products/phones/redmi_turbo_4_pro_white.png";
+  static const String imageRedmiTurbo4ProBlack =
+      "assets/images/products/phones/redmi_turbo_4_pro_black.png";
   static const String imageRedmiTurbo4ProGreen =
       "assets/images/products/phones/redmi_turbo_4_pro_green.png";
-  static const String imageSamsungGalaxyS25UltraTitanium =
-      "assets/images/products/phones/samsung_galaxy_s25_ultra_titanium.png";
+  static const String imageSamsungGalaxyS25UltraBlack =
+      "assets/images/products/phones/samsung_galaxy_s25_ultra_black.png";
   static const String imageSamsungGalaxyS25UltraWhite =
       "assets/images/products/phones/samsung_galaxy_s25_ultra_white.png";
+  static const String imageSamsungGalaxyS25UltraBlue =
+      "assets/images/products/phones/samsung_galaxy_s25_ultra_blue.png";
+  static const String imageSamsungGalaxyS25UltraGrey =
+      "assets/images/products/phones/samsung_galaxy_s25_ultra_grey.png";
+  static const String imageXiaomi17ProMaxWhite =
+      "assets/images/products/phones/xiaomi_17_pro_max_white.png";
   static const String imageXiaomi17ProMaxBlue =
       "assets/images/products/phones/xiaomi_17_pro_max_blue.png";
   static const String imageXiaomi17ProMaxGreen =

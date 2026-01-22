@@ -28,41 +28,80 @@ class CategoryRepository extends GetxController {
     }
   }
 
-  /// Get Sub Categories
+  /// Get subcategories by parent ID
+  Future<List<CategoryModel>> getSubCategories(String categoryId) async {
+    try {
+      final snapshot = await _db
+          .collection("Categories")
+          .where('ParentId', isEqualTo: categoryId)
+          .get();
+      final result = snapshot.docs
+          .map((e) => CategoryModel.fromSnapshot(e))
+          .toList();
+      return result;
+    } on FirebaseException catch (e) {
+      throw Exception(e.message ?? 'Failed to fetch subcategories');
+    } on PlatformException catch (e) {
+      throw Exception(e.message ?? 'Platform error occurred');
+    } catch (e) {
+      throw Exception('Something went wrong while fetching subcategories');
+    }
+  }
+
 
   /// Upload Categories to the Cloud Firebase
   Future<void> uploadDummyData(List<CategoryModel> categories) async {
-    try {
-      // Upload all the Categories along with their Images
-      final storage = Get.put(YFirebaseStorageService());
+    final storage = Get.put(YFirebaseStorageService());
 
-      // Loop through each category
-      for (var category in categories) {
-        // Get ImageData link from the local assets
-        final file = await storage.getImageDataFromAssets(category.image);
+    for (var category in categories) {
+      try {
+        // Check for missing name or image
+        if (category.name.isEmpty) {
+          print('Skipping category: Name is empty (ID: ${category.id})');
+          continue;
+        }
 
-        // Upload Image and Get its URL
-        final url = await storage.uploadImageData(
-          'Categories',
-          file,
-          category.name,
-        );
+        if (category.image.isEmpty) {
+          print(
+            'Warning: Category image is empty (ID: ${category.id}, Name: ${category.name})',
+          );
+        }
 
-        // Assign URL to Category.image attribute
-        category.image = url;
+        // Try to get image data from assets if image is provided
+        Uint8List? file;
+        if (category.image.isNotEmpty) {
+          try {
+            file = await storage.getImageDataFromAssets(category.image);
+          } catch (e) {
+            print('Failed to get image from assets for ${category.name}: $e');
+          }
+        }
 
-        // Store Category in Firestore
+        // Upload image if file exists
+        if (file != null) {
+          try {
+            final url = await storage.uploadImageData(
+              'Categories',
+              file,
+              category.name,
+            );
+            category.image = url; // Assign uploaded URL
+          } catch (e) {
+            print('Failed to upload image for ${category.name}: $e');
+          }
+        }
+
+        // Upload category to Firestore even if image upload failed
         await _db
             .collection("Categories")
             .doc(category.id)
             .set(category.toJson());
+        print('Uploaded category: ${category.name} (ID: ${category.id})');
+      } catch (e) {
+        print('Failed to upload category ${category.name}: $e');
       }
-    } on FirebaseException catch (e) {
-      throw Exception(e.message ?? 'Firebase error occurred');
-    } on PlatformException catch (e) {
-      throw Exception(e.message ?? 'Platform error occurred');
-    } catch (e) {
-      throw Exception('Something went wrong. Please try again');
     }
+
+    print('All categories processed.');
   }
 }

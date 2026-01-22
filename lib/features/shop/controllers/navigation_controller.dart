@@ -6,11 +6,11 @@ import '../screens/store/store.dart';
 import '../screens/wishlist/wishlist.dart';
 
 class NavigationController extends GetxController {
+  final selectedIndex = 0.obs;
   final page = [
     HomeScreen(),
     StoreScreen(),
     FavouriteScreen(),
     SettingsScreen(),
   ];
-  final selectedIndex = 0.obs;
 }

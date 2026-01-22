@@ -115,4 +115,25 @@ class YHelperFunctions {
     }
     return wrappedList;
   }
+
+  static String getFormattedDate(DateTime date) {
+    const months = [
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec',
+    ];
+
+    return '${date.day.toString().padLeft(2, '0')} '
+        '${months[date.month - 1]} '
+        '${date.year}';
+  }
 }

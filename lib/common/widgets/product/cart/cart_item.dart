@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../features/shop/models/cart_item_model.dart';
 import '../../../../utils/constants/colors.dart';
-import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/helpers/helper_functions.dart';
 import '../../images/rounded_image.dart';
@@ -9,7 +9,9 @@ import '../../texts/brand_title_text_with_verified_icon.dart';
 import '../../texts/product_title_text.dart';
 
 class YCartItem extends StatelessWidget {
-  const YCartItem({super.key});
+  const YCartItem({super.key, required this.cartItem});
+
+  final CartItemModel cartItem;
 
   @override
   Widget build(BuildContext context) {
@@ -18,10 +20,11 @@ class YCartItem extends StatelessWidget {
       children: [
         // Image
         YRoundedImage(
-          imageUrl: YImage.imageIphone17ProMaxOrange,
+          imageUrl: cartItem.image ?? '',
           width: 100,
           height: 100,
           padding: const EdgeInsets.all(YSizes.xs),
+          isNetworkImage: true,
           backgroundColor: dark ? YColors.darkerGrey : YColors.light,
         ),
         const SizedBox(width: YSizes.spaceBtwItems),
@@ -32,35 +35,31 @@ class YCartItem extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const YBrandTitleWithVerifiedIcon(title: 'Apple'),
+              YBrandTitleWithVerifiedIcon(title: cartItem.brandName ?? ''),
               Flexible(
-                child: YProductTitleText(
-                  title: 'Iphone 17 Pro Max',
-                  maxLines: 1,
-                ),
+                child: YProductTitleText(title: cartItem.title, maxLines: 1),
               ),
 
               /// Attributes
               Text.rich(
                 TextSpan(
-                  children: [
-                    TextSpan(
-                      text: 'Color ',
-                      style: Theme.of(context).textTheme.bodySmall,
-                    ),
-                    TextSpan(
-                      text: 'Orange ',
-                      style: Theme.of(context).textTheme.bodyLarge,
-                    ),
-                    TextSpan(
-                      text: 'Storage ',
-                      style: Theme.of(context).textTheme.bodySmall,
-                    ),
-                    TextSpan(
-                      text: '512 GB ',
-                      style: Theme.of(context).textTheme.bodyLarge,
-                    ),
-                  ],
+                  // Mapping variation entries (e.g., Color: Red) to TextSpans
+                  children: (cartItem.selectedVariation ?? {}).entries
+                      .map(
+                        (e) => TextSpan(
+                          children: [
+                            TextSpan(
+                              text: ' ${e.key} ',
+                              style: Theme.of(context).textTheme.bodySmall,
+                            ),
+                            TextSpan(
+                              text: '${e.value} ',
+                              style: Theme.of(context).textTheme.bodyLarge,
+                            ),
+                          ],
+                        ),
+                      )
+                      .toList(),
                 ),
               ),
             ],

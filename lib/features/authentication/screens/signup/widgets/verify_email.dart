@@ -95,16 +95,27 @@ import 'package:ysl_store_app/utils/helpers/helper_functions.dart';
 import '../../../../../utils/constants/text_strings.dart';
 import '../../../controllers/signup/verify_email_controller.dart';
 
-class VerifyEmailScreen extends StatelessWidget {
+class VerifyEmailScreen extends StatefulWidget {
   const VerifyEmailScreen({super.key, this.email});
 
   final String? email;
 
   @override
-  Widget build(BuildContext context) {
-    // Use Get.put only if the controller is not already instantiated
-    final controller = Get.put(VerifyEmailController(), permanent: false);
+  State<VerifyEmailScreen> createState() => _VerifyEmailScreenState();
+}
 
+class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
+  late final VerifyEmailController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    // Initialize controller in initState, not during build
+    controller = Get.put(VerifyEmailController(), permanent: false);
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -135,7 +146,7 @@ class VerifyEmailScreen extends StatelessWidget {
               ),
               const SizedBox(height: YSizes.spaceBtwItems),
               Text(
-                email ?? '',
+                widget.email ?? '',
                 style: Theme.of(context).textTheme.labelLarge,
                 textAlign: TextAlign.center,
               ),

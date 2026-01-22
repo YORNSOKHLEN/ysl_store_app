@@ -1,16 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../../../features/shop/controllers/product/cart_controller.dart';
 import '../../../../utils/constants/colors.dart';
+import '../../../../utils/helpers/helper_functions.dart';
 
 class YCartCounterIcon extends StatelessWidget {
-  const YCartCounterIcon({super.key, this.iconColor, required this.onPressed});
+  const YCartCounterIcon({
+    super.key,
+    this.iconColor,
+    required this.onPressed,
+    this.counterBgColor,
+    this.counterTextColor,
+  });
 
-  final Color? iconColor;
+  final Color? iconColor, counterBgColor, counterTextColor;
   final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(CartController());
+    final dark = YHelperFunctions.isDarkMode(context);
     return Stack(
       children: [
         IconButton(
@@ -23,17 +34,25 @@ class YCartCounterIcon extends StatelessWidget {
             width: 20,
             height: 20,
             decoration: BoxDecoration(
-              color: YColors.dark,
+              color: counterBgColor ?? (dark ? YColors.white : YColors.dark),
               borderRadius: BorderRadius.circular(100),
             ),
             child: Center(
-              child: Text(
-                '2',
-                style: Theme.of(context).textTheme.labelLarge!.apply(
-                  color: YColors.light,
-                  fontSizeFactor: 1,
-                ),
-              ),
+              child: Obx(() {
+                return Text(
+                  controller.noOfCartItems.value.toString(),
+                  style: Theme
+                      .of(context)
+                      .textTheme
+                      .labelLarge!
+                      .apply(
+                    color:
+                    counterTextColor ??
+                        (dark ? YColors.black : YColors.white),
+                    fontSizeFactor: 1,
+                  ),
+                );
+              }),
             ),
           ),
         ),
