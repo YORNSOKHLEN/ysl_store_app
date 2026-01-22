@@ -73,4 +73,5 @@ class YFirebaseStorageService extends GetxController {
       }
     }
   }
+
 }

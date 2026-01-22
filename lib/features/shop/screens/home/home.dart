@@ -10,6 +10,7 @@ import '../../../../common/widgets/custom_shapes/containers/primary_header_conta
 import '../../../../common/widgets/custom_shapes/containers/search_container.dart';
 import '../../../../common/widgets/layouts/grid_layout.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
+import '../../controllers/product/product_controller.dart';
 import '../all_products/all_products.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -17,6 +18,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ProductController());
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -68,13 +70,22 @@ class HomeScreen extends StatelessWidget {
                   // Popular Product
                   YSectionHeading(
                     title: 'Popular Products',
-                    onPressed: () => Get.to(() => AllProductsScreen()),
+                    onPressed: () => Get.to(
+                      () => AllProductsScreen(
+                        title: 'Popular Products',
+                        futureMethod: controller.fetchAllFeaturedProducts(),
+                      ),
+                    ),
                   ),
                   SizedBox(height: YSizes.spaceBtwItems),
-                  YGridLayout(
-                    itemCount: 2,
-                    itemBuilder: (_, index) => ProductCardVertical(),
-                  ),
+                  Obx(() {
+                    return YGridLayout(
+                      itemCount: controller.featuredProducts.length,
+                      itemBuilder: (_, index) => ProductCardVertical(
+                        product: controller.featuredProducts[index],
+                      ),
+                    );
+                  }),
                 ],
               ),
             ),

@@ -20,20 +20,25 @@ class VerifyEmailController extends GetxController {
   }
 
   /// --- Send Email Verification link
-  sendEmailVerification() async {
+  Future<void> sendEmailVerification() async {
     try {
       await AuthenticationRepository.instance.sendEmailVerification();
       YLoaders.successSnackBar(
-        title: 'Email Sent',
-        message: 'Please Check your inbox and verify your email.',
+        title: 'Email Sent!',
+        message:
+            'Please check your inbox (and spam folder) to verify your email.',
       );
     } catch (e) {
-      YLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      YLoaders.errorSnackBar(
+        title: 'Failed to Send Email',
+        message:
+            '${e.toString()}\n\nPlease check:\n1. Your internet connection\n2. Firebase email settings\n3. Try again in a few moments',
+      );
     }
   }
 
   /// --- Timer to automatically redirect on Email Verification
-  setTimerForAutoRedirect() {
+  void setTimerForAutoRedirect() {
     Timer.periodic(const Duration(seconds: 1), (timer) async {
       await FirebaseAuth.instance.currentUser?.reload();
       final user = FirebaseAuth.instance.currentUser;
@@ -53,7 +58,7 @@ class VerifyEmailController extends GetxController {
   }
 
   /// --- Manually Check if Email Verified
-  checkEmailVerificationStatus() async {
+  Future<void> checkEmailVerificationStatus() async {
     final currentUser = FirebaseAuth.instance.currentUser;
     if (currentUser != null && currentUser.emailVerified) {
       Get.off(

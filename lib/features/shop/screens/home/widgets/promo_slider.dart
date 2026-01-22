@@ -54,7 +54,8 @@ class YPromoSlider extends StatelessWidget {
                         height: 4,
                         width: 20,
                         margin: EdgeInsets.only(right: 10),
-                        backgroundColor: controller.carouselCurrentIndex == i
+                        backgroundColor:
+                            controller.carouselCurrentIndex.value == i
                             ? YColors.primary
                             : YColors.grey,
                       ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ysl_store_app/features/shop/controllers/product/cart_controller.dart';
 import 'package:ysl_store_app/features/shop/screens/checkout/widgets/billing_address_section.dart';
 import 'package:ysl_store_app/features/shop/screens/checkout/widgets/billing_amount_section.dart';
 import 'package:ysl_store_app/features/shop/screens/checkout/widgets/billing_payment_section.dart';
@@ -13,6 +14,9 @@ import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/helpers/helper_functions.dart';
+import '../../../../utils/helpers/pricing_calculator.dart';
+import '../../../../utils/popups/loaders.dart';
+import '../../controllers/product/order_controller.dart';
 import '../cart/widgets/cart_item.dart';
 
 class CheckoutScreen extends StatelessWidget {
@@ -21,6 +25,11 @@ class CheckoutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dark = YHelperFunctions.isDarkMode(context);
+    final cartController = CartController.instance;
+    final subTotal = cartController.totalCartPrice.value;
+    final orderController = Get.put(OrderController());
+    final totalAmount = YPricingCalculator.calculateTotalPrice(subTotal, '');
+
     return Scaffold(
       appBar: YAppBar(
         showBackArrow: true,
@@ -34,16 +43,23 @@ class CheckoutScreen extends StatelessWidget {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(YSizes.defaultSpace),
         child: ElevatedButton(
-          onPressed: () => Get.to(
-            () => SuccessScreen(
-              image: YImage.paymentSuccess,
-              title: 'Payment Success!',
-              subTitle: 'Your item will be shipped soon!',
-              onPressed: () => Get.offAll(() => const NavigationMenu()),
-            ), // SuccessScreen
-          ),
-          child: const Text('Checkout \$1100.0'),
-        ), // ElevatedButton
+          // onPressed: () => Get.to(
+          //   () => SuccessScreen(
+          //     image: YImage.paymentSuccess,
+          //     title: 'Payment Success!',
+          //     subTitle: 'Your item will be shipped soon!',
+          //     onPressed: () => Get.offAll(() => const NavigationMenu()),
+          //   ),
+          //
+          // ),
+          // child: Text(
+          //   'Checkout \$${YPricingCalculator.calculateTotalPrice(subTotal, '')}',
+          // ),
+          onPressed: subTotal > 0
+              ? () => orderController.processOrder(totalAmount)
+              : () => YLoaders.warningSnackBar(title: 'Empty Cart', message: 'Add items in the cart in order to proceed.'),
+          child: Text('Checkout \$$totalAmount'),
+        ),
       ),
       body: SingleChildScrollView(
         child: Padding(

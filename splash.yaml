@@ -11,4 +11,4 @@ flutter_native_splash:
     image_dark: assets/logos/logo_dark.png
 
   ios: true
-  web: false
+  web: true

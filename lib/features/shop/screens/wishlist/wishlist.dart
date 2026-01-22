@@ -5,15 +5,21 @@ import 'package:iconsax/iconsax.dart';
 import '../../../../common/widgets/appbar/appbar.dart';
 import '../../../../common/widgets/icons/circular_icon.dart';
 import '../../../../common/widgets/layouts/grid_layout.dart';
+import '../../../../common/widgets/loaders/animation_loader.dart';
 import '../../../../common/widgets/product/product_cards/product_card_vertical.dart';
-import '../../../../navigation_menu.dart';
+import '../../../../common/widgets/shimmers/vertical_product_shimmer.dart';
+import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/constants/sizes.dart';
+import '../../../../utils/helpers/cloud_helper_functions.dart';
+import '../../controllers/navigation_controller.dart';
+import '../../controllers/product/favourite_controller.dart';
 
 class FavouriteScreen extends StatelessWidget {
   const FavouriteScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = FavouriteController.instance;
     return Scaffold(
       appBar: YAppBar(
         title: Text(
@@ -23,23 +29,52 @@ class FavouriteScreen extends StatelessWidget {
         action: [
           YCircularIcon(
             icon: Iconsax.add,
-            onPressed: () => Get.to(const NavigationMenu()),
+            onPressed: () {
+              final navController = Get.find<NavigationController>();
+              navController.selectedIndex.value = 0;
+            },
           ),
         ],
-      ), // TAppBar
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(YSizes.defaultSpace),
-          child: Column(
-            children: [
-              YGridLayout(
-                itemCount: 6,
-                itemBuilder: (_, index) => const ProductCardVertical(),
-              ),
-            ],
-          ), // Column
-        ), // Padding
-      ), // SingleChildScrollView
+          child: Obx(() {
+            return FutureBuilder(
+              future: controller.favoriteProducts(),
+              builder: (context, snapshot) {
+                /// Nothing Found Widget
+                final emptyWidget = YAnimationLoaderWidget(
+                  text: 'Whoops! Wishlist is Empty...',
+                  animation: YImage.docerAnimation,
+                  showAction: true,
+                  actionText: 'Let\'s add some',
+                  onActionPressed: () {
+                    final navController = Get.find<NavigationController>();
+                    navController.selectedIndex.value =
+                        0; // Switch to Store tab
+                  },
+                );
+
+                const loader = YVerticalProductShimmer(itemCount: 6);
+                final widget = YCloudHelperFunctions.checkMultiRecordState(
+                  snapshot: snapshot,
+                  loader: loader,
+                  nothingFound: emptyWidget,
+                );
+                if (widget != null) return widget;
+
+                final products = snapshot.data!;
+                return YGridLayout(
+                  itemCount: products.length,
+                  itemBuilder: (_, index) =>
+                      ProductCardVertical(product: products[index]),
+                );
+              },
+            );
+          }),
+        ),
+      ),
     );
   }
 }

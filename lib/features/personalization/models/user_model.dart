@@ -34,7 +34,7 @@ class UserModel {
   });
 
   /// Helper function to get the full name.
-  String get fullName => '$lastName $firstName';
+  String get fullName => '$firstName $lastName';
 
   /// Helper function to format phone number.
   String get formattedPhoneNo => YFormatter.formatPhoneNumber(phoneNumber!);

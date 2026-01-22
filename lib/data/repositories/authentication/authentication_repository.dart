@@ -8,6 +8,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:ysl_store_app/data/repositories/user/user_repository.dart';
 import 'package:ysl_store_app/features/authentication/screens/signup/widgets/verify_email.dart';
 import 'package:ysl_store_app/navigation_menu.dart';
+import 'package:ysl_store_app/utils/local_storage/storage_utility.dart';
 
 import '../../../features/authentication/screens/login/login.dart';
 import '../../../features/authentication/screens/onboarding/onboarding.dart';
@@ -34,9 +35,13 @@ class AuthenticationRepository extends GetxController {
 
     if (user != null) {
       if (user.emailVerified) {
+
+        // Initialize local storage
+        YLocalStorage.init(user.uid);
+        // if email is verify
         Get.offAll(() => NavigationMenu());
       } else {
-        Get.offAll(() => VerifyEmailScreen(email: user.email ?? ''));
+        Get.offAll(() => VerifyEmailScreen(email: _auth.currentUser?.email));
       }
     } else {
       deviceStorage.writeIfNull('IsFirstTime', true);
@@ -110,11 +115,22 @@ class AuthenticationRepository extends GetxController {
         throw Exception('No authenticated user found');
       }
 
-      if (!user.emailVerified) {
-        await user.sendEmailVerification();
+      // Always send verification email (even if already verified, allows resending)
+      await user.sendEmailVerification();
+
+      if (kDebugMode) {
+        print('Email verification sent to: ${user.email}');
       }
+    } on FirebaseAuthException catch (e) {
+      if (kDebugMode) {
+        print('Firebase Auth Error: ${e.code} - ${e.message}');
+      }
+      throw Exception(e.message ?? 'Failed to send verification email');
     } catch (e) {
-      throw Exception(e.toString());
+      if (kDebugMode) {
+        print('Error sending email verification: $e');
+      }
+      throw Exception('Failed to send verification email: ${e.toString()}');
     }
   }
 
@@ -188,6 +204,10 @@ class AuthenticationRepository extends GetxController {
 
   /// [LogoutUser] - Valid for any authentication.
   Future<void> logout() async {
+    final localStorage = GetStorage();
+    // Clear Remember Me data
+    localStorage.remove('REMEMBER_ME_EMAIL');
+    localStorage.remove('REMEMBER_ME_PASSWORD');
     try {
       await GoogleSignIn().signOut();
       await FirebaseAuth.instance.signOut();
@@ -205,6 +225,11 @@ class AuthenticationRepository extends GetxController {
 
   /// [DELETE USER] - Remove user Auth and Firestore Account.
   Future<void> deleteAccount() async {
+    final localStorage = GetStorage();
+
+    // Clear Remember Me data
+    localStorage.remove('REMEMBER_ME_EMAIL');
+    localStorage.remove('REMEMBER_ME_PASSWORD');
     try {
       await UserRepository.instance.removeUserRecord(_auth.currentUser!.uid);
       await _auth.currentUser?.delete();

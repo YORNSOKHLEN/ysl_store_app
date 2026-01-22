@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:ysl_store_app/features/shop/screens/search/search_screen.dart';
 import 'package:ysl_store_app/utils/helpers/helper_functions.dart';
 
 import '../../../../utils/constants/colors.dart';
@@ -27,7 +29,7 @@ class YSearchContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = YHelperFunctions.isDarkMode(context);
     return GestureDetector(
-      onTap: onTap,
+      onTap: onTap ?? () => Get.to(() => const SearchScreen()),
       child: Padding(
         padding: padding,
         child: Container(

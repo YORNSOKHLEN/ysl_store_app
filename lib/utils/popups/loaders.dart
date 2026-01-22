@@ -36,47 +36,56 @@ class YLoaders {
   }
 
   static successSnackBar({required title, message = '', duration = 3}) {
-    Get.snackbar(
-      title,
-      message,
-      isDismissible: true,
-      shouldIconPulse: true,
-      colorText: Colors.white,
-      backgroundColor: YColors.buttonPrimary,
-      snackPosition: SnackPosition.BOTTOM,
-      duration: Duration(seconds: duration),
-      margin: const EdgeInsets.all(10),
-      icon: const Icon(Iconsax.check, color: YColors.white),
-    );
+    // Delay snackbar to ensure widget tree is ready
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Get.snackbar(
+        title,
+        message,
+        isDismissible: true,
+        shouldIconPulse: true,
+        colorText: Colors.white,
+        backgroundColor: YColors.buttonPrimary,
+        snackPosition: SnackPosition.BOTTOM,
+        duration: Duration(seconds: duration),
+        margin: const EdgeInsets.all(10),
+        icon: const Icon(Iconsax.check, color: YColors.white),
+      );
+    });
   }
 
   static warningSnackBar({required title, message = ''}) {
-    Get.snackbar(
-      title,
-      message,
-      isDismissible: true,
-      shouldIconPulse: true,
-      colorText: YColors.white,
-      backgroundColor: Colors.orange,
-      snackPosition: SnackPosition.BOTTOM,
-      duration: const Duration(seconds: 3),
-      margin: const EdgeInsets.all(20),
-      icon: const Icon(Iconsax.warning_2, color: YColors.white),
-    );
+    // Delay snackbar to ensure widget tree is ready
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Get.snackbar(
+        title,
+        message,
+        isDismissible: true,
+        shouldIconPulse: true,
+        colorText: YColors.white,
+        backgroundColor: Colors.orange,
+        snackPosition: SnackPosition.BOTTOM,
+        duration: const Duration(seconds: 3),
+        margin: const EdgeInsets.all(20),
+        icon: const Icon(Iconsax.warning_2, color: YColors.white),
+      );
+    });
   }
 
   static errorSnackBar({required title, message = ''}) {
-    Get.snackbar(
-      title,
-      message,
-      isDismissible: true,
-      shouldIconPulse: true,
-      colorText: YColors.white,
-      backgroundColor: Colors.red.shade600,
-      snackPosition: SnackPosition.BOTTOM,
-      duration: const Duration(seconds: 3),
-      margin: const EdgeInsets.all(20),
-      icon: const Icon(Iconsax.warning_2, color: YColors.white),
-    );
+    // Delay snackbar to ensure widget tree is ready
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Get.snackbar(
+        title,
+        message,
+        isDismissible: true,
+        shouldIconPulse: true,
+        colorText: YColors.white,
+        backgroundColor: Colors.red.shade600,
+        snackPosition: SnackPosition.BOTTOM,
+        duration: const Duration(seconds: 3),
+        margin: const EdgeInsets.all(20),
+        icon: const Icon(Iconsax.warning_2, color: YColors.white),
+      );
+    });
   }
 }

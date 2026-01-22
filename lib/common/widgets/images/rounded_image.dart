@@ -1,6 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../../utils/constants/sizes.dart';
+import '../shimmers/shimmer.dart';
 
 class YRoundedImage extends StatelessWidget {
   const YRoundedImage({
@@ -31,6 +33,12 @@ class YRoundedImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Auto-detect network images by checking if URL starts with http:// or https://
+    final bool isNetwork =
+        isNetworkImage ||
+        imageUrl.startsWith('http://') ||
+        imageUrl.startsWith('https://');
+
     return GestureDetector(
       onTap: onPressed,
       child: Container(
@@ -46,12 +54,24 @@ class YRoundedImage extends StatelessWidget {
           borderRadius: applyImageRadius
               ? BorderRadius.circular(borderRadius)
               : BorderRadius.zero,
-          child: Image(
-            image: isNetworkImage
-                ? NetworkImage(imageUrl)
-                : AssetImage(imageUrl),
-            fit: fit,
-          ),
+          child: isNetwork
+              ? CachedNetworkImage(
+                  imageUrl: imageUrl,
+                  fit: fit,
+                  width: width,
+                  height: height,
+                  progressIndicatorBuilder: (context, url, downloadProgress) =>
+                      YShimmerEffect(
+                        width: width ?? double.infinity,
+                        height: height ?? 158,
+                      ),
+                )
+              : Image(
+                  image: AssetImage(imageUrl),
+                  fit: fit,
+                  width: width,
+                  height: height,
+                ),
         ),
       ),
     );

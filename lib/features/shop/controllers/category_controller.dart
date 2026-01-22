@@ -1,8 +1,10 @@
 import 'package:get/get.dart';
 
 import '../../../data/repositories/category/category_repository.dart';
+import '../../../data/repositories/product/product_repository.dart';
 import '../../../utils/popups/loaders.dart';
 import '../models/category_model.dart';
+import '../models/product_model.dart';
 
 class CategoryController extends GetxController {
   static CategoryController get instance => Get.find();
@@ -36,7 +38,7 @@ class CategoryController extends GetxController {
             .where(
               (category) => category.isFeatured && category.parentId.isEmpty,
             )
-            .take(8)
+            .take(6)
             .toList(),
       );
     } catch (e) {
@@ -45,5 +47,31 @@ class CategoryController extends GetxController {
       // Remove Loader
       isLoading.value = false;
     }
+  }
+
+  /// Load selected category data
+  Future<List<CategoryModel>> getSubCategories(String categoryId) async {
+    try {
+      final subCategories = await _categoryRepository.getSubCategories(
+        categoryId,
+      );
+      return subCategories;
+    } catch (e) {
+      YLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      return [];
+    }
+  }
+
+  /// Get Category or Sub-Category Products.
+  Future<List<ProductModel>> getCategoryProducts({
+    required String categoryId,
+    int limit = 4,
+  }) async {
+    // Fetch limited (4) products against each subCategory;
+    final products = await ProductRepository.instance.getProductsForCategory(
+      categoryId: categoryId,
+      limit: limit,
+    );
+    return products;
   }
 }
