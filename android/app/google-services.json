@@ -1,45 +1,189 @@
 {
   "project_info": {
-    "project_number": "328649122836",
-    "project_id": "ysl-store-app",
-    "storage_bucket": "ysl-store-app.firebasestorage.app"
+    "project_number": "791724877482",
+    "project_id": "fast-food-app-2e794",
+    "storage_bucket": "fast-food-app-2e794.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:328649122836:android:7a2f2f99f190b38b3eb301",
+        "mobilesdk_app_id": "1:791724877482:android:f2b10debfbc290a52a92d3",
         "android_client_info": {
-          "package_name": "com.example.ysl_store_app"
+          "package_name": "com.example.fast_food_app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "328649122836-2iuduln24qs5vdn0esqsas053hojmkiu.apps.googleusercontent.com",
+          "client_id": "791724877482-cgu3j5gs1eaoqq858a81re3egcrvp9t6.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.ysl_store_app",
+            "package_name": "com.example.fast_food_app",
             "certificate_hash": "6805ed341da1b4688ba0197b40591c52dff9deb9"
           }
         },
         {
-          "client_id": "328649122836-o0rv05icu9hmf00mdl6rm4lo25imm8f8.apps.googleusercontent.com",
+          "client_id": "791724877482-v1dpppfhmvprubfvjjbuo7oih98lodaa.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCZXSuDQ1ZgdFVt3yxUaR4dclhl4PkjPHE"
+          "current_key": "AIzaSyAHF3-PTauwMo92__wfhQywLmIxuQxCrZI"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "328649122836-o0rv05icu9hmf00mdl6rm4lo25imm8f8.apps.googleusercontent.com",
+              "client_id": "791724877482-v1dpppfhmvprubfvjjbuo7oih98lodaa.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "328649122836-3gfn6c111lp3tfst36gf5unnpmt9q36g.apps.googleusercontent.com",
+              "client_id": "791724877482-1jvulv09fukk5quslja0p9r8eg013s79.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.yslStoreApp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:791724877482:android:5304948894b4dbc22a92d3",
+        "android_client_info": {
+          "package_name": "com.example.fast_food_panel_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "791724877482-v1dpppfhmvprubfvjjbuo7oih98lodaa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHF3-PTauwMo92__wfhQywLmIxuQxCrZI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "791724877482-v1dpppfhmvprubfvjjbuo7oih98lodaa.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "791724877482-1jvulv09fukk5quslja0p9r8eg013s79.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.yslStoreApp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:791724877482:android:8242d3be45393e4d2a92d3",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "791724877482-v1dpppfhmvprubfvjjbuo7oih98lodaa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHF3-PTauwMo92__wfhQywLmIxuQxCrZI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "791724877482-v1dpppfhmvprubfvjjbuo7oih98lodaa.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "791724877482-1jvulv09fukk5quslja0p9r8eg013s79.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.yslStoreApp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:791724877482:android:4d73a54ce27f19722a92d3",
+        "android_client_info": {
+          "package_name": "com.example.ysl_store_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "791724877482-v1dpppfhmvprubfvjjbuo7oih98lodaa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHF3-PTauwMo92__wfhQywLmIxuQxCrZI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "791724877482-v1dpppfhmvprubfvjjbuo7oih98lodaa.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "791724877482-1jvulv09fukk5quslja0p9r8eg013s79.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.yslStoreApp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:791724877482:android:b4337c33ab5ef9f92a92d3",
+        "android_client_info": {
+          "package_name": "com.example.yt_ecommerce_admin_panel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "791724877482-v1dpppfhmvprubfvjjbuo7oih98lodaa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHF3-PTauwMo92__wfhQywLmIxuQxCrZI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "791724877482-v1dpppfhmvprubfvjjbuo7oih98lodaa.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "791724877482-1jvulv09fukk5quslja0p9r8eg013s79.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
                 "bundle_id": "com.example.yslStoreApp"

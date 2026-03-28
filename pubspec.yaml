@@ -74,14 +74,11 @@ flutter:
     - assets/images/products/
     - assets/icons/categories/
     - assets/images/verify_email/
+    - assets/images/products/pizza/
+    - assets/images/products/burger/
     - assets/icons/payment_methods/
-    - assets/images/products/phones/
     - assets/images/on_boarding_images/
-    - assets/images/products/earphones/
-    - assets/images/products/headphones/
-    - assets/images/products/power_banks/
-    - assets/images/products/cooling_fan/
-    - assets/images/products/smartwatches/
+
 
   #-------------- Local Fonts  ----------------
   fonts:

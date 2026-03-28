@@ -37,9 +37,9 @@ class YVerticalImageText extends StatelessWidget {
               padding: YSizes.sm * 1.4,
               isNetworkImage: isNetworkImage,
               backgroundColor: backgroundColor,
-              overlayColor: YHelperFunctions.isDarkMode(context)
-                  ? YColors.light
-                  : YColors.dark,
+              // overlayColor: YHelperFunctions.isDarkMode(context)
+              //     ? YColors.light
+              //     : YColors.dark,
             ),
             // Text
             const SizedBox(height: YSizes.spaceBtwItems / 2),

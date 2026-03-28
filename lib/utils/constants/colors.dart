@@ -4,7 +4,7 @@ class YColors {
   YColors._();
 
   // App basic colors
-  static const Color primary = Color(0xff00be62);
+  static const Color primary = Color(0xfffd7e1a);
   static const Color secondary = Color(0xFFFFE248);
   static const Color accent = Color(0xFFb8c7ff);
   static const Color white = Color(0xFFFFFFFF);
@@ -32,6 +32,7 @@ class YColors {
   static Color darkContainer = YColors.light.withAlpha(26);
 
   // Button colors
+  static const Color buttonGreen = Color(0xff00be62);
   static const Color buttonPrimary = Color(0xFF4b68ff);
   static const Color buttonSecondary = Color(0xFF6C7570);
   static const Color buttonDisabled = Color(0xFFC4C4C4);

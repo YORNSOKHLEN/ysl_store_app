@@ -1,7 +1,8 @@
 class YImage {
   // App Logo
-  static const String appLogo = 'assets/logos/logo_light.png';
-  static const String appLogoDark = 'assets/logos/logo_dark.png';
+  static const String appLogo = 'assets/logos/logo_fast_food.png';
+
+  // static const String appLogoDark = 'assets/logos/logo_dark.png';
 
   // Social logos
   static const String googleLogo = 'assets/logos/google.png';
@@ -16,46 +17,29 @@ class YImage {
       'assets/images/on_boarding_images/delivery.png';
 
   // Verify Email
-  // static const String productsIllustration =
-  //     "assets/images/animations/sammy-line-workout.gif";
-  // static const String productsSaleIllustration =
-  //     "assets/images/animations/sammy-line-sale.png";
   static const String staticSuccessIllustration =
       "assets/images/verify_email/success_email.png";
   static const String docerAnimation =
       "assets/images/verify_email/docer_animation.png";
-
-  // static const String deliveredInPlaneIllustration =
-  //     "assets/images/animations/sammy-line-come-back-later.png";
   static const String deliveredEmailIllustration =
       "assets/images/verify_email/delivered_email.png";
-  static const String favouriteEmailIllustration =
-      "assets/icons/payment_methods/favourite.png";
-
-  // static const String verifyIllustration =
-  //     "assets/images/animations/sammy-line-travel-backpack-with-passport-and-air-ticket.gif";
 
   /// Categories
-  static const String phoneIcon = "assets/icons/categories/iphone.png";
-  static const String headphonesIcon = "assets/icons/categories/headphones.png";
-  static const String powerBankIcon = "assets/icons/categories/power_bank.png";
-  static const String gameControllerIcon =
-      "assets/icons/categories/game_controller.png";
-  static const smartWatchIcon = "assets/icons/categories/smartwatch.png";
-  static const String coolingFanIcon =
-      "assets/icons/categories/cooling_fan.png";
+  static const String iconBeverage = "assets/icons/categories/beverage.png";
+  static const String iconBurger = "assets/icons/categories/burger.png";
+  static const String iconPizza = "assets/icons/categories/pizza.png";
+  static const String iconKhmerFood = "assets/icons/categories/khmer_food.png";
+  static const iconChineseFood = "assets/icons/categories/chines_food.png";
+  static const iconStore = "assets/icons/categories/store.png";
   static const pinIcon = "assets/icons/categories/pin.png";
 
   /// Brand
-  static const String brandIphone = "assets/logos/apple.png";
-  static const String brandSamsung = "assets/logos/samsung.png";
-  static const String brandXiaomi = "assets/logos/xiaomi.png";
-  static const String brandAsus = "assets/logos/asus.png";
+  static const String burgerKingBrand = "assets/logos/burger_king.png";
 
   /// Banner
-  static const String banner1 = "assets/images/banners/promo_iphone.png";
-  static const String banner2 = "assets/images/banners/promo_samsung.png";
-  static const String banner3 = "assets/images/banners/promo_redmi_turbo.png";
+  static const String banner1 = "assets/images/banners/burger_promo.png";
+  static const String banner2 = "assets/images/banners/pizza_promo.png";
+  static const String banner3 = "";
   static const String banner4 = "";
   static const String banner5 = "";
   static const String banner6 = "";
@@ -74,46 +58,20 @@ class YImage {
   static const String acleda2 = "assets/icons/payment_methods/acleda2.png";
   static const String khqr = "assets/icons/payment_methods/khqr.png";
 
+
   /// Profile
   static const String user = "assets/images/user/user.png";
 
   /// --------- Product ---------
-  // Phone
-  static const String imageIphone17ProMaxWhite =
-      "assets/images/products/phones/iphone_17_pro_max_white.png";
-  static const String imageIphone17ProMaxOrange =
-      "assets/images/products/phones/iphone_17_pro_max_orange.png";
-  static const String imageIphone17ProMaxBlack =
-      "assets/images/products/phones/iphone_17_pro_max_black.png";
+  // Burger
+  static const String originalChickenSandwichBurger =
+      "assets/images/products/burger/burger_king/original_chicken_sandwich.png";
+  static const String texasDoubleWhopperBurger =
+      "assets/images/products/burger/burger_king/texas_double_whopper.png";
+  static const String whopperWithCheeseBurger =
+      "assets/images/products/burger/burger_king/whopper_with_cheese.png";
 
-  static const String imageRedmiTurbo4ProHarryPotterEdition =
-      "assets/images/products/phones/redmi_turbo_4_pro_harry_potter_edition.png";
-  static const String imageRedmiTurbo4ProWhite =
-      "assets/images/products/phones/redmi_turbo_4_pro_white.png";
-  static const String imageRedmiTurbo4ProBlack =
-      "assets/images/products/phones/redmi_turbo_4_pro_black.png";
-  static const String imageRedmiTurbo4ProGreen =
-      "assets/images/products/phones/redmi_turbo_4_pro_green.png";
-  static const String imageSamsungGalaxyS25UltraBlack =
-      "assets/images/products/phones/samsung_galaxy_s25_ultra_black.png";
-  static const String imageSamsungGalaxyS25UltraWhite =
-      "assets/images/products/phones/samsung_galaxy_s25_ultra_white.png";
-  static const String imageSamsungGalaxyS25UltraBlue =
-      "assets/images/products/phones/samsung_galaxy_s25_ultra_blue.png";
-  static const String imageSamsungGalaxyS25UltraGrey =
-      "assets/images/products/phones/samsung_galaxy_s25_ultra_grey.png";
-  static const String imageXiaomi17ProMaxWhite =
-      "assets/images/products/phones/xiaomi_17_pro_max_white.png";
-  static const String imageXiaomi17ProMaxBlue =
-      "assets/images/products/phones/xiaomi_17_pro_max_blue.png";
-  static const String imageXiaomi17ProMaxGreen =
-      "assets/images/products/phones/xiaomi_17_pro_max_green.png";
-  static const String imageXiaomi17ProMaxPurple =
-      "assets/images/products/phones/xiaomi_17_pro_max_purple.png";
-
-  // SmartWatch
-  static const String smartWatchAppleWatchUltra2Black =
-      "assets/images/products/smartwatches/apple_watch_ultra2_black.png";
-  static const String smartwatchXiaomiRedmiWatch5Black =
-      "assets/images/products/smartwatches/xiaomi_redmi_watch_5_black.png";
+  // Pizza
+  static const String seafoodPizza =
+      "assets/images/products/pizza/seafood_pizza .png";
 }
