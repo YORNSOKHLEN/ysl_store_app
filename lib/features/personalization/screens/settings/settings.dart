@@ -13,7 +13,6 @@ import '../../../../common/widgets/list_tile/settings_menu_tile.dart';
 import '../../../../common/widgets/list_tile/user_profile_tile.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
 import '../../../../data/repositories/authentication/authentication_repository.dart';
-import '../../../../data/services/data_upload_service.dart';
 import '../../../shop/screens/cart/cart.dart';
 
 class SettingsScreen extends StatelessWidget {

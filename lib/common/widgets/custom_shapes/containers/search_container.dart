@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:ysl_store_app/features/shop/screens/search/search_screen.dart';
 import 'package:ysl_store_app/utils/helpers/helper_functions.dart';
 
+import '../../../../features/shop/screens/search/search_screen.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/device/device_utility.dart';
