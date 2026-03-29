@@ -74,10 +74,11 @@ flutter:
     - assets/images/products/
     - assets/icons/categories/
     - assets/images/verify_email/
+    - assets/icons/payment_methods/
     - assets/images/products/pizza/
     - assets/images/products/burger/
-    - assets/icons/payment_methods/
     - assets/images/on_boarding_images/
+    - assets/images/products/burger/burger_king/
 
 
   #-------------- Local Fonts  ----------------
@@ -90,3 +91,18 @@ flutter:
         - asset: assets/fonts/Poppins-Medium.ttf
 
 
+
+flutter_native_splash:
+  color: "#FFFFFF"
+  color_dark: "#272727"
+
+  image: assets/logos/logo_fast_food.png
+
+  android_12:
+    color: "#FFFFFF"
+    color_dark: "#272727"
+    image: assets/logos/logo_fast_food.png
+    image_dark: assets/logos/logo_fast_food.png
+
+  web: true
+  ios: true

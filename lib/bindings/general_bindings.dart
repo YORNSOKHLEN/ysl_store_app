@@ -39,6 +39,7 @@ class GeneralBindings extends Bindings {
     /// Controllers (lazy + auto recreate)
     Get.lazyPut<CartController>(() => CartController(), fenix: true);
     Get.lazyPut<FavouriteController>(() => FavouriteController(), fenix: true);
+    Get.lazyPut<VariationController>(() => VariationController());
     Get.lazyPut<VariationController>(() => VariationController(), fenix: true);
     Get.lazyPut<CheckoutController>(() => CheckoutController(), fenix: true);
   }

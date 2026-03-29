@@ -3,7 +3,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:ysl_store_app/routes/app_routes.dart';
 import 'package:ysl_store_app/utils/constants/colors.dart';
 import 'package:ysl_store_app/utils/local_storage/storage_utility.dart';
@@ -46,7 +45,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'YSL Store',
+      title: 'Fast Food',
       getPages: AppRoutes.pages,
       themeMode: ThemeMode.system,
       theme: YAppTheme.lightTheme,

@@ -58,7 +58,6 @@ class YImage {
   static const String acleda2 = "assets/icons/payment_methods/acleda2.png";
   static const String khqr = "assets/icons/payment_methods/khqr.png";
 
-
   /// Profile
   static const String user = "assets/images/user/user.png";
 
@@ -67,7 +66,7 @@ class YImage {
   static const String originalChickenSandwichBurger =
       "assets/images/products/burger/burger_king/original_chicken_sandwich.png";
   static const String texasDoubleWhopperBurger =
-      "assets/images/products/burger/burger_king/texas_double_whopper.png";
+      'assets/images/products/burger/burger_king/texas_double.png';
   static const String whopperWithCheeseBurger =
       "assets/images/products/burger/burger_king/whopper_with_cheese.png";
 

@@ -13,6 +13,7 @@ import '../../../../common/widgets/list_tile/settings_menu_tile.dart';
 import '../../../../common/widgets/list_tile/user_profile_tile.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
 import '../../../../data/repositories/authentication/authentication_repository.dart';
+import '../../../../data/services/data_upload_service.dart';
 import '../../../shop/screens/cart/cart.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -105,36 +106,36 @@ class SettingsScreen extends StatelessWidget {
                     showActionButton: false,
                   ),
                   const SizedBox(height: YSizes.spaceBtwItems),
-                  // YSettingsMenuTile(
-                  //   icon: Iconsax.document_upload,
-                  //   title: 'Load Data',
-                  //   subTitle: 'Upload Data to your Cloud Firebase',
-                  //   onTap: () async {
-                  //     // Show confirmation dialog
-                  //     final confirm = await Get.dialog<bool>(
-                  //       AlertDialog(
-                  //         title: const Text('Upload Data'),
-                  //         content: const Text(
-                  //           'This will upload all dummy data (Categories, Products) to Firebase. This may take a few minutes. Continue?',
-                  //         ),
-                  //         actions: [
-                  //           TextButton(
-                  //             onPressed: () => Get.back(result: false),
-                  //             child: const Text('Cancel'),
-                  //           ),
-                  //           TextButton(
-                  //             onPressed: () => Get.back(result: true),
-                  //             child: const Text('Upload'),
-                  //           ),
-                  //         ],
-                  //       ),
-                  //     );
-                  //
-                  //     if (confirm == true) {
-                  //       await DataUploadService.instance.uploadProducts();
-                  //     }
-                  //   },
-                  // ),
+                  YSettingsMenuTile(
+                    icon: Iconsax.document_upload,
+                    title: 'Load Data',
+                    subTitle: 'Upload Data to your Cloud Firebase',
+                    onTap: () async {
+                      // Show confirmation dialog
+                      final confirm = await Get.dialog<bool>(
+                        AlertDialog(
+                          title: const Text('Upload Data'),
+                          content: const Text(
+                            'This will upload all dummy data (Categories, Products) to Firebase. This may take a few minutes. Continue?',
+                          ),
+                          actions: [
+                            TextButton(
+                              onPressed: () => Get.back(result: false),
+                              child: const Text('Cancel'),
+                            ),
+                            TextButton(
+                              onPressed: () => Get.back(result: true),
+                              child: const Text('Upload'),
+                            ),
+                          ],
+                        ),
+                      );
+
+                      if (confirm == true) {
+                        await DataUploadService.instance.uploadProducts();
+                      }
+                    },
+                  ),
                   YSettingsMenuTile(
                     icon: Iconsax.location,
                     title: 'Geolocation',
