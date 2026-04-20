@@ -11,7 +11,7 @@ class ImagesController extends GetxController {
   /// Variables
   RxString selectedProductImage = ''.obs;
 
-  /// -- Get All Images from product and Variations
+  /// -- Get All Images from product
   List<String> getAllProductImages(ProductModel product) {
     // Use Set to add unique images only
     Set<String> images = {};
@@ -27,13 +27,6 @@ class ImagesController extends GetxController {
       images.addAll(product.images!);
     }
 
-    // Get all images from the Product Variations if not null.
-    if (product.productVariations != null ||
-        product.productVariations!.isNotEmpty) {
-      images.addAll(
-        product.productVariations!.map((variation) => variation.image),
-      );
-    }
 
     return images.toList();
   }

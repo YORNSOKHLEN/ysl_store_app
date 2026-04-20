@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import '../../../features/shop/models/product_model.dart';
-import '../../../utils/constants/enums.dart';
 import '../../services/cloud_storage/firebase_storage_service.dart';
 
 /// Repository for managing product-related data and operations.
@@ -229,23 +228,6 @@ class ProductRepository extends GetxController {
           product.images = uploadedImages;
         }
 
-        /// ---------------- VARIATION IMAGES ----------------
-        if (product.productType == ProductType.variable.name &&
-            product.productVariations != null) {
-          for (final variation in product.productVariations!) {
-            final varImageData = await storage.getImageDataFromAssets(
-              variation.image,
-            );
-
-            final varImageUrl = await storage.uploadImageData(
-              'Products/Variations',
-              varImageData,
-              variation.image,
-            );
-
-            variation.image = varImageUrl;
-          }
-        }
 
         /// ---------------- SAVE TO FIRESTORE ----------------
         await firestore

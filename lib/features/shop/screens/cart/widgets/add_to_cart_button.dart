@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:ysl_store_app/features/shop/controllers/product/cart_controller.dart';
 import 'package:ysl_store_app/features/shop/models/product_model.dart';
-import 'package:ysl_store_app/features/shop/screens/product_details/product_detail.dart';
 
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/sizes.dart';
@@ -22,7 +21,7 @@ class ProductCartAddToCart extends StatelessWidget {
         bottomRight: Radius.circular(YSizes.productImageRadius),
       ),
       onTap: () {
-        Get.to(() => ProductDetailScreen(product: product));
+        cartController.addOneFromCard(product);
       },
       child: Obx(() {
         final productQuantityInCart = cartController.getProductQuantityInCart(

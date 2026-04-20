@@ -10,7 +10,6 @@ import '../data/services/cloud_storage/firebase_storage_service.dart';
 import '../data/services/data_upload_service.dart';
 import '../features/shop/controllers/product/cart_controller.dart';
 import '../features/shop/controllers/product/favourite_controller.dart';
-import '../features/shop/controllers/product/variation_controller.dart';
 import '../utils/helpers/network_manager.dart';
 
 class GeneralBindings extends Bindings {
@@ -37,10 +36,8 @@ class GeneralBindings extends Bindings {
     );
 
     /// Controllers (lazy + auto recreate)
-    Get.lazyPut<CartController>(() => CartController(), fenix: true);
+    Get.lazyPut<CartController>(CartController.new, fenix: true);
     Get.lazyPut<FavouriteController>(() => FavouriteController(), fenix: true);
-    Get.lazyPut<VariationController>(() => VariationController());
-    Get.lazyPut<VariationController>(() => VariationController(), fenix: true);
     Get.lazyPut<CheckoutController>(() => CheckoutController(), fenix: true);
   }
 }
