@@ -1,6 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ysl_store_app/features/shop/models/product_attribute_model.dart';
-import 'package:ysl_store_app/features/shop/models/product_variation_model.dart';
 
 import 'brand_model.dart';
 
@@ -19,8 +17,6 @@ class ProductModel {
   String? categoryId;
   List<String>? images;
   String productType;
-  List<ProductAttributeModel>? productAttributes;
-  List<ProductVariationModel>? productVariations;
 
   ProductModel({
     required this.id,
@@ -37,8 +33,6 @@ class ProductModel {
     this.isFeatured,
     this.categoryId,
     this.description,
-    this.productAttributes,
-    this.productVariations,
   });
 
   /// Create Empty func for clean code
@@ -66,12 +60,6 @@ class ProductModel {
       'Brand': brand!.toJson(),
       'Description': description,
       'ProductType': productType,
-      'ProductAttributes': productAttributes != null
-          ? productAttributes!.map((e) => e.toJson()).toList()
-          : [],
-      'ProductVariations': productVariations != null
-          ? productVariations!.map((e) => e.toJson()).toList()
-          : [],
     };
   }
 
@@ -95,12 +83,6 @@ class ProductModel {
       productType: data['ProductType'] ?? '',
       brand: BrandModel.fromJson(data['Brand']),
       images: data['Images'] != null ? List<String>.from(data['Images']) : [],
-      productAttributes: (data['ProductAttributes'] as List<dynamic>)
-          .map((e) => ProductAttributeModel.fromJson(e))
-          .toList(),
-      productVariations: (data['ProductVariations'] as List<dynamic>)
-          .map((e) => ProductVariationModel.fromJson(e))
-          .toList(),
     );
   }
 
@@ -124,12 +106,6 @@ class ProductModel {
       productType: data['ProductType']?.toString() ?? '',
       brand: BrandModel.fromJson(data['Brand']),
       images: data['Images'] != null ? List<String>.from(data['Images']) : [],
-      productAttributes: (data['ProductAttributes'] as List<dynamic>)
-          .map((e) => ProductAttributeModel.fromJson(e))
-          .toList(),
-      productVariations: (data['ProductVariations'] as List<dynamic>)
-          .map((e) => ProductVariationModel.fromJson(e))
-          .toList(),
     );
   }
 }

@@ -5,13 +5,11 @@ import 'package:readmore/readmore.dart';
 import 'package:ysl_store_app/common/widgets/texts/section_heading.dart';
 import 'package:ysl_store_app/features/shop/models/product_model.dart';
 import 'package:ysl_store_app/features/shop/screens/product_details/widgets/button_add_to_cart_widgets.dart';
-import 'package:ysl_store_app/features/shop/screens/product_details/widgets/product_attributes.dart';
 import 'package:ysl_store_app/features/shop/screens/product_details/widgets/product_detail_image_slider.dart';
 import 'package:ysl_store_app/features/shop/screens/product_details/widgets/product_meta_data.dart';
 import 'package:ysl_store_app/features/shop/screens/product_details/widgets/ratting_share_widgets.dart';
 import 'package:ysl_store_app/utils/constants/sizes.dart';
 
-import '../../../../utils/constants/enums.dart';
 import '../checkout/checkout.dart';
 import '../product_reviews/product_reviews.dart';
 
@@ -47,10 +45,10 @@ class ProductDetailScreen extends StatelessWidget {
 
                   // Attributes
                   // Better: Grouped with a spread operator
-                  if (product.productType == ProductType.variable.toString())
-                    YProductAttributes(product: product),
-                  if (product.productType == ProductType.variable.toString())
-                    const SizedBox(height: YSizes.spaceBtwSections),
+                  // if (product.productType == ProductType.variable.toString())
+                  //   YProductAttributes(product: product),
+                  // if (product.productType == ProductType.variable.toString())
+                  //   const SizedBox(height: YSizes.spaceBtwSections),
 
                   // Check out
                   SizedBox(

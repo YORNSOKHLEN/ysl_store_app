@@ -38,7 +38,7 @@ class YBrandCard extends StatelessWidget {
                 image: brand.image,
                 isNetworkImage: brand.image.startsWith('http'),
                 backgroundColor: Colors.transparent,
-                overlayColor: dark ? YColors.white : YColors.black,
+                // overlayColor: dark ? YColors.white : YColors.black,
               ),
             ),
             const SizedBox(width: YSizes.spaceBtwItems / 2),

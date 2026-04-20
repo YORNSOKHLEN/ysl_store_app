@@ -56,42 +56,42 @@ class YProductImageSlider extends StatelessWidget {
             ),
 
             /// Image Slider
-            Positioned(
-              bottom: 30,
-              left: YSizes.defaultSpace,
-              right: 0,
-              child: SizedBox(
-                height: 80,
-                child: ListView.separated(
-                  itemCount: images.length,
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  physics: const AlwaysScrollableScrollPhysics(),
-                  separatorBuilder: (_, __) =>
-                      const SizedBox(width: YSizes.spaceBtwItems),
-                  itemBuilder: (_, index) => Obx(() {
-                    final imageSelected =
-                        controller.selectedProductImage.value == images[index];
-                    final image = images[index];
-                    final isNetwork = image.startsWith('http');
-                    return YRoundedImage(
-                      width: 80,
-                      isNetworkImage: isNetwork,
-                      backgroundColor: dark ? YColors.dark : YColors.white,
-                      onPressed: () =>
-                          controller.selectedProductImage.value = images[index],
-                      border: Border.all(
-                        color: imageSelected
-                            ? YColors.buttonPrimary
-                            : Colors.transparent,
-                      ),
-                      padding: const EdgeInsets.all(YSizes.xs),
-                      imageUrl: images[index],
-                    );
-                  }),
-                ),
-              ),
-            ),
+            // Positioned(
+            //   bottom: 30,
+            //   left: YSizes.defaultSpace,
+            //   right: 0,
+            //   child: SizedBox(
+            //     height: 80,
+            //     child: ListView.separated(
+            //       itemCount: images.length,
+            //       shrinkWrap: true,
+            //       scrollDirection: Axis.horizontal,
+            //       physics: const AlwaysScrollableScrollPhysics(),
+            //       separatorBuilder: (_, __) =>
+            //           const SizedBox(width: YSizes.spaceBtwItems),
+            //       itemBuilder: (_, index) => Obx(() {
+            //         final imageSelected =
+            //             controller.selectedProductImage.value == images[index];
+            //         final image = images[index];
+            //         final isNetwork = image.startsWith('http');
+            //         return YRoundedImage(
+            //           width: 80,
+            //           isNetworkImage: isNetwork,
+            //           backgroundColor: dark ? YColors.dark : YColors.white,
+            //           onPressed: () =>
+            //               controller.selectedProductImage.value = images[index],
+            //           border: Border.all(
+            //             color: imageSelected
+            //                 ? YColors.buttonPrimary
+            //                 : Colors.transparent,
+            //           ),
+            //           padding: const EdgeInsets.all(YSizes.xs),
+            //           imageUrl: images[index],
+            //         );
+            //       }),
+            //     ),
+            //   ),
+            // ),
 
             // Appbar
             YAppBar(

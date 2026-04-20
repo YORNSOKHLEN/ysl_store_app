@@ -72,5 +72,5 @@ class YImage {
 
   // Pizza
   static const String seafoodPizza =
-      "assets/images/products/pizza/seafood_pizza .png";
+      "assets/images/products/pizza/seafood_pizza.png";
 }

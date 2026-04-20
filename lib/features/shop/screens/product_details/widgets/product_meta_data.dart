@@ -89,7 +89,8 @@ class YProductMetaData extends StatelessWidget {
               YCircularImage(
                 image: product.brand != null ? product.brand!.image : '',
                 height: 32,
-                overlayColor: dark ? YColors.white : YColors.black,
+                width: 32,
+                // overlayColor: dark ? YColors.white : YColors.black,
                 isNetworkImage: product.brand!.image.startsWith('http'),
               ),
               const SizedBox(width: YSizes.spaceBtwItems / 6),

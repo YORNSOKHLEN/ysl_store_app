@@ -1,7 +1,5 @@
 import 'package:get/get.dart';
-import 'package:ysl_store_app/features/shop/controllers/product/variation_controller.dart';
 
-import '../../../../utils/constants/enums.dart';
 import '../../../../utils/local_storage/storage_utility.dart';
 import '../../../../utils/popups/loaders.dart';
 import '../../models/cart_item_model.dart';
@@ -10,12 +8,12 @@ import '../../models/product_model.dart';
 class CartController extends GetxController {
   static CartController get instance => Get.find();
 
+  CartController();
+
   RxInt noOfCartItems = 0.obs;
   RxDouble totalCartPrice = 0.0.obs;
   RxInt productQuantityInCart = 0.obs;
   RxList<CartItemModel> cartItems = <CartItemModel>[].obs;
-
-  final variationController = VariationController.instance;
 
   @override
   void onInit() {
@@ -30,19 +28,8 @@ class CartController extends GetxController {
       return;
     }
 
-    final isVariable = product.productType == ProductType.variable.toString();
-
-    if (isVariable && variationController.selectedVariation.value.id.isEmpty) {
-      YLoaders.customToast(message: 'Select Variation');
-      return;
-    }
-
-    final variation = variationController.selectedVariation.value;
-    final stock = isVariable ? variation.stock : product.stock;
-
-    final alreadyInCart = isVariable
-        ? getVariationQuantityInCart(product.id, variation.id)
-        : getProductQuantityInCart(product.id);
+    final stock = product.stock;
+    final alreadyInCart = getProductQuantityInCart(product.id);
 
     if (alreadyInCart + productQuantityInCart.value > stock) {
       YLoaders.warningSnackBar(
@@ -55,8 +42,8 @@ class CartController extends GetxController {
     final cartItem = convertToCartItem(product, productQuantityInCart.value);
 
     final index = cartItems.indexWhere(
-          (item) =>
-      item.productId == cartItem.productId &&
+      (item) =>
+          item.productId == cartItem.productId &&
           item.variationId == cartItem.variationId,
     );
 
@@ -70,10 +57,38 @@ class CartController extends GetxController {
     YLoaders.customToast(message: 'Product added to cart');
   }
 
+  /// QUICK ADD ONE ITEM FROM PRODUCT CARD
+  void addOneFromCard(ProductModel product) {
+    final alreadyInCart = getProductQuantityInCart(product.id);
+    if (alreadyInCart >= product.stock) {
+      YLoaders.warningSnackBar(
+        title: 'Stock limit',
+        message: 'Only ${product.stock} items available.',
+      );
+      return;
+    }
+
+    final cartItem = convertToCartItem(product, 1);
+    final index = cartItems.indexWhere(
+      (item) =>
+          item.productId == cartItem.productId &&
+          item.variationId == cartItem.variationId,
+    );
+
+    if (index >= 0) {
+      cartItems[index].quantity += 1;
+    } else {
+      cartItems.add(cartItem);
+    }
+
+    updateCart();
+    YLoaders.customToast(message: 'Product added to cart');
+  }
+
   /// ADD ONE ITEM
   void addOneToCart(CartItemModel item) {
     final index = cartItems.indexWhere(
-          (i) => i.productId == item.productId && i.variationId == item.variationId,
+      (i) => i.productId == item.productId && i.variationId == item.variationId,
     );
 
     if (index == -1) return;
@@ -85,7 +100,7 @@ class CartController extends GetxController {
   /// REMOVE ONE ITEM
   void removeOneFromCart(CartItemModel item) {
     final index = cartItems.indexWhere(
-          (i) => i.productId == item.productId && i.variationId == item.variationId,
+      (i) => i.productId == item.productId && i.variationId == item.variationId,
     );
 
     if (index == -1) return;
@@ -115,46 +130,22 @@ class CartController extends GetxController {
 
   /// -- Initialize already added Item's Count in the cart.
   void updateAlreadyAddedProductCount(ProductModel product) {
-    // If product has no variations then calculate cartEntries and display total number.
-    // Else make default entries to 0 and show cartEntries when variation is selected.
-    if (product.productType == ProductType.single.toString()) {
-      productQuantityInCart.value = getProductQuantityInCart(product.id);
-    } else {
-      // Get selected Variation if any...
-      final variationId = variationController.selectedVariation.value.id;
-      if (variationId.isNotEmpty) {
-        productQuantityInCart.value = getVariationQuantityInCart(
-          product.id,
-          variationId,
-        );
-      } else {
-        productQuantityInCart.value = 0;
-      }
-    }
+    productQuantityInCart.value = getProductQuantityInCart(product.id);
   }
 
   /// CONVERT PRODUCT → CART ITEM
   CartItemModel convertToCartItem(ProductModel product, int quantity) {
-    if (product.productType == ProductType.single.toString()) {
-      variationController.resetSelectedAttributes();
-    }
-
-    final variation = variationController.selectedVariation.value;
-    final isVariation = variation.id.isNotEmpty;
-
-    final price = isVariation
-        ? (variation.salePrice > 0 ? variation.salePrice : variation.price)
-        : (product.salePrice > 0 ? product.salePrice : product.price);
+    final price = product.salePrice > 0 ? product.salePrice : product.price;
 
     return CartItemModel(
       productId: product.id,
       title: product.title,
       price: price,
       quantity: quantity,
-      variationId: variation.id,
-      image: isVariation ? variation.image : product.thumbnail,
+      variationId: '',
+      image: product.thumbnail,
       brandName: product.brand?.name ?? '',
-      selectedVariation: isVariation ? variation.attributeValues : null,
+      selectedVariation: null,
     );
   }
 
@@ -198,13 +189,6 @@ class CartController extends GetxController {
     return foundItem;
   }
 
-  int getVariationQuantityInCart(String productId, String variationId) {
-    final foundItem = cartItems.firstWhere(
-          (item) => item.productId == productId && item.variationId == variationId,
-      orElse: () => CartItemModel.empty(),
-    );
-    return foundItem.quantity;
-  }
 
   void clearCart() {
     productQuantityInCart.value = 0;
