@@ -50,6 +50,16 @@ class ProductController extends GetxController {
     }
   }
 
+  Future<List<ProductModel>> fetchRandomProducts({int limit = 6}) async {
+    try {
+      final products = await productRepository.getRandomProducts(limit: limit);
+      return products;
+    } catch (e) {
+      YLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      return [];
+    }
+  }
+
   /// Get the product price or price range for variations
   String? getProductPrice(ProductModel product) {
     // Show ONLY original price

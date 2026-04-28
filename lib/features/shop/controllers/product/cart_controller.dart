@@ -122,6 +122,7 @@ class CartController extends GetxController {
         cartItems.removeAt(index);
         updateCart();
         YLoaders.customToast(message: 'Product removed from cart');
+        // Close the dialog after confirming removal
         Get.back();
       },
       onCancel: () => Get.back(),
@@ -188,7 +189,6 @@ class CartController extends GetxController {
         .fold(0, (previousValue, element) => previousValue + element.quantity);
     return foundItem;
   }
-
 
   void clearCart() {
     productQuantityInCart.value = 0;

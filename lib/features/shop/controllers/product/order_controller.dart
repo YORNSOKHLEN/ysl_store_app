@@ -9,6 +9,7 @@ import '../../../../utils/constants/enums.dart';
 import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/popups/full_screen_loader.dart';
 import '../../../../utils/popups/loaders.dart';
+import '../../models/cart_item_model.dart';
 import '../../models/order_model.dart';
 import 'cart_controller.dart';
 import 'checkout_controller.dart';
@@ -35,7 +36,11 @@ class OrderController extends GetxController {
   }
 
   /// Add methods for order processing
-  void processOrder(double totalAmount) async {
+  void processOrder(
+    double totalAmount, {
+    List<CartItemModel>? items,
+    bool clearCartAfterOrder = true,
+  }) async {
     try {
       // Start Loader
       YFullScreenLoader.openLoadingDialog(
@@ -46,6 +51,8 @@ class OrderController extends GetxController {
       // Get user authentication Id
       final userId = AuthenticationRepository.instance.authUser!.uid;
       if (userId.isEmpty) return;
+
+      final orderItems = items ?? cartController.cartItems.toList();
 
       // Add Details
       final order = OrderModel(
@@ -58,14 +65,16 @@ class OrderController extends GetxController {
         paymentMethod: checkoutController.selectedPaymentMethod.value.name,
         // address: addressController.selectedAddress.value,
         // deliveryDate: DateTime.now(), // Set Date as needed
-        items: cartController.cartItems.toList(),
+        items: orderItems,
       );
 
       // Save the order to Firestore
       await orderRepository.saveOrder(order, userId);
 
       // CLEAR CART AFTER SUCCESSFUL CHECKOUT
-      cartController.clearCart();
+      if (clearCartAfterOrder) {
+        cartController.clearCart();
+      }
 
       // Show Success screen
       Get.off(

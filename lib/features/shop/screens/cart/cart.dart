@@ -21,27 +21,64 @@ class CartScreen extends StatelessWidget {
         showBackArrow: true,
         title: Text('Cart', style: Theme.of(context).textTheme.headlineSmall),
       ),
+      // Bottom checkout bar (sticky)
+      bottomNavigationBar: Obx(() {
+        if (controller.cartItems.isEmpty) return const SizedBox.shrink();
 
-      // Checkout Button
-      bottomNavigationBar: controller.cartItems.isEmpty
-          ? SizedBox()
-          : Padding(
-              padding: const EdgeInsets.all(YSizes.defaultSpace),
-              child: ElevatedButton(
-                onPressed: () => Get.to(() => CheckoutScreen()),
-                child: Obx(() {
-                  return Text('Checkout \$${controller.totalCartPrice.value}');
-                }),
+        return Container(
+          padding: const EdgeInsets.all(YSizes.defaultSpace),
+          decoration: BoxDecoration(
+            color: Theme.of(context).scaffoldBackgroundColor,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black12,
+                blurRadius: 8,
+                offset: Offset(0, -2),
               ),
-            ),
+            ],
+          ),
+          child: Row(
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text('Total', style: Theme.of(context).textTheme.bodyLarge),
+                    Obx(() => Text('\$${controller.totalCartPrice.value.toStringAsFixed(2)}',
+                        style: Theme.of(context).textTheme.headlineSmall)),
+                  ],
+                ),
+              ),
+              const SizedBox(width: YSizes.defaultSpace),
+              ElevatedButton(
+                onPressed: () => Get.to(() => CheckoutScreen()),
+                style: ElevatedButton.styleFrom(padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 22)),
+                child: Obx(() => Text('Checkout (${controller.noOfCartItems.value})')),
+              ),
+            ],
+          ),
+        );
+      }),
+
       body: Obx(() {
-        /// Nothing Found Widget
-        final emptyWidget = YAnimationLoaderWidget(
-          text: 'Whoops! Cart is EMPTY.',
-          animation: YImage.docerAnimation,
-          showAction: true,
-          actionText: 'Let\'s fill it',
-          onActionPressed: () => Get.off(() => const NavigationMenu()),
+        // Empty state
+        final emptyWidget = Center(
+          child: Padding(
+            padding: const EdgeInsets.all(YSizes.defaultSpace),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                YAnimationLoaderWidget(
+                  text: 'Whoops! Cart is EMPTY.',
+                  animation: YImage.docerAnimation,
+                  showAction: true,
+                  actionText: 'Let\'s fill it',
+                  onActionPressed: () => Get.off(() => const NavigationMenu()),
+                ),
+              ],
+            ),
+          ),
         );
 
         if (controller.cartItems.isEmpty) {

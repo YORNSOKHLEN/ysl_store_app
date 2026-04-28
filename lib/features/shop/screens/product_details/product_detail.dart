@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
 import 'package:ysl_store_app/common/widgets/texts/section_heading.dart';
+import 'package:ysl_store_app/features/shop/controllers/product/cart_controller.dart';
 import 'package:ysl_store_app/features/shop/models/product_model.dart';
 import 'package:ysl_store_app/features/shop/screens/product_details/widgets/button_add_to_cart_widgets.dart';
 import 'package:ysl_store_app/features/shop/screens/product_details/widgets/product_detail_image_slider.dart';
@@ -20,6 +21,9 @@ class ProductDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cartController = CartController.instance;
+    cartController.updateAlreadyAddedProductCount(product);
+    
     return Scaffold(
       bottomNavigationBar: YButtonAddToCartWidgets(product: product),
       body: SingleChildScrollView(
@@ -53,9 +57,14 @@ class ProductDetailScreen extends StatelessWidget {
                   // Check out
                   SizedBox(
                     width: double.infinity,
-                    child: ElevatedButton(
-                      onPressed: () => Get.to(() => CheckoutScreen()),
-                      child: Text('Check out'),
+                    child: Obx(
+                      () => ElevatedButton(
+                        onPressed: () {
+                          cartController.addToCart(product);
+                          Get.to(() => const CheckoutScreen());
+                        },
+                        child: Text('Check out \$${(product.salePrice > 0 ? product.salePrice : product.price) * cartController.productQuantityInCart.value}'),
+                      ),
                     ),
                   ),
                   SizedBox(height: YSizes.spaceBtwSections),
@@ -72,11 +81,11 @@ class ProductDetailScreen extends StatelessWidget {
                     trimMode: TrimMode.Line,
                     trimCollapsedText: 'Show more',
                     trimExpandedText: 'Less',
-                    moreStyle: TextStyle(
+                    moreStyle: const TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w800,
                     ),
-                    lessStyle: TextStyle(
+                    lessStyle: const TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w800,
                     ),
@@ -89,13 +98,13 @@ class ProductDetailScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       YSectionHeading(
-                        title: 'Review (33)',
+                        title: 'Reviews',
                         showActionButton: false,
                       ),
                       IconButton(
                         onPressed: () =>
-                            Get.to(() => const ProductReviewsScreen()),
-                        icon: Icon(Iconsax.arrow_right_3),
+                            Get.to(() => ProductReviewsScreen(product: product)),
+                        icon: const Icon(Iconsax.arrow_right_3),
                       ),
                     ],
                   ),

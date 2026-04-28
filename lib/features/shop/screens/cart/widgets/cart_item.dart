@@ -6,32 +6,39 @@ import '../../../../../common/widgets/product/cart/cart_item.dart';
 import '../../../../../common/widgets/texts/product_price_text.dart';
 import '../../../../../utils/constants/sizes.dart';
 import '../../../controllers/product/cart_controller.dart';
+import '../../../models/cart_item_model.dart';
 
 class CartItem extends StatelessWidget {
-  const CartItem({super.key, this.showAddRemoveButton = true});
+  const CartItem({
+    super.key,
+    this.showAddRemoveButton = true,
+    this.items,
+  });
 
   final bool showAddRemoveButton;
+  final List<CartItemModel>? items;
 
   @override
   Widget build(BuildContext context) {
     final cartController = CartController.instance;
-    return Obx(() {
+
+    Widget buildList(List<CartItemModel> sourceItems) {
+      final canModify = showAddRemoveButton && items == null;
       return ListView.separated(
         shrinkWrap: true,
-        itemCount: cartController.cartItems.length,
-        separatorBuilder: (_, __) =>
+        itemCount: sourceItems.length,
+        separatorBuilder: (_, _) =>
             const SizedBox(height: YSizes.spaceBtwSections),
-        itemBuilder: (_, index) => Obx(() {
-          final item = cartController.cartItems[index];
+        itemBuilder: (_, index) {
+          final item = sourceItems[index];
           return Column(
             children: [
               // Cart Item
               YCartItem(cartItem: item),
-              if (showAddRemoveButton)
-                const SizedBox(height: YSizes.spaceBtwItems),
+              if (canModify) const SizedBox(height: YSizes.spaceBtwItems),
 
               // Add Remove Button
-              if (showAddRemoveButton)
+              if (canModify)
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -55,8 +62,14 @@ class CartItem extends StatelessWidget {
                 ),
             ],
           );
-        }),
+        },
       );
-    });
+    }
+
+    if (items != null) {
+      return buildList(items!);
+    }
+
+    return Obx(() => buildList(cartController.cartItems));
   }
 }

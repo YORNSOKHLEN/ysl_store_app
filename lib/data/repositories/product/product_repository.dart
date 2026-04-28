@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
@@ -134,6 +136,25 @@ class ProductRepository extends GetxController {
     }
   }
 
+  /// Get random products with optional limit.
+  Future<List<ProductModel>> getRandomProducts({int limit = 6}) async {
+    try {
+      final products = await getAllProducts();
+      if (products.isEmpty) return [];
+
+      products.shuffle(Random());
+      if (limit <= 0 || limit >= products.length) return products;
+
+      return products.take(limit).toList();
+    } on FirebaseException catch (e) {
+      throw Exception(e.message ?? 'Firebase error occurred');
+    } on PlatformException catch (e) {
+      throw Exception(e.message ?? 'Platform error occurred');
+    } catch (e) {
+      throw Exception('Something went wrong. Please try again.');
+    }
+  }
+
   /// Get Products based on the Query
   Future<List<ProductModel>> getFavouriteProducts(
     List<String> productIds,
@@ -188,7 +209,7 @@ class ProductRepository extends GetxController {
     try {
       return await storage.uploadImageData(path, data, name);
     } catch (e) {
-      print('Upload failed for $name: $e');
+      debugPrint('Upload failed for $name: $e');
       return null; // return null if failed
     }
   }

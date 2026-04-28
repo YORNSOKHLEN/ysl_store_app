@@ -2,7 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:ysl_store_app/features/shop/screens/product_reviews/widgets/progress_indicator_and_rating.dart';
 
 class YOverallProductRatings extends StatelessWidget {
-  const YOverallProductRatings({super.key});
+  const YOverallProductRatings({
+    super.key,
+    required this.averageRating,
+    required this.totalReviews,
+    required this.ratingCounts,
+  });
+
+  final double averageRating;
+  final int totalReviews;
+  final Map<int, int> ratingCounts;
 
   @override
   Widget build(BuildContext context) {
@@ -10,17 +19,31 @@ class YOverallProductRatings extends StatelessWidget {
       children: [
         Expanded(
           flex: 3,
-          child: Text('4.8', style: Theme.of(context).textTheme.displayLarge),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                averageRating.toStringAsFixed(1),
+                style: Theme.of(context).textTheme.displayLarge,
+              ),
+              Text(
+                '$totalReviews Reviews',
+                style: Theme.of(context).textTheme.bodyMedium,
+              ),
+            ],
+          ),
         ),
         Expanded(
           flex: 7,
           child: Column(
             children: [
-              YRatingProgressIndicator(text: '5', value: 1),
-              YRatingProgressIndicator(text: '4', value: 0.8),
-              YRatingProgressIndicator(text: '3', value: 0.6),
-              YRatingProgressIndicator(text: '2', value: 0.4),
-              YRatingProgressIndicator(text: '1', value: 0.2),
+              for (final rating in [5, 4, 3, 2, 1])
+                YRatingProgressIndicator(
+                  text: rating.toString(),
+                  value: totalReviews == 0
+                      ? 0
+                      : (ratingCounts[rating] ?? 0) / totalReviews,
+                ),
             ],
           ),
         ),

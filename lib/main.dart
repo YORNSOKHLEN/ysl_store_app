@@ -32,8 +32,8 @@ Future<void> main() async {
   ).then((FirebaseApp value) => Get.put(AuthenticationRepository()));
 
   await FirebaseAppCheck.instance.activate(
-    androidProvider: AndroidProvider.playIntegrity,
-    // or AndroidProvider.debug for testing
+    providerAndroid: const AndroidPlayIntegrityProvider(),
+    // or const AndroidDebugProvider() for testing
   );
   runApp(const MyApp());
 }

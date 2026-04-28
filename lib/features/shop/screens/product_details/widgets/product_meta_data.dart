@@ -10,7 +10,6 @@ import 'package:ysl_store_app/utils/constants/sizes.dart';
 
 import '../../../../../common/widgets/texts/product_price_text.dart';
 import '../../../../../common/widgets/texts/product_title_text.dart';
-import '../../../../../utils/helpers/helper_functions.dart';
 
 class YProductMetaData extends StatelessWidget {
   const YProductMetaData({super.key, required this.product});
@@ -19,14 +18,12 @@ class YProductMetaData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = YHelperFunctions.isDarkMode(context);
     final controller = ProductController.instance;
     final salePercentage = controller.calculateSalePercentage(
       product.price,
       product.salePrice,
     );
     final finalPrice = controller.getFinalPrice(product);
-    final stockStatus = controller.getProductStockStatus(product.stock);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -71,16 +68,6 @@ class YProductMetaData extends StatelessWidget {
         /// Title
         YProductTitleText(title: product.title),
         const SizedBox(height: YSizes.spaceBtwItems / 1.5),
-
-        /// Stock Status
-        Row(
-          children: [
-            const YProductTitleText(title: 'Status'),
-            const SizedBox(width: YSizes.spaceBtwItems),
-            Text(stockStatus, style: Theme.of(context).textTheme.titleMedium),
-          ],
-        ),
-        const SizedBox(height: YSizes.spaceBtwItems / 2),
 
         /// Brand
         if (product.brand != null)

@@ -27,4 +27,21 @@ class YPricingCalculator {
   static double getShippingCost(String location) {
     return 2.00; // Flat $5 shipping for demonstration
   }
+
+  /// Calculates shipping from coordinates.
+  /// Returns null when the location is outside supported delivery area.
+  static double? calculateShippingFeeByCoordinates({
+    required double latitude,
+    required double longitude,
+  }) {
+    // Cambodia bounding box.
+    final inCambodia =
+        latitude >= 9.2 && latitude <= 14.9 && longitude >= 102.3 && longitude <= 108.0;
+    if (!inCambodia) return null;
+
+    // Phnom Penh zone gets lower shipping.
+    final inPhnomPenh =
+        latitude >= 11.45 && latitude <= 11.70 && longitude >= 104.75 && longitude <= 105.05;
+    return inPhnomPenh ? 1.50 : 3.00;
+  }
 }

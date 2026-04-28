@@ -5,6 +5,7 @@ import '../data/repositories/authentication/authentication_repository.dart';
 import '../data/repositories/banners/banner_repository.dart';
 import '../data/repositories/brand/brand_repository.dart';
 import '../data/repositories/category/category_repository.dart';
+import '../data/repositories/review/review_repository.dart';
 import '../data/repositories/product/product_repository.dart';
 import '../data/services/cloud_storage/firebase_storage_service.dart';
 import '../data/services/data_upload_service.dart';
@@ -26,6 +27,7 @@ class GeneralBindings extends Bindings {
     Get.lazyPut<CategoryRepository>(() => CategoryRepository(), fenix: true);
     Get.lazyPut<BrandRepository>(() => BrandRepository(), fenix: true);
     Get.lazyPut<ProductRepository>(() => ProductRepository(), fenix: true);
+    Get.lazyPut<ReviewRepository>(() => ReviewRepository(), fenix: true);
     Get.lazyPut<BannerRepository>(() => BannerRepository(), fenix: true);
 
     /// Services ADD THIS

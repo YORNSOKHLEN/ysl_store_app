@@ -20,7 +20,6 @@ class _YBillingAddressSectionState extends State<YBillingAddressSection> {
   @override
   void initState() {
     super.initState();
-    _getCurrentAddress();
   }
 
   Future<void> _getCurrentAddress() async {

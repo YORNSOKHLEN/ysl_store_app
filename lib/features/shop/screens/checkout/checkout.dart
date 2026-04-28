@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ysl_store_app/features/shop/controllers/product/cart_controller.dart';
-import 'package:ysl_store_app/features/shop/screens/checkout/widgets/billing_address_section.dart';
 import 'package:ysl_store_app/features/shop/screens/checkout/widgets/billing_amount_section.dart';
 import 'package:ysl_store_app/features/shop/screens/checkout/widgets/billing_payment_section.dart';
 
 import '../../../../common/widgets/appbar/appbar.dart';
 import '../../../../common/widgets/custom_shapes/containers/rounded_container.dart';
 import '../../../../common/widgets/product/cart/coupon_widget.dart';
-import '../../../../common/widgets/success_screen/success_screen.dart';
-import '../../../../navigation_menu.dart';
 import '../../../../utils/constants/colors.dart';
-import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/helpers/helper_functions.dart';
 import '../../../../utils/helpers/pricing_calculator.dart';
@@ -57,7 +53,10 @@ class CheckoutScreen extends StatelessWidget {
           // ),
           onPressed: subTotal > 0
               ? () => orderController.processOrder(totalAmount)
-              : () => YLoaders.warningSnackBar(title: 'Empty Cart', message: 'Add items in the cart in order to proceed.'),
+              : () => YLoaders.warningSnackBar(
+                  title: 'Empty Cart',
+                  message: 'Add items in the cart in order to proceed.',
+                ),
           child: Text('Checkout \$$totalAmount'),
         ),
       ),
@@ -94,8 +93,6 @@ class CheckoutScreen extends StatelessWidget {
                     SizedBox(height: YSizes.spaceBtwItems),
 
                     // Address
-                    YBillingAddressSection(),
-                    SizedBox(height: YSizes.spaceBtwItems),
                   ],
                 ),
               ),
