@@ -25,16 +25,16 @@ class RandomProductsTab extends StatelessWidget {
           padding: const EdgeInsets.all(YSizes.defaultSpace),
           child: Column(
             children: [
-              YSectionHeading(
-                title: 'Random Products',
-                onPressed: () => Get.to(
-                  () => AllProductsScreen(
-                    title: 'Random Products',
-                    futureMethod: controller.fetchRandomProducts(limit: -1),
-                  ),
-                ),
-              ),
-              const SizedBox(height: YSizes.spaceBtwItems),
+              // YSectionHeading(
+              //   title: 'Random Products',
+              //   onPressed: () => Get.to(
+              //     () => AllProductsScreen(
+              //       title: 'Random Products',
+              //       futureMethod: controller.fetchRandomProducts(limit: -1),
+              //     ),
+              //   ),
+              // ),
+              // const SizedBox(height: YSizes.spaceBtwItems),
               FutureBuilder(
                 future: controller.fetchRandomProducts(limit: 8),
                 builder: (context, asyncSnapshot) {

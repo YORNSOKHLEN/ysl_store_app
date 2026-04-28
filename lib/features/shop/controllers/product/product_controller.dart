@@ -26,8 +26,11 @@ class ProductController extends GetxController {
       // Show loader while loading Products
       isLoading.value = true;
 
-      // Fetch Products
-      final products = await productRepository.getFeaturedProducts();
+      // Prefer popular products (based on order count), fallback to featured.
+      var products = await productRepository.getPopularProducts(limit: 4);
+      if (products.isEmpty) {
+        products = await productRepository.getFeaturedProducts();
+      }
 
       // Assign Products
       featuredProducts.assignAll(products);
@@ -41,8 +44,11 @@ class ProductController extends GetxController {
 
   Future<List<ProductModel>> fetchAllFeaturedProducts() async {
     try {
-      // Fetch Products
-      final products = await productRepository.getFeaturedProducts();
+      // Prefer popular products (based on order count), fallback to featured.
+      var products = await productRepository.getPopularProducts(limit: 20);
+      if (products.isEmpty) {
+        products = await productRepository.getFeaturedProducts();
+      }
       return products;
     } catch (e) {
       YLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());

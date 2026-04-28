@@ -5,6 +5,7 @@ import 'brand_model.dart';
 class ProductModel {
   String id;
   int stock;
+  int orderCount;
   String? sku;
   double price;
   String title;
@@ -22,6 +23,7 @@ class ProductModel {
     required this.id,
     required this.title,
     required this.stock,
+    this.orderCount = 0,
     required this.price,
     required this.thumbnail,
     required this.productType,
@@ -40,6 +42,7 @@ class ProductModel {
     id: '',
     title: '',
     stock: 0,
+    orderCount: 0,
     price: 0,
     thumbnail: '',
     productType: '',
@@ -51,6 +54,7 @@ class ProductModel {
       'SKU': sku,
       'Title': title,
       'Stock': stock,
+      'OrderCount': orderCount,
       'Price': price,
       'Images': images ?? [],
       'Thumbnail': thumbnail,
@@ -74,6 +78,7 @@ class ProductModel {
       sku: data['SKU'],
       title: data['Title'],
       stock: data['Stock'] ?? 0,
+      orderCount: (data['OrderCount'] as num?)?.toInt() ?? 0,
       isFeatured: data['IsFeatured'] ?? false,
       price: double.parse((data['Price'] ?? 0.0).toString()),
       salePrice: double.parse((data['SalePrice'] ?? 0.0).toString()),
@@ -97,6 +102,7 @@ class ProductModel {
       sku: data['SKU']?.toString() ?? '',
       title: data['Title']?.toString() ?? '',
       stock: (data['Stock'] ?? 0) as int,
+      orderCount: (data['OrderCount'] as num?)?.toInt() ?? 0,
       isFeatured: data['IsFeatured'] ?? false,
       price: (data['Price'] as num?)?.toDouble() ?? 0.0,
       salePrice: (data['SalePrice'] as num?)?.toDouble() ?? 0.0,

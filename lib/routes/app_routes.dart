@@ -14,6 +14,7 @@ import '../features/shop/screens/checkout/checkout.dart';
 import '../features/shop/screens/home/home.dart';
 import '../features/shop/screens/order/order.dart';
 import '../features/shop/screens/product_reviews/product_reviews.dart';
+import '../features/shop/screens/sub_category/sub_categories.dart';
 import '../features/shop/screens/store/store.dart';
 import '../features/shop/screens/wishlist/wishlist.dart';
 
@@ -37,6 +38,13 @@ class AppRoutes {
     GetPage(
       name: YRoutes.settings,
       page: () => const SettingsScreen(),
+      transition: Transition.rightToLeft,
+    ),
+    GetPage(
+      name: YRoutes.subCategories,
+      page: () => CategoriesScreen(
+        categoryId: Get.arguments is String ? Get.arguments as String : '',
+      ),
       transition: Transition.rightToLeft,
     ),
     GetPage(

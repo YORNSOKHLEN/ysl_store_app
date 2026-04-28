@@ -71,6 +71,9 @@ class OrderController extends GetxController {
       // Save the order to Firestore
       await orderRepository.saveOrder(order, userId);
 
+      // Update product popularity counters based on purchased quantities.
+      await orderRepository.incrementProductOrderCounts(orderItems);
+
       // CLEAR CART AFTER SUCCESSFUL CHECKOUT
       if (clearCartAfterOrder) {
         cartController.clearCart();

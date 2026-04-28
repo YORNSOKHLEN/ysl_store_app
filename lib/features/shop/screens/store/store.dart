@@ -13,7 +13,7 @@ class StoreScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: YAppBar(
-        title: Text('Store', style: Theme.of(context).textTheme.headlineMedium),
+        title: Text('Food', style: Theme.of(context).textTheme.headlineMedium),
         action: [YCartCounterIcon(onPressed: () => Get.to(() => CartScreen()))],
       ),
       body: const RandomProductsTab(),

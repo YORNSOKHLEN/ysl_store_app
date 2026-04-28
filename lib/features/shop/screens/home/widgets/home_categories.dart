@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import '../../../../../common/widgets/image_text_widgets/vertical_image_text.dart';
 import '../../../../../common/widgets/shimmers/category_shimmer.dart';
 import '../../../controllers/category_controller.dart';
-import '../../sub_category/sub_categories.dart';
+import '../../../../../routes/routes.dart';
 
 class YHomeCategories extends StatelessWidget {
   const YHomeCategories({super.key});
@@ -35,7 +35,10 @@ class YHomeCategories extends StatelessWidget {
             return YVerticalImageText(
               image: category.image,
               title: category.name,
-              onTap: () => Get.to(() => CategoriesScreen(category: category)),
+              onTap: () => Get.toNamed(
+                YRoutes.subCategories,
+                arguments: category.id,
+              ),
             );
           },
         ),
