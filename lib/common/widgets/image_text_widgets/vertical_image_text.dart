@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ysl_store_app/common/widgets/images/circular_image.dart';
+import 'package:fast_food/common/widgets/images/circular_image.dart';
 
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/sizes.dart';

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ysl_store_app/features/shop/controllers/product/cart_controller.dart';
-import 'package:ysl_store_app/features/shop/screens/checkout/widgets/billing_amount_section.dart';
-import 'package:ysl_store_app/features/shop/screens/checkout/widgets/billing_payment_section.dart';
+import 'package:fast_food/features/shop/controllers/product/cart_controller.dart';
+import 'package:fast_food/features/shop/screens/checkout/widgets/billing_amount_section.dart';
+import 'package:fast_food/features/shop/screens/checkout/widgets/billing_payment_section.dart';
 
 import '../../../../common/widgets/appbar/appbar.dart';
 import '../../../../common/widgets/custom_shapes/containers/rounded_container.dart';

@@ -1,6 +1,6 @@
 {
-    "name": "ysl_store_app",
-    "short_name": "ysl_store_app",
+    "name": "Fast Food",
+    "short_name": "Fast Food",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

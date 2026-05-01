@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:ysl_store_app/common/widgets/custom_shapes/containers/rounded_container.dart';
-import 'package:ysl_store_app/common/widgets/images/circular_image.dart';
-import 'package:ysl_store_app/common/widgets/texts/brand_title_text_with_verified_icon.dart';
-import 'package:ysl_store_app/features/shop/controllers/product/product_controller.dart';
-import 'package:ysl_store_app/features/shop/models/product_model.dart';
-import 'package:ysl_store_app/utils/constants/colors.dart';
-import 'package:ysl_store_app/utils/constants/enums.dart';
-import 'package:ysl_store_app/utils/constants/sizes.dart';
+import 'package:fast_food/common/widgets/custom_shapes/containers/rounded_container.dart';
+import 'package:fast_food/common/widgets/images/circular_image.dart';
+import 'package:fast_food/common/widgets/texts/brand_title_text_with_verified_icon.dart';
+import 'package:fast_food/features/shop/controllers/product/product_controller.dart';
+import 'package:fast_food/features/shop/models/product_model.dart';
+import 'package:fast_food/utils/constants/colors.dart';
+import 'package:fast_food/utils/constants/enums.dart';
+import 'package:fast_food/utils/constants/sizes.dart';
 
 import '../../../../../common/widgets/texts/product_price_text.dart';
 import '../../../../../common/widgets/texts/product_title_text.dart';

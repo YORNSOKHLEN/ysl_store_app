@@ -1,5 +1,5 @@
-import 'package:ysl_store_app/features/shop/models/product_model.dart';
-import 'package:ysl_store_app/features/shop/models/product_variation_model.dart';
+import 'package:fast_food/features/shop/models/product_model.dart';
+import 'package:fast_food/features/shop/models/product_variation_model.dart';
 
 import '../../../utils/constants/image_strings.dart';
 

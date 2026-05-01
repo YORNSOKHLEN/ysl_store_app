@@ -244,7 +244,7 @@ class YDummyData {
   static final List<ProductModel> products = [
     ProductModel(
       id: '001',
-      title: 'Texas Double Whopper',
+      title: 'Texas Double Whopper Burger',
       productType: 'ProductType.single',
       stock: 150,
       price: 10,
@@ -319,7 +319,7 @@ class YDummyData {
     ),
     ProductModel(
       id: '002',
-      title: 'Original Chicken Sandwich',
+      title: 'Original Chicken Sandwich Burger',
       productType: 'ProductType.single',
       stock: 150,
       price: 12,
@@ -394,7 +394,7 @@ class YDummyData {
     ),
     ProductModel(
       id: '003',
-      title: 'Whopper with Cheese',
+      title: 'Whopper with Cheese Burger',
       productType: 'ProductType.single',
       stock: 150,
       price: 7,
@@ -469,7 +469,7 @@ class YDummyData {
     ),
     ProductModel(
       id: '004',
-      title: 'Seafood Pizza',
+      title: 'Seafood Pizza ',
       productType: 'ProductType.single',
       stock: 150,
       price: 13,

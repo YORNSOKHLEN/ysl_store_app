@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ysl_store_app/common/widgets/appbar/appbar.dart';
-import 'package:ysl_store_app/common/widgets/product/cart/cart_menu_icon.dart';
-import 'package:ysl_store_app/features/shop/screens/store/widgets/random_products_tab.dart';
+import 'package:fast_food/common/widgets/appbar/appbar.dart';
+import 'package:fast_food/common/widgets/product/cart/cart_menu_icon.dart';
+import 'package:fast_food/features/shop/screens/store/widgets/random_products_tab.dart';
 
 import '../cart/cart.dart';
 

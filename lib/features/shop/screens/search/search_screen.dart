@@ -5,18 +5,49 @@ import 'package:iconsax/iconsax.dart';
 import '../../../../common/widgets/appbar/appbar.dart';
 import '../../../../common/widgets/layouts/grid_layout.dart';
 import '../../../../common/widgets/product/product_cards/product_card_vertical.dart';
-import '../../../../common/widgets/shimmers/vertical_product_shimmer.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../controllers/product/product_controller.dart';
 
-class SearchScreen extends StatelessWidget {
-  const SearchScreen({super.key});
+class SearchScreen extends StatefulWidget {
+  const SearchScreen({super.key, this.initialQuery});
+
+  final String? initialQuery;
+
+  @override
+  State<SearchScreen> createState() => _SearchScreenState();
+}
+
+class _SearchScreenState extends State<SearchScreen> {
+  late final ProductController productController;
+  late final TextEditingController searchController;
+
+  @override
+  void initState() {
+    super.initState();
+    productController = Get.put(ProductController());
+    searchController = TextEditingController(
+      text: widget.initialQuery?.trim() ?? '',
+    );
+
+    // If an initial query was provided, perform the search once
+    final init = widget.initialQuery?.trim();
+    if (init != null && init.isNotEmpty) {
+      // use a post-frame callback to ensure UI is ready
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        productController.searchProducts(init);
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    productController.clearSearchResults();
+    searchController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final productController = Get.put(ProductController());
-    final searchController = TextEditingController();
-
     return Scaffold(
       appBar: YAppBar(
         showBackArrow: true,
@@ -29,22 +60,23 @@ class SearchScreen extends StatelessWidget {
             suffixIcon: IconButton(
               icon: const Icon(Iconsax.search_normal),
               onPressed: () {
-                if (searchController.text.isNotEmpty) {
-                  productController.searchProducts(searchController.text);
-                }
+                productController.searchProducts(searchController.text);
               },
             ),
           ),
+          onChanged: (value) {
+            productController.searchProducts(value);
+          },
           onSubmitted: (value) {
-            if (value.isNotEmpty) {
-              productController.searchProducts(value);
-            }
+            productController.searchProducts(value);
           },
         ),
       ),
       body: Obx(() {
         if (productController.isLoading.value) {
-          return const YVerticalProductShimmer();
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
         }
 
         if (productController.searchResults.isEmpty &&

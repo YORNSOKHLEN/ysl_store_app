@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:ysl_store_app/common/widgets/icons/circular_icon.dart';
-import 'package:ysl_store_app/features/shop/controllers/product/cart_controller.dart';
-import 'package:ysl_store_app/features/shop/models/product_model.dart';
+import 'package:fast_food/common/widgets/icons/circular_icon.dart';
+import 'package:fast_food/features/shop/controllers/product/cart_controller.dart';
+import 'package:fast_food/features/shop/models/product_model.dart';
 
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/sizes.dart';

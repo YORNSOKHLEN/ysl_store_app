@@ -1,11 +1,11 @@
 // import 'package:flutter/cupertino.dart';
 // import 'package:flutter/material.dart';
 // import 'package:get/get.dart';
-// import 'package:ysl_store_app/data/repositories/authentication/authentication_repository.dart';
-// import 'package:ysl_store_app/features/authentication/screens/login/login.dart';
-// import 'package:ysl_store_app/utils/constants/image_strings.dart';
-// import 'package:ysl_store_app/utils/constants/sizes.dart';
-// import 'package:ysl_store_app/utils/helpers/helper_functions.dart';
+// import 'package:fast_food/data/repositories/authentication/authentication_repository.dart';
+// import 'package:fast_food/features/authentication/screens/login/login.dart';
+// import 'package:fast_food/utils/constants/image_strings.dart';
+// import 'package:fast_food/utils/constants/sizes.dart';
+// import 'package:fast_food/utils/helpers/helper_functions.dart';
 //
 // import '../../../../../utils/constants/text_strings.dart';
 // import '../../../controllers/signup/verify_email_controller.dart';
@@ -87,10 +87,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ysl_store_app/data/repositories/authentication/authentication_repository.dart';
-import 'package:ysl_store_app/utils/constants/image_strings.dart';
-import 'package:ysl_store_app/utils/constants/sizes.dart';
-import 'package:ysl_store_app/utils/helpers/helper_functions.dart';
+import 'package:fast_food/data/repositories/authentication/authentication_repository.dart';
+import 'package:fast_food/utils/constants/image_strings.dart';
+import 'package:fast_food/utils/constants/sizes.dart';
+import 'package:fast_food/utils/helpers/helper_functions.dart';
 
 import '../../../../../utils/constants/text_strings.dart';
 import '../../../controllers/signup/verify_email_controller.dart';

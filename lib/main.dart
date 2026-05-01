@@ -3,10 +3,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
-import 'package:ysl_store_app/routes/app_routes.dart';
-import 'package:ysl_store_app/utils/constants/colors.dart';
-import 'package:ysl_store_app/utils/local_storage/storage_utility.dart';
-import 'package:ysl_store_app/utils/theme/theme.dart';
+import 'package:fast_food/routes/app_routes.dart';
+import 'package:fast_food/utils/constants/colors.dart';
+import 'package:fast_food/utils/local_storage/storage_utility.dart';
+import 'package:fast_food/utils/theme/theme.dart';
 
 import 'bindings/general_bindings.dart';
 import 'data/repositories/authentication/authentication_repository.dart';

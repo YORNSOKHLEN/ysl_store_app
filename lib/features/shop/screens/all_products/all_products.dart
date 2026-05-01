@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ysl_store_app/common/widgets/shimmers/vertical_product_shimmer.dart';
-import 'package:ysl_store_app/utils/helpers/cloud_helper_functions.dart';
+import 'package:fast_food/common/widgets/shimmers/vertical_product_shimmer.dart';
+import 'package:fast_food/utils/helpers/cloud_helper_functions.dart';
 
 import '../../../../common/widgets/appbar/appbar.dart';
 import '../../../../common/widgets/product/sortable/sortable_products.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ysl_store_app/utils/constants/image_strings.dart';
-import 'package:ysl_store_app/utils/popups/loaders.dart';
+import 'package:fast_food/utils/constants/image_strings.dart';
+import 'package:fast_food/utils/popups/loaders.dart';
 
 import '../../../../data/repositories/authentication/authentication_repository.dart';
 import '../../../../data/repositories/user/user_repository.dart';

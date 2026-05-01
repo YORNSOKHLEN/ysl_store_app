@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ysl_store_app/utils/helpers/pricing_calculator.dart';
+import 'package:fast_food/utils/helpers/pricing_calculator.dart';
 
 import '../../../../../utils/constants/sizes.dart';
 import '../../../controllers/product/cart_controller.dart';

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ysl_store_app/features/authentication/screens/onboarding/widgets/onboarding_navigation.dart';
-import 'package:ysl_store_app/features/authentication/screens/onboarding/widgets/onboarding_next_button.dart';
-import 'package:ysl_store_app/features/authentication/screens/onboarding/widgets/onboarding_page.dart';
-import 'package:ysl_store_app/features/authentication/screens/onboarding/widgets/onboarding_skip.dart';
-import 'package:ysl_store_app/utils/constants/image_strings.dart';
-import 'package:ysl_store_app/utils/constants/text_strings.dart';
+import 'package:fast_food/features/authentication/screens/onboarding/widgets/onboarding_navigation.dart';
+import 'package:fast_food/features/authentication/screens/onboarding/widgets/onboarding_next_button.dart';
+import 'package:fast_food/features/authentication/screens/onboarding/widgets/onboarding_page.dart';
+import 'package:fast_food/features/authentication/screens/onboarding/widgets/onboarding_skip.dart';
+import 'package:fast_food/utils/constants/image_strings.dart';
+import 'package:fast_food/utils/constants/text_strings.dart';
 
 import '../../controllers/onboarding/onboarding_controller.dart';
 

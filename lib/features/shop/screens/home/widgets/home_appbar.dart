@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ysl_store_app/features/personalization/controllers/user_controller.dart';
+import 'package:fast_food/features/personalization/controllers/user_controller.dart';
 
 import '../../../../../common/widgets/appbar/appbar.dart';
 import '../../../../../common/widgets/product/cart/cart_menu_icon.dart';

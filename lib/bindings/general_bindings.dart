@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:ysl_store_app/features/shop/controllers/product/checkout_controller.dart';
+import 'package:fast_food/features/shop/controllers/product/checkout_controller.dart';
 
 import '../data/repositories/authentication/authentication_repository.dart';
 import '../data/repositories/banners/banner_repository.dart';

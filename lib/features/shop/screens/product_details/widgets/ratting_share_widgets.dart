@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:get/get.dart';
 
-import 'package:ysl_store_app/data/repositories/review/review_repository.dart';
-import 'package:ysl_store_app/features/shop/models/review_model.dart';
+import 'package:fast_food/data/repositories/review/review_repository.dart';
+import 'package:fast_food/features/shop/models/review_model.dart';
 import '../../../../../utils/constants/sizes.dart';
 import '../../../../../features/shop/models/product_model.dart';
 

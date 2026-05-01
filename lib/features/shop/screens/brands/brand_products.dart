@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:ysl_store_app/common/widgets/appbar/appbar.dart';
-import 'package:ysl_store_app/common/widgets/brands/brand_card.dart';
-import 'package:ysl_store_app/features/shop/controllers/brand_controller.dart';
-import 'package:ysl_store_app/utils/constants/sizes.dart';
+import 'package:fast_food/common/widgets/appbar/appbar.dart';
+import 'package:fast_food/common/widgets/brands/brand_card.dart';
+import 'package:fast_food/features/shop/controllers/brand_controller.dart';
+import 'package:fast_food/utils/constants/sizes.dart';
 
 import '../../../../common/widgets/product/sortable/sortable_products.dart';
 import '../../../../common/widgets/shimmers/vertical_product_shimmer.dart';
