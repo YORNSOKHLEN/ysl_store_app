@@ -16,18 +16,21 @@ class YGridLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      itemCount: itemCount,
-      shrinkWrap: true,
-      padding: EdgeInsets.zero,
-      physics: NeverScrollableScrollPhysics(),
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        crossAxisSpacing: YSizes.gridViewSpacing,
-        mainAxisSpacing: YSizes.gridViewSpacing,
-        mainAxisExtent: mainAxisExtent,
+    return Align(
+      alignment: Alignment.topCenter,
+      child: GridView.builder(
+        itemCount: itemCount,
+        shrinkWrap: true,
+        padding: EdgeInsets.zero,
+        physics: NeverScrollableScrollPhysics(),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: YSizes.gridViewSpacing,
+          mainAxisSpacing: YSizes.gridViewSpacing,
+          mainAxisExtent: mainAxisExtent,
+        ),
+        itemBuilder: itemBuilder,
       ),
-      itemBuilder: itemBuilder,
     );
   }
 }

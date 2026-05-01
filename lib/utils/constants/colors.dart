@@ -6,6 +6,7 @@ class YColors {
   // App basic colors
   static const Color primary = Color(0xfffd7e1a);
   static const Color secondary = Color(0xFFFFE248);
+  static const Color discount = Color(0xB0F6CD1A);
   static const Color accent = Color(0xFFb8c7ff);
   static const Color white = Color(0xFFFFFFFF);
   static const Color black = Color(0xFF232323);

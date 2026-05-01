@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:get/get.dart';
 
 import '../../../../utils/local_storage/storage_utility.dart';
@@ -19,6 +21,16 @@ class CartController extends GetxController {
   void onInit() {
     super.onInit();
     loadCartItems();
+
+    /// Auto-save cart whenever items change (same pattern as wishlist/favorites)
+    ever(cartItems, (_) => saveCartItems());
+  }
+
+  @override
+  void onClose() {
+    /// Save cart when controller is disposed (app closes)
+    saveCartItems();
+    super.onClose();
   }
 
   /// ADD TO CART
@@ -168,18 +180,28 @@ class CartController extends GetxController {
   }
 
   void saveCartItems() {
-    YLocalStorage.instance().saveData(
-      'cartItems',
+    /// Encode cart items to JSON (same pattern as wishlist/favorites)
+    final encodedCart = json.encode(
       cartItems.map((e) => e.toJson()).toList(),
     );
+    YLocalStorage.instance().saveData('cartItems', encodedCart);
   }
 
   void loadCartItems() {
-    final data = YLocalStorage.instance().readData<List<dynamic>>('cartItems');
+    /// Load cart items from JSON storage (same pattern as wishlist/favorites)
+    final jsonString = YLocalStorage.instance().readData<String>('cartItems');
 
-    if (data != null) {
-      cartItems.assignAll(data.map((e) => CartItemModel.fromJson(e)));
-      updateCartTotals();
+    if (jsonString != null) {
+      try {
+        final decodedData = jsonDecode(jsonString) as List<dynamic>;
+        cartItems.assignAll(
+          decodedData.map((e) => CartItemModel.fromJson(e as Map<String, dynamic>)),
+        );
+        updateCartTotals();
+      } catch (e) {
+        // Handle JSON decode error
+        YLoaders.customToast(message: 'Error loading cart');
+      }
     }
   }
 
@@ -194,5 +216,8 @@ class CartController extends GetxController {
     productQuantityInCart.value = 0;
     cartItems.clear();
     updateCart();
+
+    /// Also clear from storage
+    YLocalStorage.instance().removeData('cartItems');
   }
 }

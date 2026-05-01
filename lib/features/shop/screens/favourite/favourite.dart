@@ -23,7 +23,7 @@ class FavouriteScreen extends StatelessWidget {
     return Scaffold(
       appBar: YAppBar(
         title: Text(
-          'Wishlist',
+          'Favorites',
           style: Theme.of(context).textTheme.headlineMedium,
         ),
         action: [
@@ -45,7 +45,7 @@ class FavouriteScreen extends StatelessWidget {
               builder: (context, snapshot) {
                 /// Nothing Found Widget
                 final emptyWidget = YAnimationLoaderWidget(
-                  text: 'Whoops! Wishlist is Empty...',
+                  text: 'Whoops! Favorites is Empty...',
                   animation: YImage.docerAnimation,
                   showAction: true,
                   actionText: 'Let\'s add some',
@@ -78,3 +78,4 @@ class FavouriteScreen extends StatelessWidget {
     );
   }
 }
+

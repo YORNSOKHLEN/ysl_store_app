@@ -8,12 +8,14 @@ class YProductPriceText extends StatelessWidget {
     this.isLarge = false,
     this.currencySing = '\$',
     this.lineThrough = false,
+    this.color,
   });
 
   final String price, currencySing;
   final int maxLines;
   final bool isLarge;
   final bool lineThrough;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +25,11 @@ class YProductPriceText extends StatelessWidget {
       overflow: TextOverflow.ellipsis,
       style: isLarge
           ? Theme.of(context).textTheme.headlineMedium!.apply(
+              color: color,
               decoration: lineThrough ? TextDecoration.lineThrough : null,
             )
           : Theme.of(context).textTheme.titleLarge!.apply(
+              color: color,
               decoration: lineThrough ? TextDecoration.lineThrough : null,
             ),
     );

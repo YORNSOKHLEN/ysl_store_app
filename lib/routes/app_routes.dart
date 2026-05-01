@@ -16,7 +16,7 @@ import '../features/shop/screens/order/order.dart';
 import '../features/shop/screens/product_reviews/product_reviews.dart';
 import '../features/shop/screens/sub_category/sub_categories.dart';
 import '../features/shop/screens/store/store.dart';
-import '../features/shop/screens/wishlist/wishlist.dart';
+import '../features/shop/screens/favourite/favourite.dart';
 
 class AppRoutes {
   static final pages = [

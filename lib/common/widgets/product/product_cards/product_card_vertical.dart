@@ -33,17 +33,26 @@ class ProductCardVertical extends StatelessWidget {
     final isOutOfStock = product.stock <= 0;
 
     return GestureDetector(
-      onTap: () => Get.to(() => ProductDetailScreen(product: product)),
+      onTap: isOutOfStock ? null : () => Get.to(() => ProductDetailScreen(product: product)),
       child: Container(
         width: 180,
-        padding: EdgeInsets.all(1),
+        padding: EdgeInsets.all(YSizes.xs),
         decoration: BoxDecoration(
-          boxShadow: [YShadowStyle.verticalProductShadow],
+          boxShadow: [
+            YShadowStyle.verticalProductShadow,
+            // Enhanced shadow for depth
+            if (!dark)
+              BoxShadow(
+                color: Colors.black.withValues(alpha: 0.08),
+                blurRadius: 12,
+                offset: Offset(0, 4),
+              ),
+          ],
           borderRadius: BorderRadius.circular(YSizes.productImageRadius),
           color: dark ? YColors.darkerGrey : YColors.white,
         ),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             //  Thumbnail, Wishlist Button, Discount
             YRoundedContainer(
@@ -51,120 +60,156 @@ class ProductCardVertical extends StatelessWidget {
               padding: const EdgeInsets.all(YSizes.sm),
               backgroundColor: dark ? YColors.darkerGrey : YColors.light,
               child: Stack(
+                alignment: Alignment.center,
                 children: [
                   // Thumbnail Image with opacity if out of stock
-                  YRoundedImage(
-                    imageUrl: product.thumbnail,
-                    applyImageRadius: true,
-                    isNetworkImage: true,
+                  Center(
+                    child: YRoundedImage(
+                      imageUrl: product.thumbnail,
+                      applyImageRadius: true,
+                      isNetworkImage: true,
+                    ),
                   ),
 
-                  // Discount badge - only show if there's a sale
-                  if (salePercentage != null)
-                    Positioned(
-                      top: 12,
-                      child: YRoundedContainer(
-                        radius: YSizes.sm,
-                        backgroundColor: YColors.secondary.withOpacity(0.8),
-                        padding: EdgeInsets.symmetric(
-                          horizontal: YSizes.sm,
-                          vertical: YSizes.xs,
-                        ),
-                        child: Text(
-                          '$salePercentage%',
-                          style: Theme.of(
-                            context,
-                          ).textTheme.labelLarge!.apply(color: YColors.black),
+                  // Overlay for out of stock
+                  if (isOutOfStock)
+                    Positioned.fill(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(YSizes.md),
+                          color: Colors.black.withValues(alpha: 0.4),
                         ),
                       ),
                     ),
 
-                  // Stock status badge
-                  if (isOutOfStock)
+                  // Discount badge - show only when product has a discount
+                  if (salePercentage != null && int.tryParse(salePercentage) != null && int.parse(salePercentage) > 0 && !isOutOfStock)
                     Positioned(
-                      bottom: 12,
+                      top: 12,
                       left: 12,
                       child: YRoundedContainer(
                         radius: YSizes.sm,
-                        backgroundColor: YColors.error.withOpacity(0.8),
-                        padding: EdgeInsets.symmetric(
-                          horizontal: YSizes.sm,
-                          vertical: YSizes.xs,
+                        backgroundColor: YColors.discount.withValues(alpha: 0.8),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 4,
                         ),
                         child: Text(
+                          '-$salePercentage%',
+                          style: Theme.of(context).textTheme.labelSmall!.apply(
+                            color: YColors.white,
+                            fontWeightDelta: 1,
+                          ),
+                        ),
+                      ),
+                    ),
+
+
+                  // Stock status badge
+                  if (isOutOfStock)
+                    Positioned(
+                      bottom: 0,
+                      left: 0,
+                      right: 0,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: YColors.error.withValues(alpha: 0.9),
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(YSizes.md),
+                            bottomRight: Radius.circular(YSizes.md),
+                          ),
+                        ),
+                        padding: EdgeInsets.symmetric(vertical: 6),
+                        child: Text(
                           'Out of Stock',
-                          style: Theme.of(
-                            context,
-                          ).textTheme.labelSmall!.apply(color: YColors.white),
+                          textAlign: TextAlign.center,
+                          style: Theme.of(context).textTheme.labelSmall!.apply(
+                            color: YColors.white,
+                            fontWeightDelta: 1,
+                          ),
                         ),
                       ),
                     ),
 
                   // Favourite/Wishlist Button with GetX reactive state
                   Positioned(
-                    top: 0,
-                    right: 0,
+                    top: 8,
+                    right: 8,
                     child: YFavouriteIcon(productId: product.id),
                   ),
                 ],
               ),
             ),
-            const SizedBox(height: YSizes.spaceBtwSections / 2),
+            const SizedBox(height: YSizes.spaceBtwItems),
 
-            // Detail
+            // Detail Section
             Padding(
-              padding: EdgeInsets.only(left: YSizes.sm, right: YSizes.sm),
+              padding: EdgeInsets.symmetric(horizontal: YSizes.sm),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  YProductTitleText(title: product.title, smallSize: true),
-                  const SizedBox(height: YSizes.spaceBtwSections / 2),
+                  // Brand Name
                   YBrandTitleWithVerifiedIcon(
                     title: product.brand?.name ?? 'Unknown',
+                  ),
+                  const SizedBox(height: 4),
+                  // Product Title
+                  YProductTitleText(
+                    title: product.title,
+                    smallSize: true,
                   ),
                 ],
               ),
             ),
-            Spacer(),
-            // Row Price and Add to Cart
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                /// Price Section
-                Flexible(
-                  child: Column(
+            const Spacer(),
+
+            // Price and Add to Cart Section
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: YSizes.sm),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Price Row
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Original price with strikethrough if on sale
-                      if (product.productType ==
-                              ProductType.single.toString() &&
-                          product.salePrice > 0)
-                        Padding(
-                          padding: const EdgeInsets.only(left: YSizes.sm),
-                          child: Text(
-                            product.price.toString(),
-                            style: Theme.of(context).textTheme.bodySmall!.apply(
-                              decoration: TextDecoration.lineThrough,
-                              color: YColors.darkGrey,
-                            ),
-                          ),
-                        ),
+                      /// Price Section
+                      Flexible(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            // Original price with strikethrough if on sale
+                            if (product.productType ==
+                                    ProductType.single.toString() &&
+                                product.salePrice > 0)
+                              Text(
+                                '\$${product.price.toStringAsFixed(2)}',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodySmall!
+                                    .apply(
+                                      decoration: TextDecoration.lineThrough,
+                                      color: YColors.darkGrey,
+                                    ),
+                              ),
 
-                      // Current/Sale price
-                      Padding(
-                        padding: const EdgeInsets.only(left: YSizes.sm),
-                        child: YProductPriceText(
-                          price: controller.getProductPrice(product).toString(),
+                            // Current/Sale price
+                            YProductPriceText(
+                              price: controller.getFinalPrice(product),
+                            ),
+                          ],
                         ),
                       ),
+
+                      // Add to cart button
+                      ProductCartAddToCart(product: product),
                     ],
                   ),
-                ),
-
-                // Add to cart button
-                ProductCartAddToCart(product: product),
-              ],
+                ],
+              ),
             ),
+            const SizedBox(height: YSizes.sm),
           ],
         ),
       ),

@@ -14,16 +14,44 @@ import 'package:fast_food/utils/constants/sizes.dart';
 import '../checkout/checkout.dart';
 import '../product_reviews/product_reviews.dart';
 
-class ProductDetailScreen extends StatelessWidget {
+class ProductDetailScreen extends StatefulWidget {
   const ProductDetailScreen({super.key, required this.product});
 
   final ProductModel product;
 
   @override
+  State<ProductDetailScreen> createState() => _ProductDetailScreenState();
+}
+
+class _ProductDetailScreenState extends State<ProductDetailScreen> {
+  late final CartController cartController;
+  bool _isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    cartController = CartController.instance;
+    cartController.updateAlreadyAddedProductCount(widget.product);
+
+    Future.delayed(const Duration(milliseconds: 250), () {
+      if (mounted) {
+        setState(() => _isLoading = false);
+      }
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final cartController = CartController.instance;
-    cartController.updateAlreadyAddedProductCount(product);
-    
+    if (_isLoading) {
+      return const Scaffold(
+        body: Center(
+          child: CircularProgressIndicator(),
+        ),
+      );
+    }
+
+    final product = widget.product;
+
     return Scaffold(
       bottomNavigationBar: YButtonAddToCartWidgets(product: product),
       body: SingleChildScrollView(
