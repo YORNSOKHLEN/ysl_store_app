@@ -103,8 +103,22 @@ class UserRepository extends GetxController {
   /// Upload any Image
   Future<String> uploadImage(String path, XFile image) async {
     try {
-      // Create a reference to the storage location
-      final ref = FirebaseStorage.instance.ref(path).child(image.name);
+      final userId = AuthenticationRepository.instance.authUser?.uid;
+      if (userId == null || userId.isEmpty) {
+        throw Exception('User not authenticated. Cannot upload profile image.');
+      }
+
+      final extension = image.path.contains('.')
+          ? image.path.split('.').last
+          : 'jpg';
+      final fileName = '${DateTime.now().millisecondsSinceEpoch}.$extension';
+
+      // Store each upload under the authenticated user folder.
+      final ref = FirebaseStorage.instance
+          .ref()
+          .child(path)
+          .child(userId)
+          .child(fileName);
 
       // Upload the file
       await ref.putFile(File(image.path));

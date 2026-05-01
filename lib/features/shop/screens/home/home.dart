@@ -4,6 +4,7 @@ import 'package:ysl_store_app/common/widgets/product/product_cards/product_card_
 import 'package:ysl_store_app/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:ysl_store_app/features/shop/screens/home/widgets/home_categories.dart';
 import 'package:ysl_store_app/features/shop/screens/home/widgets/promo_slider.dart';
+import 'package:ysl_store_app/utils/constants/image_strings.dart';
 import 'package:ysl_store_app/utils/constants/sizes.dart';
 
 import '../../../../common/widgets/custom_shapes/containers/primary_header_container.dart';

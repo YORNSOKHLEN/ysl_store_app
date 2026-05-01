@@ -41,52 +41,50 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBq61AxoGM121_JrSYIpNR8eRAs1ZY1Hew',
-    appId: '1:328649122836:web:ea8b7d1201f220023eb301',
-    messagingSenderId: '328649122836',
-    projectId: 'ysl-store-app',
-    authDomain: 'ysl-store-app.firebaseapp.com',
-    storageBucket: 'ysl-store-app.firebasestorage.app',
-    measurementId: 'G-ZGXRQZG4E6',
+    apiKey: 'AIzaSyBk-JEwQ9R4p1X6dNHkJBjERfjY80Xe37M',
+    appId: '1:222234766033:web:42acbe53c6ce9e677bf3f0',
+    messagingSenderId: '222234766033',
+    projectId: 'fast-food-app-kh',
+    authDomain: 'fast-food-app-kh.firebaseapp.com',
+    storageBucket: 'fast-food-app-kh.firebasestorage.app',
+    measurementId: 'G-WH40SN327T',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCZXSuDQ1ZgdFVt3yxUaR4dclhl4PkjPHE',
-    appId: '1:328649122836:android:7a2f2f99f190b38b3eb301',
-    messagingSenderId: '328649122836',
-    projectId: 'ysl-store-app',
-    storageBucket: 'ysl-store-app.firebasestorage.app',
+    apiKey: 'AIzaSyCfCqHMiB3hEv6F1tgIXvNUwDpg0yP7JYo',
+    appId: '1:222234766033:android:d832185e5f83a6217bf3f0',
+    messagingSenderId: '222234766033',
+    projectId: 'fast-food-app-kh',
+    storageBucket: 'fast-food-app-kh.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyA-yluKfr9YnV1YAI9PrPyja0BBnK5ptvk',
-    appId: '1:328649122836:ios:ab57ac109e8e03253eb301',
-    messagingSenderId: '328649122836',
-    projectId: 'ysl-store-app',
-    storageBucket: 'ysl-store-app.firebasestorage.app',
-    androidClientId: '328649122836-2iuduln24qs5vdn0esqsas053hojmkiu.apps.googleusercontent.com',
-    iosClientId: '328649122836-3gfn6c111lp3tfst36gf5unnpmt9q36g.apps.googleusercontent.com',
+    apiKey: 'AIzaSyBQvShV8KlbJaLTSgHOcFrVMz2g6lBj5So',
+    appId: '1:222234766033:ios:02c5fa0834aade307bf3f0',
+    messagingSenderId: '222234766033',
+    projectId: 'fast-food-app-kh',
+    storageBucket: 'fast-food-app-kh.firebasestorage.app',
+    iosClientId: '222234766033-ianflkffltum3s6ikjtqle6v0emdgusm.apps.googleusercontent.com',
     iosBundleId: 'com.example.yslStoreApp',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyA-yluKfr9YnV1YAI9PrPyja0BBnK5ptvk',
-    appId: '1:328649122836:ios:ab57ac109e8e03253eb301',
-    messagingSenderId: '328649122836',
-    projectId: 'ysl-store-app',
-    storageBucket: 'ysl-store-app.firebasestorage.app',
-    androidClientId: '328649122836-2iuduln24qs5vdn0esqsas053hojmkiu.apps.googleusercontent.com',
-    iosClientId: '328649122836-3gfn6c111lp3tfst36gf5unnpmt9q36g.apps.googleusercontent.com',
+    apiKey: 'AIzaSyBQvShV8KlbJaLTSgHOcFrVMz2g6lBj5So',
+    appId: '1:222234766033:ios:02c5fa0834aade307bf3f0',
+    messagingSenderId: '222234766033',
+    projectId: 'fast-food-app-kh',
+    storageBucket: 'fast-food-app-kh.firebasestorage.app',
+    iosClientId: '222234766033-ianflkffltum3s6ikjtqle6v0emdgusm.apps.googleusercontent.com',
     iosBundleId: 'com.example.yslStoreApp',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyBq61AxoGM121_JrSYIpNR8eRAs1ZY1Hew',
-    appId: '1:328649122836:web:0dd07236b2a773603eb301',
-    messagingSenderId: '328649122836',
-    projectId: 'ysl-store-app',
-    authDomain: 'ysl-store-app.firebaseapp.com',
-    storageBucket: 'ysl-store-app.firebasestorage.app',
-    measurementId: 'G-SVS6CP9JWG',
+    apiKey: 'AIzaSyBk-JEwQ9R4p1X6dNHkJBjERfjY80Xe37M',
+    appId: '1:222234766033:web:e5f57ef5e945d4067bf3f0',
+    messagingSenderId: '222234766033',
+    projectId: 'fast-food-app-kh',
+    authDomain: 'fast-food-app-kh.firebaseapp.com',
+    storageBucket: 'fast-food-app-kh.firebasestorage.app',
+    measurementId: 'G-236VXS8J53',
   );
 }

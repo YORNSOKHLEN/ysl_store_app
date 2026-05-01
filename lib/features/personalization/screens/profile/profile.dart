@@ -31,8 +31,9 @@ class ProfileScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     Obx(() {
-                      final networkImage = controller.user.value.profilePicture;
-                      final image = networkImage!.isNotEmpty
+                      final networkImage =
+                          controller.user.value.profilePicture ?? '';
+                      final image = networkImage.isNotEmpty
                           ? networkImage
                           : YImage.user;
                       return controller.imageUpLoading.value
@@ -41,6 +42,8 @@ class ProfileScreen extends StatelessWidget {
                               image: image,
                               width: 80,
                               height: 80,
+                              padding: 0,
+                              backgroundColor: Colors.transparent,
                               isNetworkImage: networkImage.isNotEmpty,
                             );
                     }),
