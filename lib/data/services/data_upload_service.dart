@@ -1,12 +1,12 @@
 import 'package:get/get.dart';
-import 'package:ysl_store_app/data/dummy/dummy_data.dart';
-import 'package:ysl_store_app/data/repositories/banners/banner_repository.dart';
-import 'package:ysl_store_app/data/repositories/brand/brand_repository.dart';
-import 'package:ysl_store_app/data/repositories/category/category_repository.dart';
-import 'package:ysl_store_app/data/repositories/product/product_repository.dart';
-import 'package:ysl_store_app/utils/constants/image_strings.dart';
-import 'package:ysl_store_app/utils/popups/full_screen_loader.dart';
-import 'package:ysl_store_app/utils/popups/loaders.dart';
+import 'package:fast_food/data/dummy/dummy_data.dart';
+import 'package:fast_food/data/repositories/banners/banner_repository.dart';
+import 'package:fast_food/data/repositories/brand/brand_repository.dart';
+import 'package:fast_food/data/repositories/category/category_repository.dart';
+import 'package:fast_food/data/repositories/product/product_repository.dart';
+import 'package:fast_food/utils/constants/image_strings.dart';
+import 'package:fast_food/utils/popups/full_screen_loader.dart';
+import 'package:fast_food/utils/popups/loaders.dart';
 
 /// Service for uploading dummy data to Firebase
 class DataUploadService extends GetxService {

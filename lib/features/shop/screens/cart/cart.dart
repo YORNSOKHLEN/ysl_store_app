@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ysl_store_app/features/shop/controllers/product/cart_controller.dart';
-import 'package:ysl_store_app/features/shop/screens/cart/widgets/cart_item.dart';
+import 'package:fast_food/features/shop/controllers/product/cart_controller.dart';
+import 'package:fast_food/features/shop/screens/cart/widgets/cart_item.dart';
 
 import '../../../../common/widgets/appbar/appbar.dart';
 import '../../../../common/widgets/loaders/animation_loader.dart';

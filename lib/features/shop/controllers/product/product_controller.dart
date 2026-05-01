@@ -103,12 +103,24 @@ class ProductController extends GetxController {
     return stock > 0 ? 'In Stock' : 'Out of Stock';
   }
 
+  /// Clear any active search state.
+  void clearSearchResults() {
+    searchResults.clear();
+    isLoading.value = false;
+  }
 
   /// Search products
   Future<void> searchProducts(String query) async {
     try {
+      final trimmedQuery = query.trim();
+
+      if (trimmedQuery.isEmpty) {
+        clearSearchResults();
+        return;
+      }
+
       isLoading.value = true;
-      final products = await productRepository.searchProducts(query);
+      final products = await productRepository.searchProducts(trimmedQuery);
       searchResults.assignAll(products);
     } catch (e) {
       YLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());

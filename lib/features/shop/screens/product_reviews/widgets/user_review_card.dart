@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
-import 'package:ysl_store_app/features/shop/models/review_model.dart';
+import 'package:fast_food/features/shop/models/review_model.dart';
 
 import '../../../../../common/widgets/product/ratings/rating_indicator.dart';
 import '../../../../../utils/constants/colors.dart';

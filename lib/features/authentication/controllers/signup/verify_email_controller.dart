@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
-import 'package:ysl_store_app/common/widgets/success_screen/success_screen.dart';
-import 'package:ysl_store_app/utils/constants/text_strings.dart';
+import 'package:fast_food/common/widgets/success_screen/success_screen.dart';
+import 'package:fast_food/utils/constants/text_strings.dart';
 
 import '../../../../data/repositories/authentication/authentication_repository.dart';
 import '../../../../utils/constants/image_strings.dart';

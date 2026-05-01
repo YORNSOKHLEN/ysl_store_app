@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ysl_store_app/utils/constants/colors.dart';
+import 'package:fast_food/utils/constants/colors.dart';
 
 class YShadowStyle {
   static final verticalProductShadow = BoxShadow(

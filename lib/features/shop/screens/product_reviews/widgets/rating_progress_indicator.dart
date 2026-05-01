@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ysl_store_app/features/shop/screens/product_reviews/widgets/progress_indicator_and_rating.dart';
+import 'package:fast_food/features/shop/screens/product_reviews/widgets/progress_indicator_and_rating.dart';
 
 class YOverallProductRatings extends StatelessWidget {
   const YOverallProductRatings({

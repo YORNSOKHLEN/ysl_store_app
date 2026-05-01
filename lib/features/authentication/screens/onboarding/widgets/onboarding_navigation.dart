@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     show SmoothPageIndicator, ExpandingDotsEffect;
-import 'package:ysl_store_app/features/authentication/controllers/onboarding/onboarding_controller.dart';
-import 'package:ysl_store_app/utils/helpers/helper_functions.dart';
+import 'package:fast_food/features/authentication/controllers/onboarding/onboarding_controller.dart';
+import 'package:fast_food/utils/helpers/helper_functions.dart';
 
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/sizes.dart';

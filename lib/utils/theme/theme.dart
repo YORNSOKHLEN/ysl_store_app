@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:ysl_store_app/utils/constants/colors.dart';
-import 'package:ysl_store_app/utils/theme/custom_themes/bottom_sheet_theme.dart';
-import 'package:ysl_store_app/utils/theme/custom_themes/checkbox_theme.dart';
-import 'package:ysl_store_app/utils/theme/custom_themes/chip_theme.dart';
-import 'package:ysl_store_app/utils/theme/custom_themes/elevated_button_theme.dart';
+import 'package:fast_food/utils/constants/colors.dart';
+import 'package:fast_food/utils/theme/custom_themes/bottom_sheet_theme.dart';
+import 'package:fast_food/utils/theme/custom_themes/checkbox_theme.dart';
+import 'package:fast_food/utils/theme/custom_themes/chip_theme.dart';
+import 'package:fast_food/utils/theme/custom_themes/elevated_button_theme.dart';
 
 import 'custom_themes/appbar_theme.dart';
 import 'custom_themes/outlined_button_theme.dart';

@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:ysl_store_app/routes/routes.dart';
+import 'package:fast_food/routes/routes.dart';
 
 import '../features/authentication/screens/login/login.dart';
 import '../features/authentication/screens/onboarding/onboarding.dart';

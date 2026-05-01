@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:ysl_store_app/common/widgets/appbar/appbar.dart';
-import 'package:ysl_store_app/common/widgets/product/ratings/rating_indicator.dart';
-import 'package:ysl_store_app/data/repositories/authentication/authentication_repository.dart';
-import 'package:ysl_store_app/data/repositories/review/review_repository.dart';
-import 'package:ysl_store_app/features/shop/models/product_model.dart';
-import 'package:ysl_store_app/features/shop/models/review_model.dart';
-import 'package:ysl_store_app/features/shop/screens/product_reviews/widgets/rating_progress_indicator.dart';
-import 'package:ysl_store_app/features/shop/screens/product_reviews/widgets/user_review_card.dart';
-import 'package:ysl_store_app/utils/constants/colors.dart';
-import 'package:ysl_store_app/utils/constants/sizes.dart';
-import 'package:ysl_store_app/utils/popups/loaders.dart';
+import 'package:fast_food/common/widgets/appbar/appbar.dart';
+import 'package:fast_food/common/widgets/product/ratings/rating_indicator.dart';
+import 'package:fast_food/data/repositories/authentication/authentication_repository.dart';
+import 'package:fast_food/data/repositories/review/review_repository.dart';
+import 'package:fast_food/features/shop/models/product_model.dart';
+import 'package:fast_food/features/shop/models/review_model.dart';
+import 'package:fast_food/features/shop/screens/product_reviews/widgets/rating_progress_indicator.dart';
+import 'package:fast_food/features/shop/screens/product_reviews/widgets/user_review_card.dart';
+import 'package:fast_food/utils/constants/colors.dart';
+import 'package:fast_food/utils/constants/sizes.dart';
+import 'package:fast_food/utils/popups/loaders.dart';
 
 class ProductReviewsScreen extends StatefulWidget {
   const ProductReviewsScreen({super.key, this.product});

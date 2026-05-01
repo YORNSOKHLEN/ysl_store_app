@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:ysl_store_app/utils/helpers/helper_functions.dart';
+import 'package:fast_food/utils/helpers/helper_functions.dart';
 
 import '../../../../features/shop/screens/search/search_screen.dart';
 import '../../../../utils/constants/colors.dart';
@@ -17,9 +17,11 @@ class YSearchContainer extends StatelessWidget {
     this.showBorder = true,
     this.onTap,
     this.padding = const EdgeInsets.symmetric(horizontal: YSizes.defaultSpace),
+    this.initialQuery,
   });
 
   final String text;
+  final String? initialQuery;
   final IconData? icon;
   final bool showBackground, showBorder;
   final VoidCallback? onTap;
@@ -29,7 +31,9 @@ class YSearchContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = YHelperFunctions.isDarkMode(context);
     return GestureDetector(
-      onTap: onTap ?? () => Get.to(() => const SearchScreen()),
+      // If an explicit onTap is provided use it, otherwise open SearchScreen.
+      // Use `initialQuery` only when a real query is supplied (not the placeholder `text`).
+      onTap: onTap ?? () => Get.to(() => SearchScreen(initialQuery: initialQuery)),
       child: Padding(
         padding: padding,
         child: Container(

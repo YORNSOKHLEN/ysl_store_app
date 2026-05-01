@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ysl_store_app/common/widgets/login_signup/form_divider.dart';
-import 'package:ysl_store_app/common/widgets/login_signup/social_buttons.dart';
-import 'package:ysl_store_app/features/authentication/screens/signup/widgets/signup_form.dart';
-import 'package:ysl_store_app/utils/constants/sizes.dart';
-import 'package:ysl_store_app/utils/constants/text_strings.dart';
+import 'package:fast_food/common/widgets/login_signup/form_divider.dart';
+import 'package:fast_food/common/widgets/login_signup/social_buttons.dart';
+import 'package:fast_food/features/authentication/screens/signup/widgets/signup_form.dart';
+import 'package:fast_food/utils/constants/sizes.dart';
+import 'package:fast_food/utils/constants/text_strings.dart';
 
 class SignupScreen extends StatelessWidget {
   const SignupScreen({super.key});

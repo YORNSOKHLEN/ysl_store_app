@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ysl_store_app/utils/constants/colors.dart';
-import 'package:ysl_store_app/utils/helpers/helper_functions.dart';
+import 'package:fast_food/utils/constants/colors.dart';
+import 'package:fast_food/utils/helpers/helper_functions.dart';
 
 import '../custom_shapes/containers/circular_container.dart';
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ysl_store_app/common/widgets/shimmers/shimmer.dart';
+import 'package:fast_food/common/widgets/shimmers/shimmer.dart';
 
 import '../../../utils/constants/sizes.dart';
 

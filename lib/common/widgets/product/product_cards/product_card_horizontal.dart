@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:ysl_store_app/common/widgets/product/favourite_icon/favourite_icon.dart';
-import 'package:ysl_store_app/common/widgets/texts/product_price_text.dart';
-import 'package:ysl_store_app/features/shop/models/product_model.dart';
+import 'package:fast_food/common/widgets/product/favourite_icon/favourite_icon.dart';
+import 'package:fast_food/common/widgets/texts/product_price_text.dart';
+import 'package:fast_food/features/shop/models/product_model.dart';
 
 import '../../../../features/shop/controllers/product/product_controller.dart';
 import '../../../../utils/constants/colors.dart';

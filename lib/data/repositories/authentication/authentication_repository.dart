@@ -5,10 +5,10 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:ysl_store_app/data/repositories/user/user_repository.dart';
-import 'package:ysl_store_app/features/authentication/screens/signup/widgets/verify_email.dart';
-import 'package:ysl_store_app/navigation_menu.dart';
-import 'package:ysl_store_app/utils/local_storage/storage_utility.dart';
+import 'package:fast_food/data/repositories/user/user_repository.dart';
+import 'package:fast_food/features/authentication/screens/signup/widgets/verify_email.dart';
+import 'package:fast_food/navigation_menu.dart';
+import 'package:fast_food/utils/local_storage/storage_utility.dart';
 
 import '../../../features/authentication/screens/login/login.dart';
 import '../../../features/authentication/screens/onboarding/onboarding.dart';

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:ysl_store_app/common/widgets/appbar/appbar.dart';
-import 'package:ysl_store_app/features/personalization/screens/address/address.dart';
-import 'package:ysl_store_app/features/personalization/screens/profile/profile.dart';
-import 'package:ysl_store_app/features/shop/screens/order/order.dart';
-import 'package:ysl_store_app/utils/constants/colors.dart';
-import 'package:ysl_store_app/utils/constants/sizes.dart';
+import 'package:fast_food/common/widgets/appbar/appbar.dart';
+import 'package:fast_food/features/personalization/screens/address/address.dart';
+import 'package:fast_food/features/personalization/screens/profile/profile.dart';
+import 'package:fast_food/features/shop/screens/order/order.dart';
+import 'package:fast_food/utils/constants/colors.dart';
+import 'package:fast_food/utils/constants/sizes.dart';
 
 import '../../../../common/widgets/custom_shapes/containers/primary_header_container.dart';
 import '../../../../common/widgets/list_tile/settings_menu_tile.dart';
