@@ -1,41 +1,34 @@
 {
   "project_info": {
-    "project_number": "328649122836",
-    "project_id": "ysl-store-app",
-    "storage_bucket": "ysl-store-app.firebasestorage.app"
+    "project_number": "222234766033",
+    "project_id": "fast-food-app-kh",
+    "storage_bucket": "fast-food-app-kh.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:328649122836:android:7a2f2f99f190b38b3eb301",
+        "mobilesdk_app_id": "1:222234766033:android:d832185e5f83a6217bf3f0",
         "android_client_info": {
-          "package_name": "com.example.ysl_store_app"
+          "package_name": "com.example.fast_food_app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "328649122836-o0rv05icu9hmf00mdl6rm4lo25imm8f8.apps.googleusercontent.com",
+          "client_id": "222234766033-ggfaaod51505m3hi8kpi0mblg1hc26lg.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCZXSuDQ1ZgdFVt3yxUaR4dclhl4PkjPHE"
+          "current_key": "AIzaSyCfCqHMiB3hEv6F1tgIXvNUwDpg0yP7JYo"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "328649122836-o0rv05icu9hmf00mdl6rm4lo25imm8f8.apps.googleusercontent.com",
+              "client_id": "222234766033-ggfaaod51505m3hi8kpi0mblg1hc26lg.apps.googleusercontent.com",
               "client_type": 3
-            },
-            {
-              "client_id": "328649122836-3gfn6c111lp3tfst36gf5unnpmt9q36g.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.yslStoreApp"
-              }
             }
           ]
         }

@@ -79,6 +79,7 @@ flutter:
     - assets/images/products/burger/
     - assets/images/on_boarding_images/
     - assets/images/products/burger/burger_king/
+    - assets/icons/payment_methods/khqr.png
 
 
   #-------------- Local Fonts  ----------------

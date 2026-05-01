@@ -29,6 +29,7 @@ class CheckoutController extends GetxController {
         child: Container(
           padding: const EdgeInsets.all(YSizes.lg),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const YSectionHeading(

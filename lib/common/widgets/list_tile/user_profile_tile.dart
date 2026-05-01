@@ -31,6 +31,8 @@ class YUserProfileTile extends StatelessWidget {
                   image: image,
                   width: 50,
                   height: 50,
+                  padding: 0,
+                  backgroundColor: Colors.transparent,
                   isNetworkImage: networkImage.isNotEmpty,
                 ),
         ),

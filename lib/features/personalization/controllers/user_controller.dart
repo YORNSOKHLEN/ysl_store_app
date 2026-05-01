@@ -182,13 +182,18 @@ class UserController extends GetxController {
         imageUpLoading.value = true;
         // Upload Image
         final imageUrl = await userRepository.uploadImage(
-          'Users/Images/Profile/',
+          'Users/Images/Profile',
           image,
         );
 
         // Update User Image Record
         Map<String, dynamic> json = {'ProfilePicture': imageUrl};
         await userRepository.updateSingleField(json);
+
+        final currentUser = FirebaseAuth.instance.currentUser;
+        if (currentUser != null) {
+          await currentUser.updatePhotoURL(imageUrl);
+        }
 
         user.value.profilePicture = imageUrl;
         user.refresh();

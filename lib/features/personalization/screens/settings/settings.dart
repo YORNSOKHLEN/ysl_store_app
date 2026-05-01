@@ -109,14 +109,14 @@ class SettingsScreen extends StatelessWidget {
                   YSettingsMenuTile(
                     icon: Iconsax.document_upload,
                     title: 'Load Data',
-                    subTitle: 'Upload Data to your Cloud Firebase',
+                    subTitle: 'Upload all dummy data to Cloud Firebase',
                     onTap: () async {
                       // Show confirmation dialog
                       final confirm = await Get.dialog<bool>(
                         AlertDialog(
                           title: const Text('Upload Data'),
                           content: const Text(
-                            'This will upload all dummy data (Categories, Products) to Firebase. This may take a few minutes. Continue?',
+                            'This will upload all dummy data (Categories, Brands, Products, Banners) to Firebase. This may take a few minutes. Continue?',
                           ),
                           actions: [
                             TextButton(
@@ -132,7 +132,7 @@ class SettingsScreen extends StatelessWidget {
                       );
 
                       if (confirm == true) {
-                        await DataUploadService.instance.uploadProducts();
+                        await DataUploadService.instance.uploadAllData();
                       }
                     },
                   ),
