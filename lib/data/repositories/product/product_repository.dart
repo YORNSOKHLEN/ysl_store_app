@@ -166,6 +166,20 @@ class ProductRepository extends GetxController {
     }
   }
 
+  /// Fetch a single product by its document id.
+  Future<ProductModel> getProductById(String productId) async {
+    try {
+      final doc = await _db.collection('Products').doc(productId).get();
+      if (!doc.exists) {
+        throw Exception('Product not found');
+      }
+      return ProductModel.fromSnapshot(doc);
+    } catch (e) {
+      debugPrint('getProductById error: $e');
+      rethrow;
+    }
+  }
+
   /// Get Products based on the Query
   Future<List<ProductModel>> getFavouriteProducts(
     List<String> productIds,

@@ -18,32 +18,41 @@ class YProfileMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onPressed,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          vertical: YSizes.spaceBtwItems / 1.5,
-        ),
-        child: Row(
-          children: [
-            Expanded(
-              flex: 3,
-              child: Text(
-                title,
-                style: Theme.of(context).textTheme.bodySmall,
-                overflow: TextOverflow.ellipsis,
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(YSizes.sm),
+        onTap: onPressed,
+        child: Container(
+          constraints: const BoxConstraints(minHeight: 48),
+          padding: const EdgeInsets.symmetric(
+            vertical: YSizes.spaceBtwItems / 2,
+            horizontal: YSizes.xs,
+          ),
+          child: Row(
+            children: [
+              Expanded(
+                flex: 3,
+                child: Text(
+                  title,
+                  style: Theme.of(context).textTheme.bodySmall,
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
-            ),
-            Expanded(
-              flex: 5,
-              child: Text(
-                value,
-                style: Theme.of(context).textTheme.bodyMedium,
-                overflow: TextOverflow.ellipsis,
+              Expanded(
+                flex: 5,
+                child: Text(
+                  value,
+                  textAlign: TextAlign.end,
+                  style: Theme.of(context).textTheme.bodyMedium,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
-            ), // Expanded
-            Expanded(child: Icon(icon, size: 18)),
-          ],
+              const SizedBox(width: YSizes.sm),
+              Icon(icon, size: 18),
+            ],
+          ),
         ),
       ),
     );

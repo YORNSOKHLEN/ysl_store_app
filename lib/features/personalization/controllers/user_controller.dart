@@ -211,4 +211,54 @@ class UserController extends GetxController {
       imageUpLoading.value = false;
     }
   }
+
+  /// Update a single editable profile field.
+  Future<void> updateSingleProfileField({
+    required String fieldKey,
+    required String value,
+    String? successMessage,
+  }) async {
+    try {
+      YFullScreenLoader.openLoadingDialog(
+        'We are updating your information...',
+        YImage.docerAnimation,
+      );
+
+      final isConnected = await NetworkManager.instance.isConnected();
+      if (!isConnected) {
+        YFullScreenLoader.stopLoading();
+        return;
+      }
+
+      await userRepository.updateSingleField({fieldKey: value});
+
+      switch (fieldKey) {
+        case 'Username':
+          user.value.username = value;
+          break;
+        case 'Email':
+          user.value.email = value;
+          break;
+        case 'PhoneNumber':
+          user.value.phoneNumber = value;
+          break;
+        case 'Gender':
+          user.value.gender = value;
+          break;
+        case 'DateOfBirth':
+          user.value.dateOfBirth = value;
+          break;
+      }
+      user.refresh();
+
+      YFullScreenLoader.stopLoading();
+      YLoaders.successSnackBar(
+        title: 'Congratulations',
+        message: successMessage ?? 'Your information has been updated.',
+      );
+    } catch (e) {
+      YFullScreenLoader.stopLoading();
+      YLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+    }
+  }
 }

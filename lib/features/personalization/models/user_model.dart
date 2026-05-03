@@ -8,13 +8,12 @@ class UserModel {
   final String id;
   String? firstName;
   String? lastName;
-  final String? username;
-  final String? email;
+  String? username;
+  String? email;
   String? phoneNumber;
   String? profilePicture;
-
-  // final String? gender;
-  // final String? dateOfBirth; // ISO string or formatted string
+  String? gender;
+  String? dateOfBirth;
   // final Timestamp? createdAt;
   // final Timestamp? updatedAt;
 
@@ -26,9 +25,8 @@ class UserModel {
     required this.email,
     required this.phoneNumber,
     required this.profilePicture,
-
-    // this.gender,
-    // this.dateOfBirth,
+    this.gender,
+    this.dateOfBirth,
     // this.createdAt,
     // this.updatedAt,
   });
@@ -63,6 +61,8 @@ class UserModel {
     email: '',
     phoneNumber: '',
     profilePicture: '',
+    gender: '',
+    dateOfBirth: '',
   );
 
   Map<String, dynamic> toJson() {
@@ -73,6 +73,8 @@ class UserModel {
       'Email': email,
       'PhoneNumber': phoneNumber,
       'ProfilePicture': profilePicture,
+      'Gender': gender,
+      'DateOfBirth': dateOfBirth,
     };
   }
 
@@ -93,6 +95,8 @@ class UserModel {
         email: data['Email'] ?? '',
         phoneNumber: data['PhoneNumber'] ?? '',
         profilePicture: data['ProfilePicture'] ?? '',
+        gender: data['Gender'] ?? '',
+        dateOfBirth: data['DateOfBirth'] ?? '',
       );
     }
 

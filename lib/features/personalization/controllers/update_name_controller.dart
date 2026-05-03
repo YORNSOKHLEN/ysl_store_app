@@ -7,7 +7,6 @@ import '../../../utils/constants/image_strings.dart';
 import '../../../utils/helpers/network_manager.dart';
 import '../../../utils/popups/full_screen_loader.dart';
 import '../../../utils/popups/loaders.dart';
-import '../screens/profile/profile.dart';
 
 /// Controller to manage user-related functionality.
 class UpdateNameController extends GetxController {
@@ -63,6 +62,7 @@ class UpdateNameController extends GetxController {
       // Update the Rx User value
       userController.user.value.firstName = firstName.text.trim();
       userController.user.value.lastName = lastName.text.trim();
+      userController.user.refresh();
 
       // Remove Loader
       YFullScreenLoader.stopLoading();
@@ -73,8 +73,8 @@ class UpdateNameController extends GetxController {
         message: 'Your Name has been updated.',
       );
 
-      // Move to previous screen.
-      Get.off(() => const ProfileScreen());
+      // Return to profile screen; it will rebuild from refreshed user state.
+      Get.back();
     } catch (e) {
       YFullScreenLoader.stopLoading();
       YLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());

@@ -12,6 +12,7 @@ import '../../../../../utils/helpers/cloud_helper_functions.dart';
 import '../../../../../utils/helpers/helper_functions.dart';
 import '../../../controllers/product/order_controller.dart';
 import '../../../models/order_model.dart';
+import '../order_details.dart';
 
 class YOrderListItems extends StatelessWidget {
   const YOrderListItems({super.key});
@@ -48,12 +49,21 @@ class YOrderListItems extends StatelessWidget {
           itemBuilder: (_, index) {
             final order = orders[index];
 
-            return YRoundedContainer(
-              showBorder: true,
-              padding: const EdgeInsets.all(YSizes.md),
-              backgroundColor: dark ? YColors.dark : YColors.light,
-              child: Column(
-                children: [
+            void openOrderDetails() {
+              Get.to(() => OrderDetailsScreen(order: order));
+            }
+
+            return Material(
+              color: Colors.transparent,
+              child: InkWell(
+                borderRadius: BorderRadius.circular(YSizes.cardRadiusLg),
+                onTap: openOrderDetails,
+                child: YRoundedContainer(
+                  showBorder: true,
+                  padding: const EdgeInsets.all(YSizes.md),
+                  backgroundColor: dark ? YColors.dark : YColors.light,
+                  child: Column(
+                    children: [
                   /// Row 1
                   Row(
                     children: [
@@ -73,8 +83,9 @@ class YOrderListItems extends StatelessWidget {
                                   ),
                             ),
                             Text(
-                              YHelperFunctions.getFormattedDate(
+                              YHelperFunctions.getFormatDate(
                                 order.orderDate,
+                                format: 'dd MMM yyyy, hh:mm a',
                               ),
                               style: Theme.of(context).textTheme.labelMedium,
                             ),
@@ -83,7 +94,7 @@ class YOrderListItems extends StatelessWidget {
                       ),
 
                       IconButton(
-                        onPressed: () {},
+                        onPressed: openOrderDetails,
                         icon: const Icon(
                           Iconsax.arrow_right_34,
                           size: YSizes.iconSm,
@@ -150,7 +161,9 @@ class YOrderListItems extends StatelessWidget {
                       ),
                     ],
                   ),
-                ],
+                    ],
+                  ),
+                ),
               ),
             );
           },
